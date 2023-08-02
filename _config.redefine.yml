@@ -19,11 +19,11 @@ info:
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 defaults:
     # Favicon
-    favicon: /images/favicon.svg
+    favicon: https://s2.loli.net/2023/08/02/QTgo6IMXsBdzEcr.png
     # Site logo
     logo:
     # Site avatar
-    avatar: /images/last-avatar.webp
+    avatar: https://s2.loli.net/2023/08/02/BW2ev8dOJrjltwT.webp
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -97,8 +97,8 @@ home_banner:
     style: fixed # static or fixed
     # Home banner image
     image:
-        light: /images/wallpaper-light.webp # light mode
-        dark: /images/wallpaper-dark.webp # dark mode
+        light: https://s2.loli.net/2023/08/02/7FHrp8tKTs19LXl.webp # light mode
+        dark: https://s2.loli.net/2023/08/02/PcTUxnkrVFZRMeu.webp # dark mode
     # Home banner title
     title: Hi, I'm Last
     # Home banner subtitle
