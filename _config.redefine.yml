@@ -165,6 +165,12 @@ navbar:
         Home:
             path: /
             icon: fa-regular fa-house # can be empty
+        Categories:
+            path: /categories
+            icon: fa-solid fa-folder
+        Tags:
+            path: /tags
+            icon: fa-regular fa-tags # can be empty
         # Archives:
         #   path: /archives
         #   icon: fa-regular fa-archive # can be empty
@@ -205,23 +211,23 @@ home:
             # Archives:
             #   path: /archives
             #   icon: fa-regular fa-archive # can be empty
-            # Tags:
-            #   path: /tags
-            #   icon: fa-regular fa-tags # can be empty
-            # Categories:
-            #   path: /categories
-            #   icon: fa-regular fa-folder # can be empty
+            Tags:
+                path: /tags
+                icon: fa-regular fa-tags # can be empty
+            Categories:
+                path: /categories
+                icon: fa-regular fa-folder # can be empty
             # ...... # you can add more
     # Article date format
     article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
     # Article categories visibility
     categories:
         enable: true # Whether to enable
-        limit: 3 # Max number of categories to display
+        limit: 2 # Max number of categories to display
     # Article tags visibility
     tags:
         enable: true # Whether to enable
-        limit: 3 # Max number of tags to display
+        limit: 2 # Max number of tags to display
 # HOME PAGE ARTICLE SETTINGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
@@ -247,7 +253,7 @@ articles:
     # Code block settings
     code_block:
         copy: true # Whether to enable code block copy button
-        style: mac # mac | simple
+        style: simple # mac | simple
         font: # Custom font
             enable: false # Whether to enable
             family: # Font family
