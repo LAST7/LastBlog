@@ -29,7 +29,7 @@ defaults:
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 colors:
     #Primary color
-    primary: "#A31F34"
+    primary: "#5c6c7b"
     # Secondary color (beta)
     secondary:
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
@@ -59,7 +59,7 @@ global:
     # Scroll progress
     scroll_progress:
         bar: false # progress bar
-        percentage: true # percentage
+        percentage: false # percentage
     # Website counter
     website_counter:
         url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js # counter API URL (no need to change)
@@ -157,9 +157,9 @@ navbar:
     auto_hide: false
     # Navbar background color
     color:
-        left: "#f78736" #left side
-        right: "#367df7" #right side
-        transparency: 35 #percent (10-99)
+        left: "#454e61" #left side
+        right: "#15181e" #right side
+        transparency: 70 #percent (10-99)
     # Navbar links
     links:
         Home:
