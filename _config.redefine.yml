@@ -363,13 +363,13 @@ plugins:
         enable: false # Whether to enable
     # Aplayer. See https://github.com/DIYgod/APlayer
     aplayer:
-        enable: false # Whether to enable
+        enable: true # Whether to enable
         type: fixed # fixed, mini
         audios:
-            - name: # audio name
-              artist: # audio artist
-              url: # audio url
-              cover: # audio cover url
+            - name: Make This Place # audio name
+              artist: Taishi # audio artist
+              url: https://music.163.com/song/media/outer/url?id=1362894460.mp3 # audio url
+              cover: https://s2.loli.net/2023/08/02/1ruYAd5DJSBEw4y.webp # audio cover url
             # - name: # audio name
             #   artist: # audio artist
             #   url: # audio url
