@@ -4,6 +4,8 @@ date: 2023-08-03 21:03:31
 excerpt: A test page on features of redefine theme
 ---
 
+- 不知为何选项卡模块每次都需要刷新后才能正常使用，不管是本地还是云端服务都是如此。或许是因为 all-minifier 插件的缘故？
+
 {% tabs tests %}
 <!-- tab note -->
 {% notel red fa-fire custom_title %}
