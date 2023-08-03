@@ -145,6 +145,7 @@ home_banner:
             # twitter: # your twitter URL
             email: last7617@outlook.com # your email
             # ...... # you can add more
+            fa-regular fa-music: https://music.163.com/#/user/home?id=329572653
         # Social links with QRcode drawers
         qrs:
             # weixin: # your Wechat QRcode image URL
@@ -166,14 +167,17 @@ navbar:
             path: /
             icon: fa-regular fa-house # can be empty
         Archives:
-            path: /archives
             icon: fa-regular fa-archive # can be empty
-        Categories:
-            path: /categories
-            icon: fa-solid fa-folder
-        Tags:
-            path: /tags
-            icon: fa-regular fa-tags # can be empty
+            submenus:
+                Archives: /archives
+                Categories: /categories
+                Tags: /tags
+        # Categories:
+        #     path: /categories
+        #     icon: fa-solid fa-folder
+        # Tags:
+        #     path: /tags
+        #     icon: fa-regular fa-tags # can be empty
         # Status:
         #   path: https://status.evanluo.top/
         #   icon: fa-regular fa-chart-bar
@@ -211,12 +215,12 @@ home:
             # Archives:
             #   path: /archives
             #   icon: fa-regular fa-archive # can be empty
-            Tags:
-                path: /tags
-                icon: fa-regular fa-tags # can be empty
             Categories:
                 path: /categories
                 icon: fa-regular fa-folder # can be empty
+            Tags:
+                path: /tags
+                icon: fa-regular fa-tags # can be empty
             # ...... # you can add more
     # Article date format
     article_date_format: auto # auto, relative, YYYY-MM-DD, YYYY-MM-DD HH:mm:ss etc.
