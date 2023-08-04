@@ -5,6 +5,7 @@ excerpt: A test page on features of redefine theme
 ---
 
 - 不知为何选项卡模块每次都需要刷新后才能正常使用，不管是本地还是云端服务都是如此。或许是因为 all-minifier 插件的缘故？
+- 大号提示块似乎只支持 Font awesome 图标的后半部分，例如 `font-fire`，若是 `font-brand font-qq` 这样的图标则会不予显示。
 
 {% tabs tests %}
 <!-- tab note -->

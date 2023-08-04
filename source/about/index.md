@@ -20,6 +20,8 @@ date: 2023-08-02 22:53:09
     - [Archlinux](https://archlinux.org/)
     - [bspwm](https://github.com/baskerville/bspwm)
 - 个人配置文件可在 [Github](https://github.com/LAST7/dotfile) 获取（注意：仅供参考，谨慎使用）
+---
+-  曾经~~走火入魔了一般的~~配置了一段时间 NeoVim ，配置文件在[这里](https://github.com/LAST7/nvimrc)。
 {% endfolding %}
 
 {% folding blue::游戏 %}
@@ -116,4 +118,4 @@ Telegram : @last7617
 - 域名购买自 [NameSilo](https://www.namesilo.com/)，DNS 解析使用 [Cloudflare](https://www.cloudflare.com/)。
 - 所有的配置文件都可以在我的 [Github 仓库](https://github.com/LAST7/LastBlog)中找到。其中，主题的配置文件是 `_config.redefine.yml`
 ---
-- 感谢 [EvanNotFound](https://ohevan.com/) 制作的主题和对本站部署的指导。
+- 感谢 [EvanNotFound](https://ohevan.com/) 的 [Redefine 主题](https://redefine-docs.ohevan.com/introduction)，以及对本站建设的指导。
