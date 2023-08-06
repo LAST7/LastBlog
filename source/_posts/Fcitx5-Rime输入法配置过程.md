@@ -17,13 +17,14 @@ thumbnail: "https://s2.loli.net/2023/08/06/nUTmGeHNisgo7rB.webp"
 
 -   由于 Rime 的输入法配置起来有些复杂，而本人也没什么兴趣研究，遂选择作为后人乘凉。
 -   前人栽树：[接近原生的鼠须管 Rime 配置](https://github.com/wongdean/rime-settings)
--   感谢 wogdean 的配置文件。
+-   感谢 wogdean 慷慨分享的配置文件。
 
 {% notel yellow fa-triangle-exclamation 关于字体 %}
 
 -   该配置文件自带了两个字体文件，经查询得知是花园明朝字体，为的是解决汉字的生僻字乱码问题。不过我感觉目前的字体使用并未出现过乱码，遂没有安装。
 -   结果就是 rime 的使用大体没有问题，偶尔会出现乱码候选词，问题不大。
-    {% endnotel %}
+
+{% endnotel %}
 
 ## 自定义配置
 
@@ -86,13 +87,36 @@ __include: easy_en:/patch
 1. 界面太大了
 2. 拼音内容不显示在输入法框内的时候，输入法界面是不透明的
 
--   前者通过修改配置文件中 `Margin` 的值解决了，后者则无计可施，去 Github 提了 issue。
+-   前者通过修改配置文件中 `Margin` 的值解决了，后者则无计可施，去 Github 提了 [issue](https://github.com/drbbr/fcitx5-dracula-theme/issues/5)。
+
+{% notel blue fa-clock 更新 %}
+经该主题作者提示，我意识到输入法界面看上去不透明是因为其背景被 picom 给模糊了，在 picom.conf 中加入以下配置即可解决：
+
+```conf
+# ...
+blur-background-exclude = [
+    # ...
+    "class_g = 'fcitx'", # new line
+]
+# ...
+```
+
+{% endnotel %}
 
 ### 其他
 
--   删除了 `luna_pinyin.mingxing.dict.yaml`
+-   删除了 `luna_pinyin.mingxing.dict.yaml`。
 -   在 `custome_phrase.txt` 中添加/修改了几个用户自定词汇。
 
 ## ~~和 polybar 的联动~~
 
 -   在 Github 上发现了一个可以在 polybar 上实时显示当前输入法状态的 [script](https://github.com/RRRRRm/polybar-fcitx5-script)，安装后发现不起作用，遂删除。
+
+## 设置 bspc 窗口规则
+
+-   本人使用的是 bspwm 窗口管理器，我希望 Fcitx Configuration 能以浮动窗口的形式打开而非平铺。
+-   在 bspwmrc 中加入以下规则：
+
+```bash
+bspc rule -a '*:*:Fcitx Configuration' state=floating center=true
+```
