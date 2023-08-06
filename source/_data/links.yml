@@ -1,6 +1,16 @@
-# - links_category: Reality
-#   - has_thumbnail: true
-#   list:
+- links_category: Reality
+  has_thumbnail: false
+  list:
+      - name: jimmy-zx
+        link: https://jimmy-zx.github.io
+        description: Some Blog
+        avatar: https://avatars.githubusercontent.com/u/51149050?v=4
+        thumbnail:
+
+      - name: 某魏
+        link: https://tqlwsl.moe
+        description: 乱七八糟的杂物置放处（
+        avatar: https://wlt233.com/assets/wlt233.1361c683.webp
 
 - links_category: Net
   has_thumbnail: false
