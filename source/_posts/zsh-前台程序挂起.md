@@ -1,9 +1,9 @@
 ---
-title: zsh 前台程序挂起
+title: zsh 挂起程序
 tags:
     - zsh
 categories: Shell
-excerpt: zsh 中使前台程序挂起及恢复
+excerpt: zsh 中程序的挂起及恢复
 date: 2023-08-06 18:48:18
 ---
 

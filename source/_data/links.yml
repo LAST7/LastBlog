@@ -1,0 +1,11 @@
+# - links_category: Reality
+#   - has_thumbnail: true
+#   list:
+
+- links_category: Net
+  has_thumbnail: false
+  list:
+      - name: EvanNotFound's Blog
+        link: https://ohevan.com
+        description: Evan的部落阁
+        avatar: https://evan.beee.top/avatars/avatar-min.png
