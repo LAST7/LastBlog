@@ -284,7 +284,7 @@ articles:
         # Max number of articles to display mobile
         mobile_limit: 2
         # Placeholder image
-        placeholder: /images/wallhaven-wqery6-light.webp
+        placeholder: https://s2.loli.net/2023/08/02/PcTUxnkrVFZRMeu.webp
         # Skip directory
         skip_dirs: []
 # ARTICLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
