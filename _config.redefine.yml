@@ -166,6 +166,9 @@ navbar:
         Home:
             path: /
             icon: fa-regular fa-house # can be empty
+        Memos:
+            path: /essay
+            icon: fa-regular fa-lightbulb # can be empty
         Archives:
             icon: fa-regular fa-archive # can be empty
             submenus:
@@ -215,6 +218,9 @@ home:
             # Archives:
             #   path: /archives
             #   icon: fa-regular fa-archive # can be empty
+            Memos:
+                path: /essay
+                icon: fa-regular fa-lightbulb # can be empty
             Categories:
                 path: /categories
                 icon: fa-regular fa-folder # can be empty
