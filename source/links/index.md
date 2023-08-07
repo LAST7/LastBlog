@@ -6,7 +6,7 @@ comment: true
 ---
 
 ---
-{% notel yellow fa-fire **欢迎友链，格式如下** %}
+{% notel orange fa-heart **欢迎友链，格式如下** %}
 站点名称： Last Blog
 站点地址： https://bloglast.top
 站点描述： void of myself
