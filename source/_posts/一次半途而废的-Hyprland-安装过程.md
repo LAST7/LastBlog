@@ -134,7 +134,7 @@ env = __GLX_VENDOR_LIBRARY_NAME,nvidia
 env = WLR_NO_HARDWARE_CURSORS,1
 ```
 
--   根据一篇微信公众号教程：
+-   另，根据一篇[微信公众号教程](https://mp.weixin.qq.com/s/WyG6drxmglcdNaYpdgFNeQ)：
 
 ```conf
 # qt 相关
@@ -152,4 +152,35 @@ env = GDK_BACKEND,wayland
 
 ## 配置
 
-{% btn center large::待续::::fa-solid fa-fire %}
+-   配置方面不做多言，看见好看的照抄即可。这里仅列出几个配置过程中遇到的问题。
+
+### 多修饰键的快捷键设置
+
+-   例如 `Ctrl + Alt + A`，如下的配置不会生效：
+
+```config
+bind = Control_L, Alt_L, A, exec, ...
+```
+
+-   需要将所有的修饰键写在一起，如下：
+
+```config
+bind = Control_Alt, A, exec, ...
+```
+
+### Electron 应用启用 Wayland 支持
+
+-   在 wayland 下启动 Electron 应用，默认是通过 xwayland 启动的。要想切换成 wayland 渲染，需要添加以下 flag：
+
+```bash
+./example --enable-features=UseOzonePlatform --ozone-platform=wayland
+```
+
+### Fcitx5
+
+-   遇到过的问题如下：
+
+1. 有些 electron 应用即便添加了 `--enable-wayland-ime` 的 flag 依然无法使用 fcitx
+2. 在 xwayland 下使用 fcitx 会十分卡顿，且输入法浮框会在光标的右下方相当一点距离，甚至会跳出屏幕显示范围之外。
+
+-   以上问题均未解决。
