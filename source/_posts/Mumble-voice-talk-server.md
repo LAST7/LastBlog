@@ -113,7 +113,7 @@ service start docker
 
 ### 启动
 
-- 使用命令行：
+-   使用命令行：
 
 ```bash
 $ docker run --name murmur -d \
@@ -121,30 +121,30 @@ $ docker run --name murmur -d \
     goofball222/murmur
 ```
 
-- 使用 `docker compose` （推荐）：
+-   使用 `docker compose` （推荐）：
 
 {% folding gray::example docker-compose.yml %}
 
 Example `docker-compose.yml` File：
 
 ```yml
-version: '3'
+version: "3"
 
 services:
-  murmur:
-    image: goofball222/murmur
-    container_name: murmur
-    ports:
-      - 64738:64738
-      - 64738:64738/udp
-    volumes:
-      - /etc/localtime:/etc/localtime:ro
-      - ./cert:/opt/murmur/cert
-      - ./config:/opt/murmur/config
-      - ./data:/opt/murmur/data
-      - ./log:/opt/murmur/log
-    environment:
-      - TZ=UTC
+    murmur:
+        image: goofball222/murmur
+        container_name: murmur
+        ports:
+            - 64738:64738
+            - 64738:64738/udp
+        volumes:
+            - /etc/localtime:/etc/localtime:ro
+            - ./cert:/opt/murmur/cert
+            - ./config:/opt/murmur/config
+            - ./data:/opt/murmur/data
+            - ./log:/opt/murmur/log
+        environment:
+            - TZ=UTC
 ```
 
 {% endfolding %}
@@ -157,13 +157,13 @@ docker compose up -d
 
 #### 设置超级用户密码
 
-- 进入 docker 环境：
+-   进入 docker 环境：
 
 ```bash
 docker exec -it murmur bash
 ```
 
-- 设置密码：
+-   设置密码：
 
 ```bash
 ./murmur.x86 -supw <password>
@@ -171,19 +171,19 @@ docker exec -it murmur bash
 
 #### 设置服务器密码
 
-- 可以通过修改配置文件的方式来使服务器需要密码加入。
-- 修改 `murmur.ini`：
+-   可以通过修改配置文件的方式来使服务器需要密码加入。
+-   修改 `murmur.ini`：
 
 ```ini
 ; Password to join Server
 serverpassword=<password>
 ```
 
-- 保存后运行 `docker restart murmur` 来使之生效。
+-   保存后运行 `docker restart murmur` 来使之生效。
 
 ### 将用户设置为管理员
 
-- 右键根频道（Root） -> 选择编辑（Edit） -> 选择用户组别（Group） -> 选择管理员（admin） -> 在下方的成员中添加用户。
+-   右键根频道（Root） -> 选择编辑（Edit） -> 选择用户组别（Group） -> 选择管理员（admin） -> 在下方的成员中添加用户。
 
 {% notel blue fa-circle-exclamation **注意** %}
 只有已注册的用户才能被设为管理员。
@@ -191,4 +191,4 @@ serverpassword=<password>
 
 ### 证书 & 多设备登录
 
-- 经测试，只要拥有相同的证书，就可以免去密码直接以创建证书的账户身份登录 mumble。
+-   经测试，只要拥有相同的证书，就可以免去密码直接以创建证书的账户身份登录 mumble。
