@@ -6,7 +6,7 @@ tags:
     - 截图
     - wm
     - 配置
-excerpt: 记录使用 miam 替代 flameshot 的过程
+excerpt: 记录使用 maim 替代 flameshot 的过程
 ---
 
 ## 前言
@@ -30,7 +30,7 @@ excerpt: 记录使用 miam 替代 flameshot 的过程
 -   使用 pacman：
 
 ```bash
-sudo pacman -S miam
+sudo pacman -S maim
 ```
 
 ## 设置快捷键
