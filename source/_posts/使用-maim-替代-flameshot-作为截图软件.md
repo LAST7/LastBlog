@@ -1,11 +1,11 @@
 ---
 title: 使用 maim 替代 flameshot 作为截图软件
 date: 2023-08-15 19:58:09
-categories: 记录
+categories: 工具使用
 tags:
-    - 截图
+    - maim
+    - screenshot
     - wm
-    - 配置
 excerpt: 记录使用 maim 替代 flameshot 的过程
 ---
 

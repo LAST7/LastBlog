@@ -1,11 +1,10 @@
 ---
 title: 一次半途而废的 Hyprland 安装过程
 date: 2023-08-10 20:15:23
-categories: 记录
+categories: 工具使用
 tags:
     - wayland
     - hyprland
-    - wm
 excerpt: 记录未完成的 Hyprland 安装/配置过程
 thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
 ---
@@ -187,4 +186,4 @@ bind = Control_Alt, A, exec, ...
 
 ### XWayland 缩放模糊
 
-- 只要 hyprland 配置文件中，屏幕显示的缩放率不为 1，通过 XWayland 渲染的应用就会变的非常模糊，且无法解决。
+-   只要 hyprland 配置文件中，屏幕显示的缩放率不为 1，通过 XWayland 渲染的应用就会变的非常模糊，且无法解决。

@@ -1,12 +1,12 @@
 ---
 title: Ebook-GPT-translator
 date: 2023-08-08 20:12:26
-categories: python
+categories: 工具使用
 tags:
-    - chatgpt
     - python
+    - chatgpt
     - micromamba
-    - 翻译
+    - translation
 excerpt: 使用 ChatGPT 翻译外语文档
 ---
 

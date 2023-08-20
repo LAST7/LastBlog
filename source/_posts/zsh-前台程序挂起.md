@@ -1,8 +1,8 @@
 ---
 title: zsh 挂起程序
+categories: 工具使用
 tags:
     - zsh
-categories: Shell
 excerpt: zsh 中程序的挂起及恢复
 date: 2023-08-06 18:48:18
 ---

@@ -1,9 +1,9 @@
 ---
 title: Mumble 语音聊天服务器搭建
 date: 2023-08-13 14:14:01
-categories: 记录
+categories: 工具使用
 tags:
-    - 服务器
+    - server
     - ssh
     - docker
 excerpt: 记录一次 mumble 语音聊天服务端的搭建过程
@@ -97,7 +97,7 @@ apt update
 # 安装 docker
 apt install docker-ce
 # 启动 docker
-service start docker
+service docker start
 ```
 
 ### 安装 Docker Compose
@@ -148,6 +148,8 @@ services:
 ```
 
 {% endfolding %}
+
+在 `docker-compose.yml` 所在的目录中执行：
 
 ```bash
 docker compose up -d
