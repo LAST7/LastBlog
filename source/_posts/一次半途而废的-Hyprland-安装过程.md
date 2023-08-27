@@ -65,7 +65,7 @@ nvidia_drm.modeset=1
 
 ---
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% notel red fa-triangle-exclamation **注意** %}
 
 根据 [Archwiki](https://wiki.archlinux.org/title/NVIDIA#mkinitcpio)，
 修改该配置后，每次系统内核/显卡驱动更新之后都需要重新执行 `sudo mkinitcpio -P`。
