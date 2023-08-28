@@ -51,6 +51,12 @@ ctrl + alt + s
 需要提前创建 `~/Pictures/screenshot` 文件夹。
 {% endnotel %}
 
+---
+
+{% notel blue fa-clock 更新 %}
+该配置已被修改，详见[这篇博文](https://bloglast.top/2023/08/27/xclip-disfunction-when-image-size-too-large/)。
+{% endnotel %}
+
 ## Picom 相关问题
 
 -   参考 [GitHub](https://github.com/naelstrof/maim/issues/172)，在 picom 的背景模糊作用下，maim 的选取窗口也会受到影响，需要在 `picom.conf` 文件中添加如下配置：
