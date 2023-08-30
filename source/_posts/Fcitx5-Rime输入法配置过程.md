@@ -3,8 +3,7 @@ title: Fcitx5-Rime输入法配置过程
 date: 2023-08-06 00:53:46
 categories: 记录
 tags:
-    - 输入法
-    - fcitx5
+    - fcitx
     - rime
     - bspwm
 excerpt: Rime 的~~懒人~~配置过程
@@ -14,6 +13,14 @@ thumbnail: "https://s2.loli.net/2023/08/06/nUTmGeHNisgo7rB.webp"
 ## 动机
 
 -   先前使用的是 [四叶草输入法](https://github.com/fkxxyz/rime-cloverpinyin)，但是总有些十分耳熟能详的高频词汇打不出来，抑或是出现莫名其妙的候选词，令我十分不爽。于是便一直想着更换一个输入法引擎，恰逢此日网上冲浪时浏览到[这篇博客](https://blacksand.top/2021/10/18/fcitx5-rime%E4%B8%AA%E4%BA%BA%E9%85%8D%E7%BD%AE%E4%BB%A5%E5%8F%8A%E8%B8%A9%E5%9D%91%E7%82%B9%E8%A7%A3%E5%86%B3%E7%AE%80%E8%A6%81/)，遂依葫芦画瓢。
+
+---
+
+{% notel blue fa-clock **更新** %}
+该配置已被修改，详见[这篇博文](https://bloglast.top/2023/08/28/rime-ice-configuration/)。
+{% endnotel %}
+
+---
 
 ## 前人栽树后人乘凉
 
