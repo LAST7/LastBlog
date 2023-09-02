@@ -11,14 +11,6 @@ tags:
 excerpt: 使用 betterlockscreen 和 xautolock 配置 bspwm 锁屏
 ---
 
-## table of content
-
--   usage of betterlockscreen
--   usage of xautolock
--   usage of dunst
--   bug of betterlockscreen causing it inability to execute pre/post scripts
--   using `&` with the commands in shellscript to keep it running in the background
-
 ## 前言
 
 -   说老实话，锁屏这东西并不是什么必需品。毕竟我电脑里并没有什么不能被人看到的东西，倘若完全不配置锁屏也几乎没什么影响。
@@ -67,7 +59,7 @@ betterlockscreen -l
 ## Xautolock
 
 -   xautolock 可以监控用户在 X 显示服务中的行为，如果在用户设定的时间长度内没有任何行为被检测到，则会执行任意用户定义的命令（如启动锁屏程序）。
--   该程序只负责在一段时间内没有检测到用户行为后启动用户指定的程序，而不做任何其他行为，所以锁屏的行为完全由用户指定的程序来执行。
+-   由于该程序只负责在一段时间内没有检测到用户行为后启动用户指定的程序，而不做任何其他行为，所以锁屏的行为完全由用户指定的程序来执行。
 
 ### 安装
 
@@ -172,9 +164,7 @@ xautolock -time 10 -locker "$HOME"/dotfile/script/betterlockscreen/lockscreen -n
 betterlockscreen -l dim
 ```
 
-{% note info %}
-dim 的百分比写在 `~/.config/betterlockscreen/betterlockscreenrc` 中
-{% endnote %}
+-   dim 的百分比写在 `~/.config/betterlockscreen/betterlockscreenrc` 中
 
 ---
 
