@@ -131,7 +131,7 @@ fi
 
 ```
 
--   该脚本会在即将锁屏的 15 秒前使用 dunst 来向用户展示一个 15 秒的倒计时。
+-   该脚本会在即将锁屏的 15 秒前使用 dunst 展示一个 15 秒的倒计时以警告用户。
 
 ## 最终配置
 
@@ -140,10 +140,11 @@ fi
 ```shell
 #!/usr/bin/bash
 
-dunstify "betterlockscreen" "lock timer started." -t 2000 -r 99 -u normal
-
-# kill xautolock if it running
+# kill xautolock if it is running
 pgrep xautolock > /dev/null && kill $(pgrep xautolock)
+
+# modify config for xset DPMS and turn off Screen Saver
+xset s off && xset dpms 1200 1200 1800
 
 # start the timer
 xautolock -time 10 -locker "$HOME"/dotfile/script/betterlockscreen/lockscreen -notify 15 -notifier "$HOME"/dotfile/script/betterlockscreen/lockwarn &
@@ -160,11 +161,17 @@ xautolock -time 10 -locker "$HOME"/dotfile/script/betterlockscreen/lockscreen -n
 ```shell
 #!/usr/bin/bash
 
-# lock screen
-betterlockscreen -l dim
+# check lock status
+LOCKED=false && pgrep i3lock > /dev/null && LOCKED=true
+
+# do not lock screen if already locked
+if [[ ! $LOCKED ]]; then
+    betterlockscreen -l dim
+fi
 ```
 
--   dim 的百分比写在 `~/.config/betterlockscreen/betterlockscreenrc` 中
+-   dim 的百分比写在 `~/.config/betterlockscreen/betterlockscreenrc` 中。
+-   此处 pgrep 抓取的程序是 `i3lock` 而非 `betterlockscreen` 本身，原因在于：`betterlockscreen` 基于 `i3lock` ，其运行本质实际上就是启动增添了额外 flag 的 `i3lock` 。
 
 ---
 
@@ -213,3 +220,10 @@ fi
 -   在发现了 betterlockscreen 这一 bug 后，本人因为没有能力自己定位 bug 所在，于是只能等待作者的回复。在此期间，本人想方设法写了一个自制脚本，其中包含手动执行关闭 Dunst 通知，检测系统空转时间等等功能的代码。
 -   然而在自制的脚本编写完成，并测试通过后，Betterlockscreen 的作者发现了 bug 所在，并予以了修复……
 -   花了一下午功夫的脚本就这么白写了，嗯……
+
+### DPMS 和 Screen Saver
+
+-   在一切配置完成，测试没有发现问题后，我就把 xautolocker 的倒计时时长设定为了 10 min，打算日常使用了。
+-   但是在后续的使用中发现，距离锁屏 15 秒时的倒计时通知工作正常，但是锁屏界面还没出现电脑就自动黑屏了。看样子是有其他屏保程序在 10 min 的空置后把屏幕 blank 了。
+-   经过一段时间的查询后，发现可能是由于 X Server 中的 DPMS(Display Power Management System) 所控制的屏幕自动熄灭时间导致的。然而再调整其数值并重启测试后，却发现电脑在 10 min 后仍然会自动黑屏。
+-   后又经过一段时间的折腾和摸索，才发现原来答案就在 `xset q` 中的 `Screen Saver` 中……该程序会在电脑空置一段时间后自动 blank 屏幕，默认时长为 600 秒，也就是十分钟。使用 `xset s off` 解决了这一问题，并使用 `xset dpms 1200 1200 1800` 分别设定了屏幕 Standby, Suspend 以及 Close 的倒计时时长。
