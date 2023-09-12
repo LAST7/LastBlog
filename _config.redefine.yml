@@ -97,8 +97,8 @@ home_banner:
     style: fixed # static or fixed
     # Home banner image
     image:
-        light: https://s2.loli.net/2023/08/02/7FHrp8tKTs19LXl.webp # light mode
-        dark: https://s2.loli.net/2023/08/02/PcTUxnkrVFZRMeu.webp # dark mode
+        light: https://s2.loli.net/2023/09/13/PfzhYMel5sIJTwU.webp # light mode
+        dark: https://s2.loli.net/2023/09/13/QOEFRSeUMVmJIxX.webp # dark mode
     # Home banner title
     title: Hi, I'm Last
     # Home banner subtitle
