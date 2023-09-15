@@ -378,10 +378,12 @@ plugins:
               artist: Taishi # audio artist
               url: https://music.163.com/song/media/outer/url?id=1362894460.mp3 # audio url
               cover: https://s2.loli.net/2023/08/02/1ruYAd5DJSBEw4y.webp # audio cover url
-            # - name: # audio name
-            #   artist: # audio artist
-            #   url: # audio url
-            #   cover: # audio cover url
+
+            - name: Cappuccino # audio name
+              artist: Puru # audio artist
+              url: https://music.163.com/song/media/outer/url?id=411500592.mp3 # audio url
+              cover: http://p1.music.126.net/7oM_uestX7l5H-nrmMmJzQ==/109951168635344782.jpg?param=130y130 # audio cover url
+
             # .... you can add more audios here
     # Mermaid JS. Requires hexo-filter-mermaid-diagrams (npm i hexo-filter-mermaid-diagrams). See https://mermaid.js.org/
     mermaid:
