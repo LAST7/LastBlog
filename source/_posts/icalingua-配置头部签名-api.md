@@ -3,10 +3,15 @@ title: icalingua++ 配置头部签名 api
 date: 2023-08-19 14:22:12
 categories: 记录
 tags:
-    - icalingua
-    - docker
+  - icalingua
+  - docker
 excerpt: 为 icalingua++ 配置头部签名 api
 ---
+
+{% notel orange fa-triangle-exclamation **注意** %}
+由于 qsign 作者被抓，项目已被删除。
+本文内容仅作留档，已无任何实际作用。
+{% endnotel %}
 
 ## 前言
 
