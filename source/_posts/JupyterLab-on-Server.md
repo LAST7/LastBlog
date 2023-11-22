@@ -47,7 +47,7 @@ jupyter-lab --generate-config
 
 ### 修改配置文件
 
--   修改 `~/.jupyter/jupyter_lab_config.py` 中的一下内容：
+-   修改 `~/.jupyter/jupyter_lab_config.py` 中的以下内容：
 
 ```plaintext
 c.ServerApp.allow_remote_access = True

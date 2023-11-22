@@ -22,7 +22,7 @@ excerpt: 记录使用 maim 替代 flameshot 的过程
     -   **scrot**：截图时选取边框会消失一部分并不断闪烁，使用 `-f` flag 时若激活窗口为 nvim 则会很快退出截图
     -   **deepin-screenshot**：无法复制到剪贴板（xclip），且每次保存都需要手动选择路径
     -   **spectacle**：plasma 大礼包 口区
-    -   **shutter**：就一截图软件你还有个客户端？
+    -   **shutter**：就一截图软件你还有个图形界面客户端？
 -   最终尝试 maim 之后感觉基本完美，符合需求。
 
 ## 安装
