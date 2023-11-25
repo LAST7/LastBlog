@@ -53,7 +53,7 @@ ctrl + alt + s
 
 ---
 
-{% notel blue fa-clock 更新 %}
+{% notel orange fa-clock 更新 %}
 该配置已被修改，详见[这篇博文](https://bloglast.top/2023/08/27/xclip-disfunction-when-image-size-too-large/)。
 {% endnotel %}
 
