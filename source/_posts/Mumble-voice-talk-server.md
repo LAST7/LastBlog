@@ -81,7 +81,7 @@ service docker start
 
 -   该博文中还提到阿里云将所有内网 IP 占用导致 docker 无法启动的情况，本人在操作时并未遇到，故不作记录。
 
-#### 添加 apt 软件源（笔者采用）
+#### 添加阿里云镜像 Docker apt 软件源（笔者采用）
 
 -   参考[这篇博文](https://blog.csdn.net/qq_29753285/article/details/95094788)，命令如下：
 
@@ -98,6 +98,25 @@ apt update
 apt install docker-ce
 # 启动 docker
 service docker start
+```
+
+#### 官方安装方法
+
+```bash
+# Add Docker's official GPG key:
+apt update
+apt install ca-certificates curl gnupg
+install -m 0755 -d /etc/apt/keyrings
+curl -fsSL https://download.docker.com/linux/debian/gpg | gpg --dearmor -o /etc/apt/keyrings/docker.gpg
+chmod a+r /etc/apt/keyrings/docker.gpg
+
+# Add the repository to Apt sources:
+echo \
+  "deb [arch=$(dpkg --print-architecture) signed-by=/etc/apt/keyrings/docker.gpg] https://download.docker.com/linux/debian \
+  $(. /etc/os-release && echo "$VERSION_CODENAME") stable" | \
+  tee /etc/apt/sources.list.d/docker.list > /dev/null
+apt update
+apt install docker-ce
 ```
 
 ### 安装 Docker Compose

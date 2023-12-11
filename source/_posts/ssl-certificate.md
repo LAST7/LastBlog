@@ -68,7 +68,7 @@ ssl_protocols TLSv1.2 TLSv1.3;
 
 server {
     listen 443 ssl;
-    ssl_certificate /etc/letsencrypt/live/example.com/fullcain.pem;
+    ssl_certificate /etc/letsencrypt/live/example.com/fullchain.pem;
     ssl_certificate_key /etc/letsencrypt/live/example.com/privkey.pem;
 }
 ```
