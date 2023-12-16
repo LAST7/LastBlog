@@ -98,5 +98,11 @@ gawk -f total_of_top_three.awk calorie_input
 
 ## Exercise
 
-1. I have no idea how to use `:g` to achieve this...
+1. first:
+   `:g/\d/-j | s / /+/ | .!bc -lq`
+   then:
+   `%!sort -rn | head -3`
+   finally:
+   `:g/\d/-j | s / /+/ | .!bc`
+
 2. `:%s/\(\d\)\(\n\)/\1+/g`：this is anti-human for sure. This command seeks for the "\n" symbol after digits and replace them with the plus sign. Seems that the result are not addressable for the next coming up command, but I can't provide a better answer.
