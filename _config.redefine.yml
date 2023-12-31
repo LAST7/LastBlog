@@ -300,7 +300,7 @@ comment:
     # Whether to enable comment
     enable: true
     # Comment system
-    system: gitalk # waline, gitalk, twikoo, giscus
+    system: twikoo # waline, gitalk, twikoo, giscus
     # System configuration
     config:
         # Waline comment system. See https://waline.js.org/
@@ -309,14 +309,14 @@ comment:
             lang: eu-US # Waline language. e.g. zh-CN, en-US. See https://waline.js.org/guide/client/i18n.html
         # Gitalk comment system. See https://github.com/gitalk/gitalk
         gitalk:
-            clientID: c80db8b4ee26f68fa3eb # GitHub Application Client ID
-            clientSecret: 614f83ed8f3cb2e42a4bf33f8db144bf24967e42 # GitHub Application Client Secret
-            repo: LastBlog-Gitalk # GitHub repository
-            owner: LAST7 # GitHub repository owner
+            clientID: # GitHub Application Client ID
+            clientSecret: # GitHub Application Client Secret
+            repo: # GitHub repository
+            owner: # GitHub repository owner
         # Twikoo comment system. See https://twikoo.js.org/
         twikoo:
-            version: 1.6.10 # Twikoo version, do not modify if you dont know what it is
-            server_url: # Twikoo server URL. e.g. https://example.example.com
+            version: 1.6.29 # Twikoo version, do not modify if you dont know what it is
+            server_url: https://imlast.top/twikoo # Twikoo server URL. e.g. https://example.example.com
             region: # Twikoo region. can be empty
         # Giscus comment system. See https://giscus.app/
         giscus:
