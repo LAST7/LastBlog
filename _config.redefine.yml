@@ -316,7 +316,7 @@ comment:
         # Twikoo comment system. See https://twikoo.js.org/
         twikoo:
             version: 1.6.29 # Twikoo version, do not modify if you dont know what it is
-            server_url: https://imlast.top/twikoo # Twikoo server URL. e.g. https://example.example.com
+            server_url: https://www.imlast.top/twikoo # Twikoo server URL. e.g. https://example.example.com
             region: # Twikoo region. can be empty
         # Giscus comment system. See https://giscus.app/
         giscus:
