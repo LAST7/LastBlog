@@ -59,7 +59,7 @@ EXPOSE 8889
 
 ### 设置远程访问
 
--   参考[这篇文章](https://bloglast.top/2023/11/05/JupyterLab-on-Server/)，可将此前生成过的配置文件直接复制到相应的位置覆盖默认配置。
+-   参考[这篇文章](https://blog.imlast.top/2023/11/05/JupyterLab-on-Server/)，可将此前生成过的配置文件直接复制到相应的位置覆盖默认配置。
 -   在 Dockerfile 中写入：
 
 ```Dockerfile

@@ -11,7 +11,7 @@ excerpt: xclip 在复制过大的图片文件时不工作的解决方案
 
 ## 问题描述
 
--   在[先前的一篇博文](https://bloglast.top/2023/08/15/%E4%BD%BF%E7%94%A8-maim-%E6%9B%BF%E4%BB%A3-flameshot-%E4%BD%9C%E4%B8%BA%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6/)中，我使用 maim 代替了 flameshot 作为截图软件，并且设置了相应的快捷键：
+-   在[先前的一篇博文](https://blog.imlast.top/2023/08/15/%E4%BD%BF%E7%94%A8-maim-%E6%9B%BF%E4%BB%A3-flameshot-%E4%BD%9C%E4%B8%BA%E6%88%AA%E5%9B%BE%E8%BD%AF%E4%BB%B6/)中，我使用 maim 代替了 flameshot 作为截图软件，并且设置了相应的快捷键：
 
 ```config
 # screenshot to clipboard

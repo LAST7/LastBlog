@@ -41,7 +41,7 @@ Arch Linux 的安装和 Rice 的过程确实让我自发的去掌握了不少 Li
 
 今年我搭建了两个个人博客，其中一个托管在 GitHub/Netlify 上，另一个部署在自己的服务器上。前者作为技术博客，后者则是一些其他杂七杂八的内容。
 
--   **[Last Blog](https://bloglast.top)**
+-   **[Last Blog](https://blog.imlast.top)**
 
 > ![lastblog](https://s2.loli.net/2023/12/31/w1enXSJz2tCQj64.png)
 
@@ -69,7 +69,7 @@ Arch Linux 的安装和 Rice 的过程确实让我自发的去掌握了不少 Li
 
 #### Mumble
 
--   在阿里云的服务器上部署了一个 Mumble 语音聊天服务端，[详见 Mumble 语音聊天服务器搭建](https://bloglast.top/2023/08/13/mumble-voice-talk-server/)。
+-   在阿里云的服务器上部署了一个 Mumble 语音聊天服务端，[详见 Mumble 语音聊天服务器搭建](https://blog.imlast.top/2023/08/13/mumble-voice-talk-server/)。
 
 #### FSO Backend
 

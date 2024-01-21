@@ -8,7 +8,7 @@ comment: true
 ---
 {% notel orange fa-heart **欢迎友链，格式如下** %}
 站点名称： Last Blog
-站点地址： https://bloglast.top
+站点地址： https://blog.imlast.top
 站点描述： void of myself
 站点头像： https://s2.loli.net/2023/08/02/BW2ev8dOJrjltwT.webp
 {% endnotel %}

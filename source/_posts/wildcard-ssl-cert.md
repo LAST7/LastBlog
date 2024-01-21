@@ -9,7 +9,7 @@ tags:
     - nginx
 excerpt: 使用 cetbot 为顶级域名及其子域名申请证书
 ---
-
+    
 ## 前言
 
 -   在服务器上部署 Koishi 的时候，本人发现使用带有额外路径的 nginx 流量反代会导致 koishi 控制台网页无法获取其网页脚本及样式表，同时也无法连接服务器上的 ws server。
@@ -53,7 +53,7 @@ sudo certbot certonly --dns-cloudflare \
 -d example.com,*.example.com --preferred-challenges dns-01
 ```
 
--   有关 nginx ssl certificate 的配置详见 [这篇文章](https://bloglast.top/2023/11/25/ssl-certificate/)
+-   有关 nginx ssl certificate 的配置详见 [这篇文章](https://blog.imlast.top/2023/11/25/ssl-certificate/)
 
 ## 总结
 

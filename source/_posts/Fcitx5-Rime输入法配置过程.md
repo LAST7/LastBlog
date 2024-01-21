@@ -17,7 +17,7 @@ thumbnail: "https://s2.loli.net/2023/08/06/nUTmGeHNisgo7rB.webp"
 ---
 
 {% notel blue fa-clock **更新** %}
-该配置已被修改，详见[这篇博文](https://bloglast.top/2023/08/28/rime-ice-configuration/)。
+该配置已被修改，详见[这篇博文](https://blog.imlast.top/2023/08/28/rime-ice-configuration/)。
 {% endnotel %}
 
 ---
