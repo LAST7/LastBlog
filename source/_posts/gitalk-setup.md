@@ -7,6 +7,10 @@ tags:
 excerpt: 在 hexo 框架，Redefine 主题中启用 Gitalk 评论组件
 ---
 
+{% notel orange fa-clock 更新 %}
+由于 Gitalk 已长时间无人维护，且有许多影响使用的 Bug，遂转移至 [Twikoo](https://twikoo.js.org)
+{% endnotel %}
+
 ## 前言
 
 -   原本我使用的评论系统是 Waline，配置较为繁琐，体验颇为一般，但也还算过得去。前些日子突然发现挂了，莫名其妙啊。
