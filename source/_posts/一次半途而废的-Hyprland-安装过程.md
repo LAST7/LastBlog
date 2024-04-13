@@ -44,6 +44,12 @@ nvidia_drm.modeset=1
 
 -   保存后运行 `sudo grub-mkconfig -o /boot/grub/grub.cfg` 来使之生效。
 
+- 在 `/etc/modprobe.d/nvidia.conf` 中加入以下配置：
+
+```
+options nvidia-drm modeset=1
+```
+
 {% notel blue fa-circle-exclamation 注意 %}
 
 这里之所以将该内核参数添加到 grub 配置中，是因为本人的电脑安装了双系统，是由 grub 进行启动的。
