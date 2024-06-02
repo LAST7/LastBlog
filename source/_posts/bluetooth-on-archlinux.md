@@ -3,7 +3,8 @@ title: Arch Linux 使用蓝牙耳机
 date: 2023-09-10 22:19:43
 categories: 工具使用
 tags:
-    - bluetooth
+  - bluetooth
+  - linux
 excerpt: 在 archlinux 上使用命令行工具连接蓝牙耳机
 ---
 
@@ -12,20 +13,6 @@ excerpt: 在 archlinux 上使用命令行工具连接蓝牙耳机
 -   此前使用 KDE 的时候蓝牙连接颇为无脑，使用桌面环境自带的库和小组件即可。现在 bspwm 没有那些自带的库和组件了，不过命令行工具使用起来也没什么难度就是了。
 
 ## 启用蓝牙 && 安装相关组件
-
-### Systemd
-
--   需要启动 systemd 的蓝牙服务：
-
-```bash
-sudo systemctl start bluetooth
-```
-
--   或者设置为开机启动：
-
-```bash
-sudo systemctl enable bluetooth --now
-```
 
 ### 相关蓝牙组件
 
@@ -39,6 +26,20 @@ sudo pacman -S pulseaudio pulseaudio-bluetooth
 
 ```bash
 sudo pacman -S bluez bluez-utils
+```
+
+### Systemd
+
+-   需要启动 systemd 的蓝牙服务：
+
+```bash
+sudo systemctl start bluetooth
+```
+
+-   或者设置为开机启动：
+
+```bash
+sudo systemctl enable bluetooth --now
 ```
 
 ## 配对 && 连接蓝牙
@@ -60,4 +61,4 @@ bluetoothctl
 ## 设置 Pulse Audio 音频输出
 
 -   首先在 'Playback' 页面中，将相关应用程序的音频输出重定向至蓝牙设备。
--   若没有声音，在 'Output Devices' 中检查蓝牙设备是否被静音。_（Pulse audio 对于新设备似乎是默认静音的，wtf？）_
+-   若没有声音，在 'Output Devices' 中检查蓝牙设备是否被静音。
