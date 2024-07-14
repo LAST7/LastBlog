@@ -11,3 +11,4 @@ templates/
 .trash/
 
 yarn.lock
+.prettierrc.json

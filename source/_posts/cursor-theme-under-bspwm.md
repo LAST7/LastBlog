@@ -5,7 +5,7 @@ categories: 记录
 tags:
   - bspwm
   - linux
-excerpt: 在 bspwm 窗口管理器下设置统一的鼠标主体
+excerpt: 在 bspwm 窗口管理器下设置统一的鼠标主题
 ---
 
 ## 前言
