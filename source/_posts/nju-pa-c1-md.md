@@ -34,7 +34,7 @@ excerpt: Notes taken for class W2 of NJU PA
 #ifdef
 ```
 
-### `include`
+### _include_
 
 -   Normally, head files do not contain the definition functions, instead, they include the declaration of the functions.(and some variables)
 
@@ -74,7 +74,7 @@ excerpt: Notes taken for class W2 of NJU PA
 
 -   We can see that `/home/last/Coding/Cpp/test/` is added to the search list. (as the first one)
 
-### `#if`
+### _#if_
 
 -   What would this piece of code output?
 
@@ -98,7 +98,7 @@ int main(int argc, char *argv[]) {
 
 -   After precompilation is done, the code in the false branch of the if statement will be dropped.
 
-### `#define`
+### _#define_
 
 -   This statement is for defining _macros_. Macros will be expand when precompiling, which is basically copying and pasting again, just like the head file.
 

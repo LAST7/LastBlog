@@ -17,20 +17,23 @@ comment: true
     -   C/C++
     -   Java
     -   Python
-    -   HTML / CSS / JS
-
--   除此之外还会一点 SQL
+    -   Lua
+    -   HTML / CSS / JS/TS
+    -   React (JSX/TSX)
+    -   SQL (MySQL/Mariadb, SQL Server, MongoDB)
 
 ---
 
 -   正在使用
     -   [Archlinux](https://archlinux.org/)
     -   [bspwm](https://github.com/baskerville/bspwm)
--   个人配置文件可在 [Github](https://github.com/LAST7/dotfile) 获取（注意：仅供参考，谨慎使用）
+-   ~~个人配置文件可在 [Github](https://github.com/LAST7/dotfile) 获取（注意：仅供参考，谨慎使用）~~ _已弃用_
+-   现在正在使用~~魔改后~~的 [gh0stzk dotfile](https://github.com/gh0stzk/dotfiles)
 
 ---
 
--   曾经~~走火入魔般的~~配置了一段时间 NeoVim ，配置文件在[这里](https://github.com/LAST7/nvimrc)。
+-   ~~曾经走火入魔般的配置了一段时间 NeoVim ，配置文件在[这里](https://github.com/LAST7/nvimrc)。~~ _已弃用_
+-   现在正在使用~~魔改后的~~ [AstroNvim](https://astronvim.com/)
     {% endfolding %}
 
 {% folding blue::游戏 %}
@@ -113,6 +116,7 @@ comment: true
 {% folding orange::Blender %}
 
 -   唉，我是多么的渴望展现出我脑海中令我心碎的画面。然而任何技能的学习都不轻松，更何况我又拿不出那么多时间。
+-   完美主义的诅咒使我寸步难行。
 
 ---
 
@@ -134,7 +138,7 @@ Telegram : @last7617
 {% endnotel %}
 
 {% notel default fa-solid fa-envelope Email %}
-Email : last7617(at)outlook.com
+Email : last7617(at)proton.me
 {% endnotel %}
 
 # This Site

@@ -3,9 +3,9 @@ title: Full Stack Open Part9
 date: 2024-07-08 17:52:12
 categories: 技术
 tags:
-  - JavaScript
-  - TypeScript
-  - ESLint
+    - JavaScript
+    - TypeScript
+    - ESLint
 excerpt: Notes taken for Part9 of Full Stack Open
 ---
 
@@ -99,7 +99,7 @@ excerpt: Notes taken for Part9 of Full Stack Open
 
 -   For more information about configuration of Eslint above version 9.0, refer to [Configure ESLint](https://eslint.org/docs/latest/use/configure/).
 
-### `tsconfig.json`
+### _tsconfig.json_
 
 -   To set up some compile(transpile) options for the current project, we would need a `tsconfig.json` under the root directory.
 -   We can use `tsc` to auto-generate one:
@@ -236,7 +236,7 @@ excerpt: Notes taken for Part9 of Full Stack Open
     } /* Specify a set of entries that re-map imports to additional lookup locations. */,
     ```
 
-### `tsc` & `ts-node` Ignoring Path Aliases
+### _tsc_ & _ts-node_ Ignoring Path Aliases
 
 -   `ts-node` and `ts-node-dev` will ignore the path aliases declared in `tsconfig.json`.
 
@@ -280,7 +280,7 @@ excerpt: Notes taken for Part9 of Full Stack Open
     -   [tsconfig-paths](https://github.com/dividab/tsconfig-paths)
     -   [tspm](https://github.com/ef-carbon/tspm)
 
-## `yarn create`
+## _yarn create_
 
 -   I want to run this `npm` command with `yarn`:
 

@@ -76,7 +76,7 @@ excerpt: Notes taken for class W5 of NJU PA
 
 ## Some Code Explanation
 
-### `getopt_long`
+### _getopt_long_
 
 ```c
 static int parse_args(int argc, char *argv[]) {
@@ -126,7 +126,7 @@ static int parse_args(int argc, char *argv[]) {
 -   The `getopt_long` function is used to parse command-line options, especially for parsing long arguments.
 -   Check the detailed definition and usage with `man 3 getopt_long`.
 
-### `static`
+### _static_
 
 -   Take a look at this function:
 
@@ -162,7 +162,7 @@ static int parse_args(int argc, char *argv[]) {
 -   This is also the reason why we shouldn't write definitions of functions into head files, since a head file could be possibly included multiple times in different source files.
 -   Somebody may argue that 'no one does this, it's just stupid'. Well, there are actually multiple functions were declared also defined in head files in PA. Therefore, they need the `static` specifier, making the corresponding identifier to have _internal linkage_ and avoid the errors.
 
-### `inline`
+### _inline_
 
 -   Further more, if we take a look to a function written in `reg.h`, we would find that it also has a specifier called `inline` :
 
@@ -176,7 +176,7 @@ static int parse_args(int argc, char *argv[]) {
 -   The purpose of doing so is to **improve performance** by eliminating the overhead of a function call, at a price of an increased code size.
 -   The `inline` function **_shouldn't_** be too long(large) as it would increase size of the code.
 
-### `Assert`
+### _Assert_
 
 -   In nemu project, `Assert` is actually a macro defined in the framework, see below:
 
@@ -197,7 +197,7 @@ static int parse_args(int argc, char *argv[]) {
         } while (0)
     ```
 
-### `Log` && `ASNI_FMT`
+### _Log_ && _ASNI_FMT_
 
 -   In `monitor.c`, function `welcome` :
 
