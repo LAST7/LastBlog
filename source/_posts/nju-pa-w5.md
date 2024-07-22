@@ -13,7 +13,7 @@ excerpt: Notes taken for class W5 of NJU PA
 > If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
 > After all, the most important part is about writing things down for better memorization.
 
-## Building Project: Using `Make`
+## Building Project: Using _Make_
 
 -   When a project grows to a very large scale, even just using `gcc` from the command line a few times will become painful and cumbersome as there might be tens of commands to execute. Not to mention that the whole thing needs to be done again and again during development.
 -   To resolve this dilemma, we can use a build system called `make`.
@@ -33,7 +33,7 @@ excerpt: Notes taken for class W5 of NJU PA
         | nvim -
     ```
 
-## Reading `Makefile` in Browser
+## Reading _Makefile_ in Browser
 
 -   Use this command to convert a `Makefile` into a `html` file:
 
@@ -45,7 +45,7 @@ excerpt: Notes taken for class W5 of NJU PA
 
 -   NB: command `markdown_py` is provided by package `python-markdwon`.
 
-## A Simple `main` Function:
+## A Simple _main_ Function:
 
 -   `main` function in nemu:
 
@@ -269,7 +269,7 @@ static int parse_args(int argc, char *argv[]) {
 
         ![Shot-2024-06-17-215810.png](https://s2.loli.net/2024/06/17/4d1RrQPqzJ7mgWv.png)
 
-## Debugging `core dump: Segmentation Fault`
+## Debugging _core dump: Segmentation Fault_
 
 -   Sometimes(like `core dump`) it is hard to debug nemu, since you might not know whether the error occurs in nemu itself or the program which it is running.
 -   In this situation, we would need to use the `backtrace` feature of `gdb` to go back to the frame which causes the problem.
