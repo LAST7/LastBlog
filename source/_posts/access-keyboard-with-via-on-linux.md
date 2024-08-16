@@ -26,6 +26,8 @@ excerpt: 在 Linux 上浏览器中使用 via 对键盘进行改建
     ls -l /dev/hidraw3
     ```
 
+:
+
     ```plaintext
     crw------- root root 0 B Fri Aug  9 11:06:55 2024  /dev/hidraw3
     ```
