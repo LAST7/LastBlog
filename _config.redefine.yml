@@ -7,6 +7,7 @@
 # <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # BASIC INFORMATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/info
 info:
     # Site title
     title: Last Blog
@@ -17,6 +18,7 @@ info:
 # BASIC INFORMATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # IMAGE CONFIGURATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/defaults
 defaults:
     # Favicon
     favicon: https://s2.loli.net/2023/08/02/QTgo6IMXsBdzEcr.png
@@ -27,14 +29,18 @@ defaults:
 # IMAGE CONFIGURATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COLORS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/colors
 colors:
     #Primary color
     primary: "#5c6c7b"
-    # Secondary color (beta)
+    # Secondary color (TBD)
     secondary:
+    # Default theme mode initial value (will be overwritten by prefer-color-scheme)
+    default_mode: dark # light, dark
 # COLORS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # SITE CUSTOMIZATION >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/global
 global:
     # Custom fonts
     fonts:
@@ -46,6 +52,11 @@ global:
         # English fonts
         english:
             enable: false # Whether to enable custom chinese font
+            family: # Font family
+            url: # Font URL to CSS file
+        # Custom title fonts (navbar, sidebar)
+        title:
+            enable: false # Whether to enable custom title fonts
             family: # Font family
             url: # Font URL to CSS file
     # Content max width
@@ -62,13 +73,18 @@ global:
         percentage: false # percentage
     # Website counter
     website_counter:
-        url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js # counter API URL (no need to change)
+        # url: https://busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js # counter API URL (no need to change)
+        url: https://cn.vercount.one/js # counter API URL (no need to change)
         enable: true # enable website counter or not
         site_pv: true # site page view
         site_uv: true # site unique visitor
         post_pv: true # post page view
     # Whether to enable single page experience (using swup). See https://swup.js.org/. similar to pjax
     single_page: true
+    # Whether to enable Preloader.
+    preloader:
+        enable: true
+        custom_message: "Hi, I'm Last" # Custom message. If empty, the site title will be displayed
     # Whether to enable open graph
     open_graph: true
     # Google Analytics
@@ -78,6 +94,7 @@ global:
 # SITE CUSTOMIZATION <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # FONTAWESOME >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/basic/fontawesome
 fontawesome: # Pro v6.2.1
     # Thin version
     thin: false
@@ -90,6 +107,7 @@ fontawesome: # Pro v6.2.1
 # FONTAWESOME <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # HOME BANNER >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/home/home_banner
 home_banner:
     # Whether to enable home banner
     enable: true
@@ -106,6 +124,7 @@ home_banner:
         text: ["void of myself"] # subtitle text, array
         hitokoto: # 一言配置
             enable: false # Whether to enable hitokoto
+            show_author: false # Whether to show author
             api: https://v1.hitokoto.cn # API URL, can add types, see https://developer.hitokoto.cn/sentence/#%E5%8F%A5%E5%AD%90%E7%B1%BB%E5%9E%8B-%E5%8F%82%E6%95%B0
         typing_speed: 100 # Typing speed (ms)
         backing_speed: 80 # Backing speed (ms)
@@ -137,13 +156,15 @@ home_banner:
     social_links:
         # Whether to enable
         enable: true
+        # Social links style
+        style: reverse # default, reverse, center
         # Social links
         links:
             github: https://github.com/LAST7 # your GitHub URL
             # instagram: # your Instagram URL
             # zhihu: # your ZhiHu URL
             # twitter: # your twitter URL
-            email: last7617@outlook.com # your email
+            email: last7617@proton.me # your email
             # ...... # you can add more
             fa-regular fa-music: https://music.163.com/#/user/home?id=329572653
         # Social links with QRcode drawers
@@ -153,6 +174,7 @@ home_banner:
 # HOME BANNER <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # NAVIGATION BAR >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/home/navbar
 navbar:
     # Auto hide navbar
     auto_hide: false
@@ -207,13 +229,15 @@ navbar:
 # NAVIGATION BAR <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # HOME PAGE ARTICLE SETTINGS >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/home/home
 home:
     # Sidebar settings
     sidebar:
         enable: true # Whether to enable sidebar
         position: left # Sidebar position. left, right
         first_item: info # First item in sidebar. menu, info
-        announcement: # Announcement text
+        announcement: "Void of Myself." # Announcement text
+        show_on_mobile: true # Whether to show sidebar navigation on mobile sheet menu
         links:
             # Archives:
             #   path: /archives
@@ -241,6 +265,7 @@ home:
 # HOME PAGE ARTICLE SETTINGS <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # ARTICLE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/posts/articles
 articles:
     # Set the styles of the article
     style:
@@ -250,6 +275,14 @@ articles:
         image_alignment: center # image alignment. left, center
         image_caption: false # Whether to display image caption
         link_icon: true # Whether to display link icon
+        title_alignment: left # Title alignment. left, center
+        headings_top_spacing: # Top spacing for headings from h1-h6
+            h1: 3.2rem
+            h2: 2.4rem
+            h3: 1.9rem
+            h4: 1.6rem
+            h5: 1.4rem
+            h6: 1.3rem
     # Word count. Requires hexo-wordcount (npm install hexo-wordcount). See https://github.com/willin/hexo-wordcount
     word_count:
         enable: true # Whether to enable
@@ -264,6 +297,9 @@ articles:
     code_block:
         copy: true # Whether to enable code block copy button
         style: simple # mac | simple
+        highlight_theme: # Color scheme for highlightjs code highlighting. For preview, see https://highlightjs.org/examples
+            light: default # light mode theme, support: github, atom-one-light, default
+            dark: github-dark # dark mode theme, support: github-dark, monokai-sublime, vs2015, night-owl, atom-one-dark, nord, tokyo-night-dark, a11y-dark, agate
         font: # Custom font
             enable: false # Whether to enable
             family: # Font family
@@ -276,7 +312,9 @@ articles:
         expand: true # Whether to expand TOC
         init_open: true # Open toc by default
     # Whether to enable copyright notice
-    copyright: true
+    copyright:
+        enable: true # Whether to enable
+        default: cc_by_nc_sa # Default license, can be cc_by_nc_sa, cc_by_nd, cc_by_nc, cc_by_sa, cc_by, all_rights_reserved, public_domain
     # Whether to enable lazyload for images
     lazyload: true
     # Article recommendation. Requires nodejieba (npm install nodejieba). Transplanted from hexo-theme-volantis.
@@ -296,6 +334,7 @@ articles:
 # ARTICLE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
 
 # COMMENT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/posts/comment
 comment:
     # Whether to enable comment
     enable: true
@@ -368,7 +407,7 @@ inject:
 plugins:
     # RSS feed. Requires hexo-generator-feed (npm i hexo-generator-feed). See https://github.com/hexojs/hexo-generator-feed
     feed:
-        enable: false # Whether to enable
+        enable: true # Whether to enable
     # Aplayer. See https://github.com/DIYgod/APlayer
     aplayer:
         enable: false # Whether to enable
@@ -419,9 +458,16 @@ cdn:
     # Whether to enable CDN
     enable: true
     # CDN Provider
-    provider: cdnjs # elemecdn, jsdelivr, unpkg, aliyun, custom
+    provider: cdnjs # npmmirror, zstatic, sustech, cdnjs, jsdelivr, unpkg, custom
     # Custom CDN URL
     # format example: https://cdn.custom.com/hexo-theme-redefine/${version}/source/${path}
     # The ${path} must be in the source folder of the theme
     custom_url:
 # CDN <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end
+
+# DEVELOPER MODE >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
+# Docs: https://redefine-docs.ohevan.com/developer
+developer:
+    # Whether to enable developer mode (only for developers who want to modify the theme source code, not for ordinary users)
+    enable: false
+# DEVELOPER MODE <<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<<< end

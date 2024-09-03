@@ -20,6 +20,7 @@ comment: true
     -   Lua
     -   HTML / CSS / JS/TS
     -   React (JSX/TSX)
+    -   Vue ( _I hate this one_ )
     -   SQL (MySQL/Mariadb, SQL Server, MongoDB)
 
 ---

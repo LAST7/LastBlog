@@ -4,8 +4,12 @@ date: 2024-07-03 17:00:55
 categories: 技术
 tags:
     - c
-excerpt: First Lab done in PA
+excerpt: Building a simple debugger and other infrastructures for the coming up development
 ---
+
+> [!WARNING]
+> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+> After all, the most important part is about writing things down for better memorization.
 
 ## _strtok_
 
