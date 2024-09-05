@@ -106,7 +106,7 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 ---
 
-**更新：**
+{% notel orange fa-clock 更新 %}
 
 -   了解到在使用了 `--file-read` option 后，消息主体会从文件中读取。读取文件的方法是 `fs.readFileSync`，该方法在未设置第二项参数时返回值的类型为 `Buffer`。
 -   请问能否将其更改为传回 `string` 的形式？当前 `processPublishMessage` 方法中 `string` 和 `Buffer` 的混用实在是令我感到些许反感。
@@ -205,6 +205,8 @@ String read time: 1369.35 ms
 所以，我建议直接使用 `string` 作为返回值。
 
 {% endfolding %}
+
+{% endnotel %}
 
 ---
 
