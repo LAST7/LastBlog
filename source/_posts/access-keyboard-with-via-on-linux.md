@@ -1,7 +1,7 @@
 ---
 title: 在 Linux 上使用 VIA
 date: 2024-08-09 11:26:47
-categories: 记录
+categories: 工具使用
 tags: keyboard
 excerpt: 在 Linux 上浏览器中使用 via 对键盘进行改建
 ---

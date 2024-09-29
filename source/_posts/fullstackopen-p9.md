@@ -288,7 +288,7 @@ excerpt: Notes taken for Part9 of Full Stack Open
     npm create vite@latest my-app-name -- --template react-ts
     ```
 
--   The identified commands for `yarn` are:
+-   The identical commands for `yarn` are:
 
     ```bash
     yarn global add create-vite

@@ -23,7 +23,7 @@ excerpt: Building a simple debugger and other infrastructures for the coming up 
         ```
 
 -   From the example above we can see that on the first time we call this method, the first parameter it acccepts is the string to be parsed, and the second parameter is the token as a 'separator'.
--   While, when the second time we use it for more arguments from the same string, we could use `NULL` as the first paramter. By this way, the method would look for the first string we passed to it.
+-   While when the second time we use it for more arguments from the same string, we could use `NULL` as the first paramter. By this way, the method would look for the first string we passed to it.
 
 ## Using _memset_ to empty buffer
 

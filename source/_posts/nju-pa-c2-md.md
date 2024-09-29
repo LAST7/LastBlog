@@ -207,7 +207,7 @@ excerpt: Notes taken for class W3 of NJU PA
 -   Consider the following register and memory:
     -   **register**: _PC, R0(RA), R1, R2, R3 (8-bit)_
     -   **memory**: _16 bytes_
--   And this simple table as a instruction list.
+-   And this simple table as an instruction list.
 
     ![06-16-2.png](https://s2.loli.net/2024/06/16/AeB136FlfpLZSsC.png)
 
