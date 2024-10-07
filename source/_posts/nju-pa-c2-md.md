@@ -1,16 +1,16 @@
 ---
 title: PA W3 - C Programming Language Practice
 date: 2024-06-16 10:49:08
-categories: 技术
+categories: PA
 tags:
     - c
-    - os
 excerpt: Notes taken for class W3 of NJU PA
 ---
 
-> [!WARNING]
-> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-> After all, the most important part is about writing things down for better memorization.
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## Readability
 

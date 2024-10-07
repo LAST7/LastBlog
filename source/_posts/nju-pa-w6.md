@@ -1,7 +1,7 @@
 ---
 title: PA W6 - Machine Level Representation of Data
 date: 2024-08-16 18:26
-categories: 技术
+categories: PA
 tags:
     - c
     - make
@@ -10,9 +10,10 @@ excerpt: Notes taken for class W6 of NJU PA
 mathjax: true
 ---
 
-> [!WARNING]
-> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-> After all, the most important part is about writing things down for better memorization.
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## Bit Operation
 

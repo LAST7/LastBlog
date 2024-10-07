@@ -1,7 +1,7 @@
 ---
 title: PA W5 - NEMU framework
 date: 2024-06-17 16:07:49
-categories: 技术
+categories: PA
 tags:
     - c
     - make
@@ -9,9 +9,10 @@ tags:
 excerpt: Notes taken for class W5 of NJU PA
 ---
 
-> [!WARNING]
-> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-> After all, the most important part is about writing things down for better memorization.
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## Building Project: Using _Make_
 

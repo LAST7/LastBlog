@@ -1,15 +1,16 @@
 ---
 title: PA PA1 - Monitor & Infrastructure
 date: 2024-07-03 17:00:55
-categories: 技术
+categories: PA
 tags:
     - c
 excerpt: Building a simple debugger and other infrastructures for the coming up development
 ---
 
-> [!WARNING]
-> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-> After all, the most important part is about writing things down for better memorization.
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## _strtok_
 

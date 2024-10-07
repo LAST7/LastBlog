@@ -1,16 +1,17 @@
 ---
 title: PA W2 - C Programming Language Basic
 date: 2024-06-15 10:57:09
-categories: 技术
+categories: PA
 tags:
   - c
   - gcc
 excerpt: Notes taken for class W2 of NJU PA
 ---
 
-> [!WARNING]
-> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-> After all, the most important part is about writing things down for better memorization.
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## C programming language used in PA
 

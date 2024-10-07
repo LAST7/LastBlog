@@ -1,15 +1,16 @@
 ---
 title: PA PA2 - Instruction Set Implementation & KLIB
 date: 2024-10-03 01:37
-categories: 技术
+categories: PA
 tags:
     - c
 excerpt: Implementing specific details of the RISC-V instruction set
 ---
 
-> [!WARNING]
-> If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-> After all, the most important part is about writing things down for better memorization.
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## Bit Operation Macros
 

@@ -1,11 +1,16 @@
 ---
 title: Learning Makefile with PA
 date: 2024-09-29 16:47:02
-categories: 技术
+categories: PA
 tags:
     - make
 excerpt: Makefiles used in NJU-PA
 ---
+
+{% notel orange fa-triangle-exclamation Warning %}
+If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
+After all, the most important part is about writing things down for better memorization.
+{% endnotel %}
 
 ## Preface
 
