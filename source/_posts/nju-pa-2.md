@@ -684,6 +684,61 @@ free(string_table);
     };
     ```
 
+## Implementing `<string.h>`
+
+-   Recording some interesting implementation in `<string.h>` here.
+
+### `strcmp`
+
+```c
+int strcmp(const char *s1, const char *s2) {
+    if (s1 == NULL || s2 == NULL)
+        return 0;
+
+    while (*s1 != '\0' && (*s1 == *s2)) {
+        s1++;
+        s2++;
+    }
+
+    return *(unsigned char *)s1 - *(unsigned char *)s2;
+}
+```
+
+-   Iterating through the two strings and returns the difference between the first unmatched character.
+
+### `memset`
+
+```c
+void *memset(void *s, int c, size_t n) {
+    unsigned char *p = s;
+    for (size_t i = 0; i < n; i++) {
+        *p = (unsigned char)c;
+        p++;
+    }
+
+    return s;
+}
+```
+
+-   Use `unsigned char` as a _byte_ in memory.
+
+## Implementing `sprintf`
+
+-   For the moment we would only need to implement two specifiers: `%d` and `%s`.
+
+---
+
+-   I was first very hesitate to begin with this implementation cuz I thought it was going to be difficult. But as soon as I dived into it, it's actually not that hard as I anticipated.
+
+-   My first idea was to maintain a dynamic array with `malloc` and `realloc` to store the final buffer for output. But I soon found that I would have to implement `malloc` and `realloc` as well this way...So I turned to a fiexed length buffer instead.
+
+---
+
+-   The idea is simple:
+    -   Read the `fmt` argument character by character, put that character into buffer if it is not `%`, which is the start of a specifier.
+    -   When encountering a specifier, use `va_arg` to pop the next arguement with proper type, convert it into a character or a string, and then take it into the buffer.
+    -   When the parsing of `fmt` is done, use `strcmp` we've implemented before to copy the buffer into `out`.
+
 ## DiffTest
 
 ### `device-tree-compiler` on ArchLinux
