@@ -594,20 +594,20 @@ Wikipedia:
 
     ```c
     typedef struct {
-        unsigned char	e_ident[EI_NIDENT];	/* Magic number and other info */
-        Elf32_Half	e_type;			/* Object file type */
-        Elf32_Half	e_machine;		/* Architecture */
-        Elf32_Word	e_version;		/* Object file version */
-        Elf32_Addr	e_entry;		/* Entry point virtual address */
-        Elf32_Off	e_phoff;		/* Program header table file offset */
-        Elf32_Off	e_shoff;		/* Section header table file offset */
-        Elf32_Word	e_flags;		/* Processor-specific flags */
-        Elf32_Half	e_ehsize;		/* ELF header size in bytes */
-        Elf32_Half	e_phentsize;		/* Program header table entry size */
-        Elf32_Half	e_phnum;		/* Program header table entry count */
-        Elf32_Half	e_shentsize;		/* Section header table entry size */
-        Elf32_Half	e_shnum;		/* Section header table entry count */
-        Elf32_Half	e_shstrndx;		/* Section header string table index */
+        unsigned char  e_ident[EI_NIDENT];  /* Magic number and other info */
+        Elf32_Half  e_type;         /* Object file type */
+        Elf32_Half  e_machine;      /* Architecture */
+        Elf32_Word  e_version;      /* Object file version */
+        Elf32_Addr  e_entry;        /* Entry point virtual address */
+        Elf32_Off   e_phoff;        /* Program header table file offset */
+        Elf32_Off   e_shoff;        /* Section header table file offset */
+        Elf32_Word  e_flags;        /* Processor-specific flags */
+        Elf32_Half  e_ehsize;       /* ELF header size in bytes */
+        Elf32_Half  e_phentsize;    /* Program header table entry size */
+        Elf32_Half  e_phnum;        /* Program header table entry count */
+        Elf32_Half  e_shentsize;    /* Section header table entry size */
+        Elf32_Half  e_shnum;        /* Section header table entry count */
+        Elf32_Half  e_shstrndx;	    /* Section header string table index */
     } Elf32_Ehdr;
     ```
 
@@ -743,11 +743,27 @@ void *memset(void *s, int c, size_t n) {
 
 ### `device-tree-compiler` on ArchLinux
 
--   `device-tree-compiler` is a package required for doing difftest on `spike`.
+-   `device-tree-compiler` is a package required for conducting difftest on `spike`.
 -   This pacakge is named `dtc` on Arch Linux official repo.
 
     ```bash
     sudo pacman -Sy dtc
     ```
+
+## How Does the VM Intercepts Memory Reading Action?
+
+-   Why could we directly read memory-mapped address in a way of pointer dereferencing in AM?
+
+    ```c
+    static inline uint8_t inb(uintptr_t addr) { return *(volatile uint8_t *)addr; }
+    ```
+
+-   Cuz these memory reading codes will be compiled to assembly, which is basically riscv32 instructions containing the address to be read. When nemu proceeds through these instructions, it will parse it and invoke `paddr_read` function(`Mr` macro, which invoke `vaddr_read` -> `paddr_read`), and that's where the callback function binds to a mapped memory area reading is invoked.
+
+### Why `volatile` ?
+
+-   In short, `volatile` is used to prevent the compiler from optimizing away memory access, especially in this case, which is dealing with memory-mapped IO (MMIO).
+-   Without `volatile`, the compiler might optimize away repeated memory reads or writes, assuming the memory value won't change unexpectedly. This assumption is valid for normal variables, **but memory-mapped registers and hardware I/O can change asynchronously.**
+-   For example, reading from an MMIO address might trigger a hardware event or return different values based on the state of the peripheral device. Without `volatile`, the compiler might cache the value read from memory in a register and never actually perform the memory read again.
 
 ## To Be Continued...
