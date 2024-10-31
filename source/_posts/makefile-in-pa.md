@@ -303,4 +303,48 @@ As a result, I am leaving this as a _TODO_ for future.
 
 -   Though I didn't find this one used in the ics project as well, I put it here because I like this approach. lol
 
+## Pattern Rules
+
+[GNU make manual](https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html):
+
+> You define an implicit rule by writing a pattern rule. A pattern rule looks like an ordinary rule, except that its target contains the character ‘%’ (exactly one of them). The target is considered a pattern for matching file names; the ‘%’ can match any nonempty substring, while other characters match only themselves. The prerequisites likewise use ‘%’ to show how their names relate to the target name.
+
+> Thus, a pattern rule `%.o : %.c` says how to make any file `stem.o` from another file `stem.c`.
+
+-   This is something quite like a super simple version of regular expression for matching files under the directory.
+
+-   Example:
+
+    -   Rule that compiles `.c` files into `.o` files:
+
+        ```makefile
+        %.o: %.c
+            $(CC) -c $(CFLAGS) $(CPPFLAGS) $< -o $@
+        ```
+
+    -   The recipe uses the automatic variables ‘$@’ and ‘$<’ to substitute the names of the target file and the source file in each case where the rule applies (see [Automatic Variables](https://blog.imlast.top/2024/09/29/makefile-in-pa/#Automatic-Variables) down below).
+
+## Automatic Variables
+
+[GNU make manual](https://www.gnu.org/software/make/manual/html_node/Pattern-Rules.html):
+
+> Suppose you are writing a pattern rule to compile a ‘.c’ file into a ‘.o’ file: how do you write the ‘cc’ command so that it operates on the right source file name? You cannot write the name in the recipe, because the name is different each time the implicit rule is applied.
+
+> What you do is use a special feature of make, the automatic variables. These variables have values computed afresh for each rule that is executed, based on the target and prerequisites of the rule. In this example, you would use `$@` for the object file name and `$<` for the source file name.
+
+-   Automatic variables could only be used within **recipes**.
+
+---
+
+-   Common automatic variables table:
+
+| Symbol | Meaning                                                                                                                                                                                                                                                      |
+| ------ | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `$@`   | The file name of the target of the rule. When there're multiple targets, `$@` is the name of whichever target caused the rule's recipe to be run.                                                                                                            |
+| `$%`   | The target member name **when the target is an archive member**. Is empty when the target is not an archive member.(See [Using make to Update Archive Files](https://www.gnu.org/software/make/manual/html_node/Archives.html))                              |
+| `$<`   | The name of the first prerequisite. If the target got its recipe from an implicit rule, this will be the first prerequisite added by the implicit rule (see [Using Implicit Rules](https://www.gnu.org/software/make/manual/html_node/Implicit-Rules.html)). |
+| `$^`   | The names of all the prerequisites, with spaces between them.                                                                                                                                                                                                |
+| `$?`   | The names of all the prerequisites that are **newer than the target**, with spaces between them.                                                                                                                                                             |
+| ...    | ...                                                                                                                                                                                                                                                          |
+
 ## To Be Continued...
