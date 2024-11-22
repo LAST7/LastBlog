@@ -1,5 +1,5 @@
 ---
-title: PA W7 - IO Devices
+title: PA W8 - IO Devices
 date: 2024-11-08 15:21:10
 categories: PA
 tags:
@@ -8,8 +8,8 @@ excerpt: Notes taken for class W8 of NJU PA
 ---
 
 {% notel orange fa-triangle-exclamation Warning %}
-If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-After all, the most important part is about writing things down for better memorization.
+If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
+After all, the most important thing is about writing things down for better memorization.
 {% endnotel %}
 
 {% notel red fa-triangle-exclamation Warning %}

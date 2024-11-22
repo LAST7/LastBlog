@@ -1,5 +1,5 @@
 ---
-title: PA PA2 - Instruction Set Implementation & KLIB
+title: PA2 Part 1 - Instruction Set Implementation & KLIB
 date: 2024-10-03 01:37
 categories: PA
 tags:
@@ -8,8 +8,8 @@ excerpt: Implementing specific details of the RISC-V instruction set
 ---
 
 {% notel orange fa-triangle-exclamation Warning %}
-If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
-After all, the most important part is about writing things down for better memorization.
+If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
+After all, the most important thing is about writing things down for better memorization.
 {% endnotel %}
 
 ## Bit Operation Macros
@@ -766,4 +766,4 @@ void *memset(void *s, int c, size_t n) {
 -   Without `volatile`, the compiler might optimize away repeated memory reads or writes, assuming the memory value won't change unexpectedly. This assumption is valid for normal variables, **but memory-mapped registers and hardware I/O can change asynchronously.**
 -   For example, reading from an MMIO address might trigger a hardware event or return different values based on the state of the peripheral device. Without `volatile`, the compiler might cache the value read from memory in a register and never actually perform the memory read again.
 
-## To Be Continued...
+## [Link to Part2](https://blog.imlast.top/2024/11/22/nju-pa-2-part2)

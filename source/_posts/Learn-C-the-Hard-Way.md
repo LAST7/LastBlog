@@ -171,7 +171,7 @@ _Stolen from `debug.h` from PA :)_
 
 {% endfolding %}
 
-{% notel blue fa-triangle-exclamation Note: %}
+{% notel blue fa-circle-info Note: %}
 
 Variable `$VALGRIND` in the script should be defined in the Makefile when running `make valgrind`.
 
