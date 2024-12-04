@@ -86,7 +86,10 @@ global:
         enable: true
         custom_message: "Hi, I'm Last" # Custom message. If empty, the site title will be displayed
     # Whether to enable open graph
-    open_graph: true
+    open_graph:
+      enable: true
+      image: https://s2.loli.net/2023/09/13/QOEFRSeUMVmJIxX.webp
+      description: void of myself
     # Google Analytics
     google_analytics:
         enable: false # Whether to enable Google Analytics
@@ -337,7 +340,7 @@ articles:
 # Docs: https://redefine-docs.ohevan.com/posts/comment
 comment:
     # Whether to enable comment
-    enable: false
+    enable: true
     # Comment system
     system: twikoo # waline, gitalk, twikoo, giscus
     # System configuration
@@ -456,7 +459,7 @@ page_templates:
 # CDN >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 cdn:
     # Whether to enable CDN
-    enable: true
+    enable: false
     # CDN Provider
     provider: cdnjs # npmmirror, zstatic, sustech, cdnjs, jsdelivr, unpkg, custom
     # Custom CDN URL
