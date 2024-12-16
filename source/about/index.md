@@ -104,7 +104,7 @@ comment: true
 -   **国王的演讲**
 -   **闻香识女人**
 -   **肖申克的救赎**
--   **心灵捕手**
+-   **心灵捕手** 
 -   **...**
 
 ---
@@ -134,9 +134,7 @@ comment: true
 WkROa00weHRiSFJpUjBaNlpFTTFNR0l6UVhaYVNFcHNXVmN4YVdKSE9XNURaejA5Q2c9PQo=
 ```
 
-_(暂时不可用)_
-
-<!-- _(base64 \* 3)_ -->
+_(base64 \* 3)_
 {% endfolding %}
 
 ## Contact Me
