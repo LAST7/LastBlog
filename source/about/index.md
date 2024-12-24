@@ -28,8 +28,10 @@ comment: true
 -   正在使用
     -   [Archlinux](https://archlinux.org/)
     -   [bspwm](https://github.com/baskerville/bspwm)
+    -   [hyprland](https://hyprland.org)
 -   ~~个人配置文件可在 [Github](https://github.com/LAST7/dotfile) 获取（注意：仅供参考，谨慎使用）~~ _已弃用_
--   现在正在使用~~魔改后~~的 [gh0stzk dotfile](https://github.com/gh0stzk/dotfiles)
+-   现在正在使用~~魔改后~~的 [gh0stzk dotfile](https://github.com/gh0stzk/dotfiles)_(bspwm)_
+-   以及 ~~魔改后的~~ [mylinuxforwork dotfile](https://github.com/mylinuxforwork/dotfiles)_(hyprland)_
 
 ---
 
@@ -104,7 +106,7 @@ comment: true
 -   **国王的演讲**
 -   **闻香识女人**
 -   **肖申克的救赎**
--   **心灵捕手** 
+-   **心灵捕手**
 -   **...**
 
 ---

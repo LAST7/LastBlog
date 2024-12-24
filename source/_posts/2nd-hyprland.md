@@ -143,20 +143,30 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
 
 ### Electron IME
 
-1.  为 Electron 应用开启 wayland 平台特性以及输入法支持:
+-   Electron 应用需要添加特定的 flag 来开启 Wayland 及输入法支持：
 
     ```plaintext
     --ozone-platform-hint=auto
     --enable-wayland-ime
     ```
 
-2.  使用 `flag.conf` 的方式
+-   此外，可以使用 `flag.conf` 的方式，以 `linuxqq-nt-bwrap` 为例，需要在 `~/.config/qq-electron-flags.conf` 中写入：
+
+    ```plaintext
+    --ozone-platform-hint=auto
+    --enable-wayland-ime
+    ```
 
 ### Brave
 
-1.  与 Electron 应用相同，Chromium 也需要特定的启动 flag 来适配 wayland。若不添加，Brave 的弹出菜单会出现一个“透明”的边框。
+-   与上述 Electron 应用相同，Chromium 也需要添加 `--ozone-platform-hint=auto` flag 来适配 wayland。若不添加，Brave 的弹出菜单会出现一个“透明”的边框。
 
-2.  需要添加 `--gtk-version=4` 并设置 `GTK_IM_MODULE=fcitx` 以使用 fcitx5。 或开启 `wayland-ime` ，但会导致奇怪的 bug ：地址栏内输入的内容会重复出现两次，且输入的内容背景色为亮黄色，有些许不美观。
+-   此外，需要添加 `--gtk-version=4` 并设置 `GTK_IM_MODULE=fcitx` 以使用 fcitx5（XWayland）。
+-   或在[配置菜单](brave://flags)中开启 `wayland-ime` ，但会导致奇怪的 bug ：
+
+    -   地址栏内输入的内容会重复出现两次
+    -   输入的内容背景色为亮黄色有些许不美观
+    -   除第一个打开的窗口以外的 brave 窗口均无法使用输入法。
 
 ### OBS
 
