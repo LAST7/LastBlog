@@ -194,6 +194,9 @@ navbar:
         Memos:
             path: /essay
             icon: fa-regular fa-lightbulb # can be empty
+        Travelling:
+            path: https://www.travellings.cn/go.html
+            icon: fa-regular fa-train-subway
         Archives:
             icon: fa-regular fa-archive # can be empty
             submenus:
