@@ -92,7 +92,7 @@ Other systems have other conventions, like using `XKeyEvent` structure on X11(Li
 
     -   When NEMU reads audio data:
 
-        1. Check whether there're valid data in `subf`(`count >= 0`). If not, return.
+        1. Check whether there're valid data in `sbuf`(`count >= 0`). If not, return.
         2. Check whether the read-pointer has reached the boundary of the queue. If so, reset the pointer to the start, and read the rest of the required data.
 
 -   In real practice, the speed of AM writing audio data is significantly faster than NEMU reading, as the frequency of calling SDL2's callback function is pretty low.
