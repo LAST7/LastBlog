@@ -1,7 +1,7 @@
 ---
 title: Learn C the Hard Way
 date: 2024-10-30 17:14:52
-categories: 记录
+categories: 笔记
 tags:
     - c
     - make

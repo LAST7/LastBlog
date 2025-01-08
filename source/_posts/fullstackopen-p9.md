@@ -1,11 +1,11 @@
 ---
 title: Full Stack Open Part9
 date: 2024-07-08 17:52:12
-categories: 技术
+categories: 笔记
 tags:
     - JavaScript
     - TypeScript
-    - ESLint
+    - eslint
 excerpt: Notes taken for Part9 of Full Stack Open
 ---
 

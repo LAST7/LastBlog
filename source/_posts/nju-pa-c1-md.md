@@ -1,10 +1,11 @@
 ---
 title: PA W2 - C Programming Language Basic
 date: 2024-06-15 10:57:09
-categories: PA
+categories: 笔记
 tags:
-  - c
-  - gcc
+    - pa
+    - c
+    - gcc
 excerpt: Notes taken for class W2 of NJU PA
 ---
 

@@ -4,7 +4,6 @@ date: 2023-08-13 14:14:01
 categories: 工具使用
 tags:
     - server
-    - ssh
     - docker
 excerpt: 记录一次 mumble 语音聊天服务端的搭建过程
 ---

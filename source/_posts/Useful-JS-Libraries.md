@@ -1,7 +1,7 @@
 ---
 title: 一些有用的 JS 第三方库
 date: 2024-02-10 22:31:10
-categories: 技术
+categories: 笔记
 tags:
     - JavaScript
 excerpt: 从课程 FullStackOpen 中截取的一小段关于各种“轮子”的介绍和推荐

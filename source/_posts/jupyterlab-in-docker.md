@@ -3,7 +3,7 @@ title: Jupyter Lab in Docker
 date: 2023-11-14 11:26:23
 categories: 工具使用
 tags:
-    - jupyter-lab
+    - jupyter
     - server
     - docker
     - python

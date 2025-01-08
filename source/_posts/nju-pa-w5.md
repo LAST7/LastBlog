@@ -1,8 +1,9 @@
 ---
 title: PA W5 - NEMU framework
 date: 2024-06-17 16:07:49
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
     - make
     - gdb

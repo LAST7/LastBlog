@@ -1,8 +1,9 @@
 ---
 title: PA PA1 - Monitor & Infrastructure
 date: 2024-07-03 17:00:55
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
 excerpt: Building a simple debugger and other infrastructures for the coming up development
 ---

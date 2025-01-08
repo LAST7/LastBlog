@@ -1,7 +1,7 @@
 ---
 title: Linux 系统下挂载 Windows 文件系统
 date: 2024-06-03 00:13:30
-categories: 记录
+categories: 工具使用
 tags:
     - linux
 excerpt: 通过修改 fstab 在 Linux 系统中挂载 Windows NTFS 文件系统

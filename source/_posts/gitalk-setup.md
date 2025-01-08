@@ -3,6 +3,7 @@ title: 启用 Gitalk 评论组件
 date: 2023-11-15 22:03:29
 categories: 工具使用
 tags:
+    - hexo-redefine
     - blog
 excerpt: 在 hexo 框架，Redefine 主题中启用 Gitalk 评论组件
 ---

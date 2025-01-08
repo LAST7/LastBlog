@@ -1,7 +1,7 @@
 ---
 title: xclip 在图片文件大小过大时不工作
 date: 2023-08-27 21:40:17
-categories: 记录
+categories: 工具使用
 tags:
     - maim
     - screenshot

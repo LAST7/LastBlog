@@ -1,11 +1,10 @@
 ---
-title: Fcitx5-Rime输入法配置过程
+title: Fcitx5-Rime 输入法配置过程
 date: 2023-08-06 00:53:46
-categories: 记录
+categories: 工具使用
 tags:
-    - fcitx
+    - fcitx5
     - rime
-    - bspwm
 excerpt: Rime 的~~懒人~~配置过程
 thumbnail: "https://s2.loli.net/2023/08/06/nUTmGeHNisgo7rB.webp"
 ---

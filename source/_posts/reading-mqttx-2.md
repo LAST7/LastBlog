@@ -1,9 +1,9 @@
 ---
 title: 阅读 MQTTX 项目：CLI 【2】
 date: 2024-08-14 17:02:26
-categories: 记录
+categories: 开发记录
 tags:
-    - mqtt
+    - mqttx
     - TypeScript
     - avro
 excerpt: 阅读 MQTTX(CLI) 中产生的理解和疑惑

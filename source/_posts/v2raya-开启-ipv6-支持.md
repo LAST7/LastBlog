@@ -6,7 +6,6 @@ tags:
     - proxy
     - v2raya
     - ipv6
-    - claude
 excerpt: 如何开启 v2raya 的 IPv6 支持
 ---
 

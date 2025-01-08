@@ -1,13 +1,10 @@
 ---
-title: betterlockscreen 锁屏配置
+title: Bspwm 下 betterlockscreen 锁屏配置
 date: 2023-09-01 15:50:01
 categories: 工具使用
 tags:
-    - wm
+    - bspwm
     - betterlockscreen
-    - xautolock
-    - dunst
-    - shellscript
 excerpt: 使用 betterlockscreen 和 xautolock 配置 bspwm 锁屏
 ---
 

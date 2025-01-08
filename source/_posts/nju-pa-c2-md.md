@@ -1,8 +1,9 @@
 ---
 title: PA W3 - C Programming Language Practice
 date: 2024-06-16 10:49:08
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
 excerpt: Notes taken for class W3 of NJU PA
 ---

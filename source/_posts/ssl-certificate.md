@@ -3,6 +3,7 @@ title: 使用 Let's Encrypt 为服务器配置 SSL Certificate
 date: 2023-11-25 20:59:38
 categories: 工具使用
 tags:
+    - certbot
     - nginx
     - server
     - cloudflare

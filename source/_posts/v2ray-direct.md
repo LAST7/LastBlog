@@ -1,7 +1,7 @@
 ---
 title: v2ray 特定 IP 直连
 date: 2025-01-01 18:04
-categories: 记录
+categories: 工具使用
 tags:
     - proxy
     - v2raya

@@ -5,7 +5,6 @@ categories: 工具使用
 tags:
     - wayland
     - hyprland
-    - nvidia
 excerpt: 记录再次尝试 hyprland 的过程，以及初步的配置结果
 thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
 ---

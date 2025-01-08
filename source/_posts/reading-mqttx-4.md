@@ -1,9 +1,9 @@
 ---
 title: 阅读 MQTTX 项目：Protobuf Test Case
 date: 2024-09-05 19:34:00
-categories: 记录
+categories: 开发记录
 tags:
-    - mqtt
+    - mqttx
     - TypeScript
     - protobuf
     - jest

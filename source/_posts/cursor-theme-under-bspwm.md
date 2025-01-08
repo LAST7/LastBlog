@@ -1,7 +1,7 @@
 ---
 title: 在 Bspwm 下设置鼠标主题
 date: 2024-06-02 23:54:13
-categories: 记录
+categories: 工具使用
 tags:
   - bspwm
   - linux

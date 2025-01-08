@@ -3,9 +3,8 @@ title: 使用 pm2 进程化 Node.js 后台应用
 date: 2023-11-18 20:54:08
 categories: 工具使用
 tags:
-    - Nodejs
+    - Node.js
     - pm2
-    - server
 excerpt: 使用 pm2 对 Node.js 后台应用进程化
 ---
 

@@ -1,7 +1,7 @@
 ---
 title: Rime 使用雾凇拼音
 date: 2023-08-28 16:19:01
-categories: 记录
+categories: 工具使用
 tags:
     - rime
     - fcitx5

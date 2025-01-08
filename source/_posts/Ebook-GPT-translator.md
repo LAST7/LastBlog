@@ -6,7 +6,6 @@ tags:
     - python
     - chatgpt
     - micromamba
-    - translation
 excerpt: 使用 ChatGPT 翻译外语文档
 ---
 

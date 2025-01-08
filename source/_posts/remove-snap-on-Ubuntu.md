@@ -1,9 +1,10 @@
 ---
 title: 彻底删除 Ubuntu 22.02 中的 Snap
 date: 2023-11-05 21:20:57
-categories: 记录
+categories: 工具使用
 tags:
-    - server
+    - ubuntu
+    - snap
 excerpt: 彻底删除 snap
 ---
 

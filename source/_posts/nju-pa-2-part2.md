@@ -1,8 +1,9 @@
 ---
 title: PA2 Part 2 - Emulated Hardware Device
 date: 2024-11-22 18:10:25
-categories: PA
+categories: 笔记
 tags:
+    - 笔记
     - c
 excerpt: Implementing emulated device such as timer, keyboard, VGA and audio
 ---

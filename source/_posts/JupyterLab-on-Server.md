@@ -4,7 +4,8 @@ date: 2023-11-05 20:54:33
 categories: 工具使用
 tags:
     - server
-    - jupyter-lab
+    - python
+    - jupyter
 excerpt: 在服务器上配置可被本地访问的 JupyterLab
 ---
 

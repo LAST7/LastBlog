@@ -1,8 +1,9 @@
 ---
 title: PA W9 - Linking & Loading
 date: 2024-12-20 11:00:32
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
 excerpt: Notes taken for class W9 of NJU PA
 ---

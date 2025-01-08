@@ -1,9 +1,9 @@
 ---
 title: 阅读 MQTTX 项目：CLI 【1】
 date: 2024-07-16 04:27:27
-categories: 记录
+categories: 开发记录
 tags:
-    - mqtt
+    - mqttx
     - TypeScript
 excerpt: 阅读 MQTTX(CLI) 中产生的理解和疑惑
 cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
@@ -23,8 +23,6 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 本人提出的问题仅是在阅读项目代码的时候所产生的疑问，并不意味着这些代码包含某种错误或需要被修改。
 同时，也可能由于未完整阅读全部的项目代码而提出一些奇怪的问题。
-
-**希望老师能够予以理解并施以教导，非常感谢！**
 {% endnotel %}
 
 ## 数据格式转换函数耦合程度较高

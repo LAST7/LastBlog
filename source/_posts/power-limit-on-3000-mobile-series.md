@@ -1,7 +1,7 @@
 ---
 title: 解除移动端 30 系列显卡功率限制
 date: 2024-02-20 20:51:59
-categories: 记录
+categories: 工具使用
 tags:
     - linux
     - nvidia

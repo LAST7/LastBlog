@@ -1,8 +1,9 @@
 ---
 title: Learning Makefile with PA
 date: 2024-09-29 16:47:02
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - make
 excerpt: Makefiles used in NJU-PA
 ---

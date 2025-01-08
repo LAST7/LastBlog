@@ -1,12 +1,12 @@
 ---
 title: Arcaea 曲名匹配器
 date: 2024-12-21 03:00:14
-categories: 记录
+categories: 开发记录
 tags:
-    - arcaea
     - python
     - selenium
     - web crawler
+    - netease music
 excerpt: 用 Python 写了个用来辅助猜曲名的匹配器，以及网易云电台爬虫
 ---
 

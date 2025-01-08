@@ -1,8 +1,9 @@
 ---
 title: PA2 Part 1 - Instruction Set Implementation & KLIB
 date: 2024-10-03 01:37
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
 excerpt: Implementing specific details of the RISC-V instruction set
 ---

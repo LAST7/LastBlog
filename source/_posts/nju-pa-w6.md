@@ -1,8 +1,9 @@
 ---
 title: PA W6 - Machine Level Representation of Data
 date: 2024-08-16 18:26
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
     - make
     - gdb

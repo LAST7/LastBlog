@@ -5,7 +5,6 @@ categories: 工具使用
 tags:
     - maim
     - screenshot
-    - wm
 excerpt: 记录使用 maim 替代 flameshot 的过程
 ---
 

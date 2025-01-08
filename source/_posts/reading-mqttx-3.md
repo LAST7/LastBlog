@@ -1,9 +1,9 @@
 ---
 title: 阅读 MQTTX 项目：Desktop 【1】
 date: 2024-09-03 22:37:10
-categories: 记录
+categories: 开发记录
 tags:
-    - mqtt
+    - mqttx
     - TypeScript
     - avro
 excerpt: 阅读 MQTTX(Desktop) 中产生的理解和疑惑

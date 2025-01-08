@@ -1,8 +1,9 @@
 ---
 title: PA W8 - IO Devices
 date: 2024-11-08 15:21:10
-categories: PA
+categories: 笔记
 tags:
+    - pa
     - c
 excerpt: Notes taken for class W8 of NJU PA
 ---
