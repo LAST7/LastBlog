@@ -191,7 +191,7 @@ navbar:
         Home:
             path: /
             icon: fa-regular fa-house # can be empty
-        Memos:
+        Void:
             path: /essay
             icon: fa-regular fa-lightbulb # can be empty
         Travelling:
@@ -248,7 +248,7 @@ home:
             # Archives:
             #   path: /archives
             #   icon: fa-regular fa-archive # can be empty
-            Memos:
+            Void:
                 path: /essay
                 icon: fa-regular fa-lightbulb # can be empty
             Categories:
