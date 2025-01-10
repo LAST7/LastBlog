@@ -198,6 +198,20 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
 
     2.  使用 `sudo -E timeshift-gtk` 来启动 Timeshift。
 
+### Micromamba
+
+-   为了使 waypaper 能正常工作，在 `.config/hypr/conf/ml4w.conf` 中有这样一条配置：
+
+    ```plaintext
+    env = PYTHONPATH,/usr/lib/python3.12/site-packages:/usr/lib/python3.13/site-packages:$PYTHONPATH
+    ```
+
+-   该配置会导致 micromamba 激活虚拟环境时，`PYTHONPATH` 变量中多出两个系统级别的 site-packages 路径，导致出现一种“环境混合”的情况。
+-   在这种情况下，以系统级别安装的第三方库将出现导入异常的情况，例如 numpy。
+-   解决方案：
+
+    -   在使用 micromamba 激活虚拟环境前，使用 `unset PYTHONPATH` 指令来清空 `PYTHONPATH` 中存储的值。
+
 ## Tips
 
 ### 查看显示器属性
