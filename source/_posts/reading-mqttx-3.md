@@ -133,7 +133,7 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 ---
 
--   在修改 `src/views/script/index.vue` 组件的过程中，我已经将 `ScriptList` 类型拆分成了 `FunctionList` 与 `SchemaList` 两种类型，但是此处的 `ScriptModel` 与 `ScriptState` 在整个项目中的应用非常广泛（见下图），贸然修改可能会造成许多意想不到的 bug，所以我想应该在开始动手重构该部分之前询问一下老师。
+-   在修改 `src/views/script/index.vue` 组件的过程中，我已经将 `ScriptList` 类型拆分成了 `FunctionList` 与 `SchemaList` 两种类型，但是此处的 `ScriptModel` 与 `ScriptState` 在整个项目中的应用非常广泛（见下图），贸然修改可能会造成许多意想不到的 bug，所以我想应该在开始动手重构该部分之前询问一下意见。
 -   我个人倾向于将其全部拆分。
 
 

@@ -87,9 +87,9 @@ global:
         custom_message: "Hi, I'm Last" # Custom message. If empty, the site title will be displayed
     # Whether to enable open graph
     open_graph:
-      enable: true
-      image: https://s2.loli.net/2023/09/13/QOEFRSeUMVmJIxX.webp
-      description: void of myself
+        enable: true
+        image: https://s2.loli.net/2023/09/13/QOEFRSeUMVmJIxX.webp
+        description: void of myself
     # Google Analytics
     google_analytics:
         enable: false # Whether to enable Google Analytics

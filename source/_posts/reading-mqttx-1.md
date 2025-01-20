@@ -141,7 +141,7 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 -   然而，程序通过 `format` 参数来确认所需要发送/接受的数据使用的编码格式，意味着通常来说，AVRO 的编解码应当是要走 `convertPayload` 这个函数的。但是处理 avro 编解码的操作*在逻辑上*更接近 `serializeProtobufToBuffer` 函数。
 
--   因此我对于该在何处处理 avro 编解码感到有些犹豫，希望老师能够指点一二。
+-   因此我对于该在何处处理 avro 编解码感到有些犹豫。
 
 ## 关于 Schema(avro) 的同步方案
 
@@ -154,6 +154,6 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 -   此前我考虑到 MQTT 协议的目的是在“资源受限的设备和低带宽、高延迟或不可靠的网络中提供可靠的、轻量级的消息传输协议”，认为第一种方式并不符合 MQTT 协议的设计原则。
 -   但是现在我发现，MQTTX 作为一款“集成多功能的 MQTT 测试工具箱”，似乎并不需要考虑许多实际场景中的因素。
 -   此外，关于所接受到的 Schema 改如何存储呢？是存在程序运行的内存之中，还是保存到本地呢？
--   说老实话，现在我对于 Schema 的分发和存储方式有些迷茫，还望老师提供一些建议。
+-   说老实话，现在我对于 Schema 的分发和存储方式有些迷茫，还望提供一些建议。
 
 ## End

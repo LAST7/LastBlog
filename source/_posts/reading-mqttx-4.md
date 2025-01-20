@@ -13,13 +13,13 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 ## 前言
 
--   本人在编写针对 `src/utils/protobuf.ts` 的过程中发现老师已经完成了该测试文件，因此将其 Sync 后 Pull 到本地与本人写的测试代码进行比对，发现了一些不妥当的地方。
--   **当然，也可能是本人意见有误，望老师海涵。**
+-   本人在编写针对 `src/utils/protobuf.ts` 的过程中发现该测试文件已经完成，因此将其 Sync 后 Pull 到本地与本人写的测试代码进行比对，发现了一些不妥当的地方。
+-   **当然，也可能是本人意见有误，望海涵。**
 
 ## 另：工作的必要性考虑
 
--   由于本人参与的开源之夏项目只包含 MQTTX 项目中 avro 编码的功能开发，protobuf 功能实际并非由该项目负责，老师也没有义务指导我开发这部分的功能。
--   **因此，倘若老师认为 protobuf 部分的测试用例无须修改，或者生活工作过于忙碌分身乏术，可以直接忽略本文章以及本次本人提交的 PR。**
+-   由于本人参与的开源之夏项目只包含 MQTTX 项目中 avro 编码的功能开发，protobuf 功能实际并非由该项目负责，也没有义务指导我开发这部分的功能。
+-   **因此，倘若认为 protobuf 部分的测试用例无须修改，或者生活工作过于忙碌分身乏术，可以直接忽略本文章以及本次本人提交的 PR。**
 
 ## 测试思路
 
@@ -132,7 +132,7 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
     ```
 
     {% notel orange fa-clock 更新 %}
-    观察到老师在其他测试中都调用了该函数，但是不知为何在 `protobuf.test.ts` 中没用调用。
+    观察到在其他测试中都调用了该函数，但是不知为何在 `protobuf.test.ts` 中没用调用。
     猜测是 copy-paste 导致的（bushi
     {% endnotel %}
 
@@ -355,4 +355,3 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 ### 解决方案
 
 -   说老实话，除去直接删除相关的测试用例，将实际情况交由用户处理之外，我想不出什么方法了。
--   还请老师指点一二。
