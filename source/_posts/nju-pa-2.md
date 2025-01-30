@@ -180,6 +180,20 @@ The second parameter `len` of `SEXT` macro means **the number of bits to treat `
             R(rd) = ((int64_t)(int32_t)src1 * (int64_t)(int32_t)src2) >> 32);
     ```
 
+---
+
+### UPDATE
+
+-   Though the notes shown above are correct, it's more likely that the course wants us to use the `SEXT` macro for sign extension.
+-   The final version of `mulh` looks like this:
+
+    ```c
+    INSTPAT("0000001 ????? ????? 001 ????? 01100 11", mulh, R,
+            R(rd) = (SEXT(src1, 32) * SEXT(src2, 32)) >> 32);
+    ```
+
+-   `SEXT` treats `src1` as a 32-bit value(`uint32_t`), and sign-extends it to 64 bits.
+
 ## Cross Compilation Env
 
 -   When testing the implemented instructions, we would need to run tests in `am-kernels/tests/cpu-tests/tests/`.
