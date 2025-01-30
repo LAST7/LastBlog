@@ -67,6 +67,10 @@ After all, the most important thing is about writing things down for better memo
 -   In the macro, the expression uses a bit field within a struct to define a signed integer of length `len` bits. The bit field ensures that the value of `x` is treated as a signed integer of that specific length.
 -   The struct with the bit field automatically sign-extends the value when it is assigned to the `int64_t` member. The result is then cast back to `uint64_t` to maintain the full precision of the extended value.
 
+{% notel red fa-triangle-exclamation Note %}
+The second parameter `len` of `SEXT` macro means **the number of bits to treat `x` as for sign extension**, instead of the target length.
+{% endnotel %}
+
 ---
 
 -   The reason why sign extension is needed is that, the offset(immediate) is a signed value and **it's length is less than 64 bits**(well of course since the length of the whole instruction is merely 32 bits). If we directly store it in a 64-bit variable, **the higher bits are filled with zeros by default**.
