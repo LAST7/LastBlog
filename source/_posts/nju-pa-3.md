@@ -1,6 +1,6 @@
 ---
 title: PA3 - Batch Processing System
-date: 2025-02-10 19:59
+date: 2025-02-10 20:00
 categories: 笔记
 tags:
     - pa
@@ -330,4 +330,29 @@ flowchart TD
     }
     ```
 
+## A Way of Passing Graphic Parameter Through Standard File Operation
+
+- In NDL, the api responsible for drawing rectangle is like this:
+
+    ```c
+    void NDL_DrawRect(uint32_t *pixels, int x, int y, int w, int h);
+    ```
+
+- This brings up an issue: `write` only accept three paramters, while the first of them is the file descriptor. That means, we would need to pass four parameters to a function which could only accept two parameters.
+- There're two ways to solve this that I came up with:
+
+    1.  invoke `write` for each line of the rectangle
+    2.  write all of the empty pixels as well
+
+- After asking Deepseek, it recommended another way of achieving this: **store `x` and `y` in the first 8 bytes of `pixels`.**
+- Though the top-left corner of the image presented might be a little bit stange, the trade-off for better performance is worthy.
+
+---
+
+- The most affected application is `typing-game`, cuz the program would draw a rectangle for each dropping letter.
+
 ## To Be Continued...
+
+{% notel blue fa-face-sad-cry Suspend %}
+Gotta prepare for the master entrance examination :(
+{% endnotel %}
