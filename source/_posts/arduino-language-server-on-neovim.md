@@ -13,7 +13,7 @@ excerpt: 在 Neovim 中安装并使用 arduino-language-server 时所遇到的�
 ## 前言
 
 - 毕设选了个嵌入式开发的小项目，不是很想用笨重的 arduino IDE。
-- 于是浪费了一个下午配置环境，哈哈😄。水篇博客，不然这努力岂不是白费了（bushi
+- 于是浪费了半个下午配置环境……水篇博客，不然这努力岂不是白费了（bushi
 
 ## 正文
 
@@ -62,7 +62,7 @@ excerpt: 在 Neovim 中安装并使用 arduino-language-server 时所遇到的�
 
 - ~很显然这个仓库已经死了。~
 
-- 仔细看了一下，这个仓库似乎仅仅是为了 `arduino-language-server` 而 fork 的一个仓库，作者 [cmaglie](https://github.com/cmaglie) 已经很久没有对其进行维护了。非常显然，打工人 cmaglie 不愿意完成自己工作范畴之外的任务 😆
+- 仔细看了一下，这个仓库似乎仅仅是为了 `arduino-language-server` 而 fork 的一个仓库，作者 [cmaglie](https://github.com/cmaglie) 已经很久没有对其进行维护了。
 
 ---
 
