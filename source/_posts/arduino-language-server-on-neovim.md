@@ -64,6 +64,10 @@ excerpt: 在 Neovim 中安装并使用 arduino-language-server 时所遇到的�
 
 - 仔细看了一下，这个仓库似乎仅仅是为了 `arduino-language-server` 而 fork 的一个仓库，作者 [cmaglie](https://github.com/cmaglie) 已经很久没有对其进行维护了。
 
+{% notel orange fa-clock 更新 %}
+cmaglie 于 2025-03-19 合并了该 PR，现在可以直接使用 Mason 安装的 arduino-language-server 了。
+{% endnotel %}
+
 ---
 
 - 尽管如此，办法也还是有的：
