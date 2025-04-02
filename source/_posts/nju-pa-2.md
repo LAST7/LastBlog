@@ -756,14 +756,14 @@ void *memset(void *s, int c, size_t n) {
 -   The idea is simple:
     -   Read the `fmt` argument character by character, put that character into buffer if it is not `%`, which is the start of a specifier.
     -   When encountering a specifier, use `va_arg` to pop the next arguement with proper type, convert it into a character or a string, and then take it into the buffer.
-    -   When the parsing of `fmt` is done, use `strcmp` we've implemented before to copy the buffer into `out`.
+    -   When the parsing of `fmt` is done, use `strcpy` we've implemented before to copy the buffer into `out`.
 
 ## DiffTest
 
 ### `device-tree-compiler` on ArchLinux
 
 -   `device-tree-compiler` is a package required for conducting difftest on `spike`.
--   This pacakge is named `dtc` on Arch Linux official repo.
+-   This pacakge is named `dtc` in Arch Linux official repo.
 
     ```bash
     sudo pacman -Sy dtc
