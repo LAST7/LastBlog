@@ -56,7 +56,7 @@ After all, the most important thing is about writing things down for better memo
     }
     ```
 
-- In this code snippet, function `__am_asm_trap` is defined in a file named `Trap.S`. The reason why it's written in assemble is that it is a architecture specific script, which means that the way the emulated cpu stores and restores context varies, and that requires completely differenct implementation.
+- In this code snippet, function `__am_asm_trap` is defined in a file named `Trap.S`. The reason why it's written in assembly is that it is an architecture specific script, which means that the way the emulated cpu stores and restores context varies as the architecture varies, and that requires completely differenct implementation.
 
 - Content in `Trap.S`:
 
@@ -151,12 +151,11 @@ flowchart TD
 
 ### Implementation
 
-- Since we already have a single-elf ftrace working, change the variable holding the file path into a linked list would solve the problem.
+- Since we already have a single-elf ftrace working, changing the variable holding the file path into a linked list would solve the problem.
 
 ### `_start` issue
 
-- There's a function called `_start` in a linking script called `start.S`, located in `/libs/libos/src/crt0/start.S`. It is not labeled as a function and its size is defaulted to 0.
-- Therefore, ftrace is unable to locate this function, as well as the `address range` of it.
+- There's a function called `_start` in a linking script, located at `/libs/libos/src/crt0/start.S`. It is not labeled as a function and its size is default to 0.
 
     ```c
     for (size_t i = 0; i < func_table.size; i++) {
@@ -172,7 +171,7 @@ flowchart TD
 
 ## `5000 Bytes == 8.0K` ?
 
-- When I was checking the size of the file being taken into `fsimg`, I found a strange thing that:
+- When I was checking the size of the file being taken into `fsimg`, I encountered a strange thing that:
 
     ```bash
     $ du -h fsimg/share/files/num
@@ -240,8 +239,8 @@ flowchart TD
 
 ---
 
-- The abstraction of the files is an array whicn contains all of the files stored in `fsimg`. _(file names contains the path)_
-- The way to achieve this is through a script written in `Makefile` along with some preset files such as `stdin` & `stdout`.
+- The abstraction of the files is an array which contains all of the file names stored in `fsimg`. _(file names contains the path)_
+- The way to achieve this is by executing the script written in `Makefile` along with some preset files such as `stdin` & `stdout`.
 
 - The file list array is defined in `fs.c`:
 
@@ -289,7 +288,7 @@ flowchart TD
 
 ## Compound Literal Issue
 
-- When I was implementing some SDL apis, I encounterred yet another subtle coding issue: defining and retreating the pointer of a compound literal struct object.
+- When I was implementing some SDL apis, I encountered yet another subtle issue: defining and retreating the pointer of a compound literal struct object.
 
 - Here's the initial code:
 

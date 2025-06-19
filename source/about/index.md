@@ -13,14 +13,8 @@ comment: true
 
 ---
 
--   该博客用于更新计算机和学业相关的内容。
--   该博客并不面向读者，本质上是本人收集 Reflection 的地方，或者说一种 Memorization 的方式。
-
----
-
 {% notel blue fa-circle-user More %}
 
--   虽然这个页面展示了我诸多的爱好，然而这毕竟是个技术博客，你无法在本博客的文章中窥见太多我的内心。
 -   如果你想更多的了解我，可以访问：
 
 ```plaintext
@@ -37,6 +31,7 @@ _(base64 \* 3)_
 -   编程初学者，使用过/正在学习的语言：
 
     -   C/C++
+    -   Rust
     -   Java
     -   Python
     -   Lua
