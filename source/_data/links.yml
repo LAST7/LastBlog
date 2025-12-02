@@ -50,6 +50,11 @@
         description: 大脑正不受控制地拒绝着访问！
         avatar: https://cdn.jsdelivr.net/gh/ErodedElk/blogPic/img/241972_1iMJPN7x.png
 
+      - name: 阿猫的博客
+        link: https://ameow.xyz
+        description: Code for fun, and for ever.
+        avatar: https://ameow.xyz/upload/favicon.png
+
       - name: Spark Blog
         link: https://blog.20250331.xyz
         description: Spark's Blog
