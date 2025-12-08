@@ -140,6 +140,50 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
 
 ## BUG 及修复方式
 
+### Waybar Taskbar 中的某些应用图标未知
+
+-   有时候，窗口的 `class` 可能会和其使用的 icon 文件名有所不同，例如 Cherry Studio：
+
+    -   `hyprctl clients`:
+
+        ```plaintext
+        ...
+        workspace: 7 (7)
+        floating: 0
+        pseudo: 0
+        monitor: 1
+        class: CherryStudio
+        title: Cherry Studio
+        initialClass: CherryStudio
+        initialTitle: CherryStudio
+        ...
+        ```
+
+    -   `fd cherry /usr/share/icons`:
+
+        ```plaintext
+        /usr/share/icons/hicolor/256x256/apps/cherry-studio.png
+        ```
+
+-   如果是这种情况，我们需要为 Waybar 的 Taskbar 添加 `app_ids-mapping` 配置：
+
+    -   在 `~/.config/waybar/modules.json` 中：
+
+    ```json
+    {
+        // ...
+        "wlr/taskbar": {
+            // ...,
+            "app_ids-mapping": {
+                "CherryStudio": "cherry-studio"
+            },
+            // ...
+        }
+    }
+    ```
+
+-   重启 waybar 后即可观察到图标正常显示。
+
 ### Electron IME
 
 -   Electron 应用需要添加特定的 flag 来开启 Wayland 及输入法支持：
@@ -156,7 +200,11 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
     --enable-wayland-ime
     ```
 
-### 硬件加速
+{% notel blue fa-clock **更新** %}
+在某个版本（2025-9-08）之后，Electron 应用在 Wayland 环境下默认添加 `--ozone-platform-hint=wayland`，但 Fcitx5 仍需要 `enable-wayland-ime` 以启用。
+{% endnotel %}
+
+### 硬件加速（重要）
 
 -   详见 [ArchWiki](https://wiki.archlinux.org/title/Hardware_video_acceleration)
 
