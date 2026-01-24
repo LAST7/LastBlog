@@ -1,4 +1,4 @@
-- links_category: Reality
+- links_category: R
   has_thumbnail: false
   list:
       - name: jimmy-zx
@@ -12,7 +12,7 @@
         description: 乱七八糟的杂物置放处（
         avatar: https://wlt233.com/assets/wlt233.1361c683.webp
 
-- links_category: Net
+- links_category: N
   has_thumbnail: false
   list:
       - name: EvanNotFound's Blog
@@ -59,3 +59,8 @@
         link: https://blog.20250331.xyz
         description: Spark's Blog
         avatar: https://s2.loli.net/2025/11/15/z452tUPHnam1bCX.jpg
+
+      - name: hlly0x1
+        link: https://hlly1.github.io/
+        description: 欢迎各位来到hlly0x1的个人星球！
+        avatar: https://hlly1.github.io/img/avatar.0289dc15.jpg
