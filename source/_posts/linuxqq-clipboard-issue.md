@@ -8,6 +8,499 @@ tags:
 excerpt: 解决 Linuxqq 在 Wayland 协议下粘贴板无法正常工作的问题
 ---
 
+{% notel red fa-clock **更新** %}
+
+- 该 Shell 脚本因改来改去 Bug 频出，因此近日笔者又让 LLM 照着相同的逻辑搓了一个 Python 版本的脚本，如有问题欢迎留言。
+
+{% folding blue:: clipboard_sync.sh %}
+
+```python
+#!/usr/bin/env python3
+"""
+Clipboard sync between Wayland and X11
+"""
+
+import subprocess
+import hashlib
+import time
+import sys
+import signal
+import os
+from pathlib import Path
+from typing import Optional, Tuple
+import logging
+
+# ================= Configuration =================
+
+SYNC_INTERVAL = 0.3
+LOCK_FILE = Path(os.environ.get("XDG_RUNTIME_DIR", "/tmp")) / "clipboard_sync.lock"
+LOG_FORMAT = "%(asctime)s [%(levelname)s] %(message)s"
+LOG_TIME_FORMAT = "%H:%M:%S"
+
+# ================= Logging =================
+
+
+# Custom colored formatter for better readability
+class ColoredFormatter(logging.Formatter):
+    COLORS = {
+        "INFO": "\033[36m",  # Cyan
+        "SUCCESS_X11": "\033[32m",  # Green
+        "SUCCESS_WL": "\033[34m",  # Blue
+        "RESET": "\033[0m",
+    }
+
+    def format(self, record):
+        if record.levelname == "INFO":
+            # Add colored checkmarks for sync events
+            if "X11 → Wayland" in record.msg:
+                record.msg = (
+                    f"{self.COLORS['SUCCESS_X11']}✓{self.COLORS['RESET']} {record.msg}"
+                )
+            elif "Wayland → X11" in record.msg:
+                record.msg = (
+                    f"{self.COLORS['SUCCESS_WL']}✓{self.COLORS['RESET']} {record.msg}"
+                )
+        return super().format(record)
+
+
+# Setup logger with colored output
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
+handler = logging.StreamHandler()
+handler.setFormatter(ColoredFormatter(LOG_FORMAT, datefmt=LOG_TIME_FORMAT))
+logger.addHandler(handler)
+
+# ================= Lock Mechanism =================
+
+
+def acquire_lock():
+    """Acquire singleton lock to prevent multiple instances"""
+    try:
+        # Open file in exclusive mode
+        fd = os.open(str(LOCK_FILE), os.O_CREAT | os.O_EXCL | os.O_WRONLY, 0o644)
+        os.close(fd)
+        return True
+    except FileExistsError:
+        logger.error("Another instance is already running.")
+        return False
+
+
+def release_lock():
+    """Release the lock file"""
+    try:
+        LOCK_FILE.unlink()
+    except FileNotFoundError:
+        pass
+
+
+# ================= Clipboard Operations =================
+
+
+class ClipboardManager:
+    """Manages X11 and Wayland clipboard operations"""
+
+    # Supported image MIME types
+    IMAGE_TYPES = ["image/png", "image/jpeg", "image/bmp", "image/tiff"]
+
+    # Known types that we handle or can safely ignore
+    KNOWN_TYPES = {
+        "image/png",
+        "image/jpeg",
+        "image/bmp",
+        "image/tiff",
+        "text/plain",
+        "UTF8_STRING",
+        "STRING",
+        "TEXT",
+        "TARGETS",
+        "TIMESTAMP",
+        "SAVE_TARGETS",
+        "MULTIPLE",
+        "text/plain;charset=utf-8",
+    }
+
+    @staticmethod
+    def run_cmd(cmd: list, input_data: Optional[bytes] = None) -> Tuple[bool, bytes]:
+        """
+        Run a shell command and return (success, output)
+
+        Args:
+            cmd: Command and arguments as a list
+            input_data: Optional bytes to pipe to stdin
+
+        Returns:
+            Tuple of (success: bool, output: bytes)
+        """
+        try:
+            result = subprocess.run(
+                cmd,
+                input=input_data,
+                capture_output=True,
+                timeout=2,
+            )
+            return result.returncode == 0, result.stdout
+        except (subprocess.TimeoutExpired, FileNotFoundError):
+            return False, b""
+
+    @staticmethod
+    def is_valid_text(data: bytes) -> bool:
+        """
+        Check if data is valid text (not binary garbage)
+
+        Validates by:
+        1. Checking for null bytes (common in binary data)
+        2. Ensuring at least 80% of characters are printable
+
+        Args:
+            data: Raw bytes to validate
+
+        Returns:
+            True if data appears to be valid text
+        """
+        if b"\x00" in data:
+            return False
+
+        # Check ratio of printable characters
+        try:
+            text = data.decode("utf-8", errors="ignore")
+            printable = sum(1 for c in text if c.isprintable() or c.isspace())
+            return printable >= len(text) * 0.8  # At least 80% printable
+        except:
+            return False
+
+    # -------- X11 Operations --------
+
+    @staticmethod
+    def x11_get_targets() -> list:
+        """Get list of MIME types available in X11 clipboard"""
+        success, output = ClipboardManager.run_cmd(
+            ["xclip", "-selection", "clipboard", "-t", "TARGETS", "-o"]
+        )
+        if not success:
+            return []
+        return output.decode("utf-8", errors="ignore").strip().split("\n")
+
+    @staticmethod
+    def x11_get_image(mime_type: str) -> Optional[bytes]:
+        """Read image data from X11 clipboard with specified MIME type"""
+        success, data = ClipboardManager.run_cmd(
+            ["xclip", "-selection", "clipboard", "-t", mime_type, "-o"]
+        )
+        return data if success and len(data) > 0 else None
+
+    @staticmethod
+    def x11_get_text() -> Optional[str]:
+        """Read text from X11 clipboard"""
+        success, data = ClipboardManager.run_cmd(
+            ["xclip", "-selection", "clipboard", "-t", "UTF8_STRING", "-o"]
+        )
+        if success and ClipboardManager.is_valid_text(data):
+            return data.decode("utf-8", errors="ignore")
+        return None
+
+    @staticmethod
+    def x11_set_image(mime_type: str, data: bytes):
+        """Write image data to X11 clipboard"""
+        ClipboardManager.run_cmd(
+            ["xclip", "-selection", "clipboard", "-t", mime_type, "-i"],
+            input_data=data,
+        )
+
+    @staticmethod
+    def x11_set_text(text: str):
+        """Write text to X11 clipboard"""
+        ClipboardManager.run_cmd(
+            ["xclip", "-selection", "clipboard", "-t", "UTF8_STRING", "-i"],
+            input_data=text.encode("utf-8"),
+        )
+
+    # -------- Wayland Operations --------
+
+    @staticmethod
+    def wl_get_types() -> list:
+        """Get list of MIME types available in Wayland clipboard"""
+        success, output = ClipboardManager.run_cmd(["wl-paste", "--list-types"])
+        if not success:
+            return []
+        return output.decode("utf-8", errors="ignore").strip().split("\n")
+
+    @staticmethod
+    def wl_get_image(mime_type: str) -> Optional[bytes]:
+        """Read image data from Wayland clipboard with specified MIME type"""
+        success, data = ClipboardManager.run_cmd(["wl-paste", "-t", mime_type])
+        return data if success and len(data) > 0 else None
+
+    @staticmethod
+    def wl_get_text() -> Optional[str]:
+        """Read text from Wayland clipboard"""
+        success, data = ClipboardManager.run_cmd(["wl-paste", "--type", "text/plain"])
+        if success and ClipboardManager.is_valid_text(data):
+            return data.decode("utf-8", errors="ignore")
+        return None
+
+    @staticmethod
+    def wl_set_image(mime_type: str, data: bytes):
+        """Write image data to Wayland clipboard"""
+        ClipboardManager.run_cmd(
+            ["wl-copy", "-t", mime_type],
+            input_data=data,
+        )
+
+    @staticmethod
+    def wl_set_text(text: str):
+        """Write text to Wayland clipboard"""
+        ClipboardManager.run_cmd(
+            ["wl-copy", "--type", "text/plain"],
+            input_data=text.encode("utf-8"),
+        )
+
+
+# ================= Sync Logic =================
+
+
+class ClipboardSync:
+    """Handles bidirectional clipboard synchronization between X11 and Wayland"""
+
+    def __init__(self):
+        # State tracking for deduplication
+        self.last_text = ""
+        self.last_x11_img_hash = ""
+        self.last_wl_img_hash = ""
+        self.last_img_sync_time = 0
+
+        # Track unhandled types for debugging
+        self.logged_unhandled_types = set()
+
+    @staticmethod
+    def hash_data(data: bytes) -> str:
+        """Calculate SHA256 hash of data for deduplication"""
+        return hashlib.sha256(data).hexdigest()
+
+    def log_sync(self, direction: str, content_type: str, detail: str = ""):
+        """Log a sync event with direction and content type"""
+        if direction == "x11->wl":
+            logger.info(f"X11 → Wayland | {content_type}{detail}")
+        elif direction == "wl->x11":
+            logger.info(f"Wayland → X11 | {content_type}{detail}")
+
+    def log_unhandled_types(self, x11_types: list, wl_types: list):
+        """
+        Log any clipboard MIME types that we don't currently handle.
+        This helps identify if users need support for additional formats.
+        Only logs each unique type once to avoid spam.
+        """
+        all_types = set(x11_types + wl_types)
+        # Filter out empty strings and known types
+        unhandled = {
+            t for t in all_types if t and t not in ClipboardManager.KNOWN_TYPES
+        }
+
+        # Only log new unhandled types
+        new_unhandled = unhandled - self.logged_unhandled_types
+        if new_unhandled:
+            logger.debug(
+                f"Unhandled clipboard types detected: {', '.join(sorted(new_unhandled))}"
+            )
+            self.logged_unhandled_types.update(new_unhandled)
+
+    def sync_image_x11_to_wl(self) -> bool:
+        """
+        Sync image from X11 to Wayland clipboard
+
+        Returns:
+            True if an image was synced, False otherwise
+        """
+        targets = ClipboardManager.x11_get_targets()
+
+        # Find first supported image format
+        img_type = None
+        for mime in ClipboardManager.IMAGE_TYPES:
+            if mime in targets:
+                img_type = mime
+                break
+
+        if not img_type:
+            return False
+
+        img_data = ClipboardManager.x11_get_image(img_type)
+        if not img_data:
+            return False
+
+        img_hash = self.hash_data(img_data)
+
+        # Deduplicate: skip if already synced
+        if img_hash == self.last_x11_img_hash:
+            return False
+
+        # Sync to Wayland
+        ClipboardManager.wl_set_image(img_type, img_data)
+        self.last_x11_img_hash = img_hash
+        self.last_wl_img_hash = img_hash
+        self.last_img_sync_time = time.time()
+        self.log_sync("x11->wl", "Image", f" ({img_type})")
+        return True
+
+    def sync_image_wl_to_x11(self) -> bool:
+        """
+        Sync image from Wayland to X11 clipboard
+
+        Returns:
+            True if an image was synced, False otherwise
+        """
+        types = ClipboardManager.wl_get_types()
+
+        # Find first supported image format
+        img_type = None
+        for mime in ClipboardManager.IMAGE_TYPES:
+            if mime in types:
+                img_type = mime
+                break
+
+        if not img_type:
+            return False
+
+        img_data = ClipboardManager.wl_get_image(img_type)
+        if not img_data:
+            return False
+
+        img_hash = self.hash_data(img_data)
+
+        # Deduplicate: skip if already synced
+        if img_hash == self.last_wl_img_hash:
+            return False
+
+        # Sync to X11
+        ClipboardManager.x11_set_image(img_type, img_data)
+        self.last_wl_img_hash = img_hash
+        self.last_x11_img_hash = img_hash
+        self.last_img_sync_time = time.time()
+        self.log_sync("wl->x11", "Image", f" ({img_type})")
+        return True
+
+    def sync_text_x11_to_wl(self) -> bool:
+        """
+        Sync text from X11 to Wayland clipboard
+
+        Returns:
+            True if text was synced, False otherwise
+        """
+        # Skip if X11 clipboard contains images
+        targets = ClipboardManager.x11_get_targets()
+        if any(img in targets for img in ClipboardManager.IMAGE_TYPES):
+            return False
+
+        text = ClipboardManager.x11_get_text()
+        if not text or text == self.last_text:
+            return False
+
+        # Check if Wayland already has the same content
+        wl_text = ClipboardManager.wl_get_text()
+        if text == wl_text:
+            return False
+
+        ClipboardManager.wl_set_text(text)
+        self.last_text = text
+        preview = text[:50] + ("..." if len(text) > 50 else "")
+        self.log_sync("x11->wl", "Text", f' "{preview}"')
+        return True
+
+    def sync_text_wl_to_x11(self) -> bool:
+        """
+        Sync text from Wayland to X11 clipboard
+
+        Returns:
+            True if text was synced, False otherwise
+        """
+        # Skip if Wayland clipboard contains images
+        types = ClipboardManager.wl_get_types()
+        if any(img in types for img in ClipboardManager.IMAGE_TYPES):
+            return False
+
+        text = ClipboardManager.wl_get_text()
+        if not text or text == self.last_text:
+            return False
+
+        # Check if X11 already has the same content
+        x11_text = ClipboardManager.x11_get_text()
+        if text == x11_text:
+            return False
+
+        ClipboardManager.x11_set_text(text)
+        self.last_text = text
+        preview = text[:50] + ("..." if len(text) > 50 else "")
+        self.log_sync("wl->x11", "Text", f' "{preview}"')
+        return True
+
+    def run(self):
+        """Main sync loop - continuously monitors and syncs clipboard content"""
+        logger.info("Clipboard sync service started")
+        logger.info("Monitoring clipboard sync between Wayland ↔ X11...")
+
+        try:
+            while True:
+                # Get current clipboard types for unhandled type detection
+                x11_types = ClipboardManager.x11_get_targets()
+                wl_types = ClipboardManager.wl_get_types()
+
+                # Log any unhandled types (for debugging/future feature requests)
+                self.log_unhandled_types(x11_types, wl_types)
+
+                # Priority 1: Sync images (bidirectional)
+                img_synced = self.sync_image_x11_to_wl() or self.sync_image_wl_to_x11()
+
+                # Priority 2: Sync text (only if no image was synced)
+                if not img_synced:
+                    # Cooldown period after image sync to prevent race conditions
+                    if time.time() - self.last_img_sync_time < 0.4:
+                        time.sleep(0.1)
+                    else:
+                        self.sync_text_x11_to_wl() or self.sync_text_wl_to_x11()
+
+                time.sleep(SYNC_INTERVAL)
+        except KeyboardInterrupt:
+            logger.info("Shutting down...")
+
+
+# ================= Main Entry Point =================
+
+
+def main():
+    """Main entry point - checks dependencies, acquires lock, and starts sync"""
+    # Check for required dependencies
+    for cmd in ["xclip", "wl-paste", "wl-copy"]:
+        if subprocess.run(["which", cmd], capture_output=True).returncode != 0:
+            logger.error(f"Missing dependency: {cmd}")
+            sys.exit(1)
+
+    # Acquire singleton lock
+    if not acquire_lock():
+        sys.exit(1)
+
+    # Setup signal handlers for clean shutdown
+    def signal_handler(sig, frame):
+        release_lock()
+        sys.exit(0)
+
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.signal(signal.SIGTERM, signal_handler)
+
+    # Start clipboard sync
+    sync = ClipboardSync()
+    sync.run()
+
+
+if __name__ == "__main__":
+    main()
+```
+
+{% endfolding %}
+
+- 此前的脚本使用管道来传输图片文件，这个操作实际上是异步的。执行管道传输命令之后直接清空 xclip 中的内容，就可能导致同步的图片出现被“截断”的现象。
+
+- 操作稍有复杂的脚本还是应该高级语言写……
+
+{% endnotel %}
+
 ## 前言
 
 - 不知从哪个版本开始，Linuxqq 在 Wayland 下的粘贴板出现了一个奇怪的问题：可以将 qq 中的文本复制到系统粘贴板（cliphist），但是无法将系统粘贴板上的内容粘贴进 qq 中。
@@ -259,4 +752,3 @@ excerpt: 解决 Linuxqq 在 Wayland 协议下粘贴板无法正常工作的问�
     ```
 
 - 即可。
-
