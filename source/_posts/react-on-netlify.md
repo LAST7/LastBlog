@@ -24,9 +24,9 @@ npm install netlify-cli -g
 
 -   其中 `-g` 参数表示全局安装
 
-{% notel red fa-triangle-exclamation **注意：** %}
+{% callout type="danger" icon="fa-triangle-exclamation" title="**注意：**" %}
 在 Archlinux 上使用 npm 时，为了不污染系统环境，需要提前设置 npm 的 prefix 来更改安装位置。详见：[Archwiki](https://wiki.archlinux.org/title/Node.js#Allow_user-wide_installations)
-{% endnotel %}
+{% endcallout %}
 
 ### Build Site
 

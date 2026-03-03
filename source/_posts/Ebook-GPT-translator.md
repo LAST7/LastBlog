@@ -173,9 +173,9 @@ libuv是一个现代化的多平台库，具有执行常见系统任务的功能
 
 {% endfolding %}
 
-{% note info fa-circle-exclamation %}
+{% callout type="info" icon="fa-circle-exclamation" %}
 耗时：1 min 3 s
-{% endnote %}
+{% endcallout %}
 
 -   可以看到，翻译效果还是很不错的，扫了几眼，并没有发现任何翻译错误。
 -   然而，格式上的问题较为严重，很多原文中的标题都变成了正文开头的一个空格隔开的句子，不过总的来说无伤大雅。

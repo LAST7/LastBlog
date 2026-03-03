@@ -8,10 +8,10 @@ tags:
 excerpt: Notes taken for class W9 of NJU PA
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
 After all, the most important thing is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
 ## Compilation Process
 
@@ -184,11 +184,11 @@ _Note: We can use `objdump -h` to see those sections' info._
 
 ---
 
-{% notel blue fa-circle-question Whimsy %}
+{% callout type="info" icon="fa-circle-question" title="Whimsy" %}
 
 1. Is it possible to 'hack' someone's machine by tamperring this relocation process? Hijack the program from executing the original function and redirect it to execute another injected function? _(Turns out this way of 'hacking' has real-world example, which is GOT overwrite.)_
 2. Is it the way of counting the usage(benchmark) of a certain function? Relocating it to a wrapper function which marks the usage and the time consumed and then jump to the intended function? _(It seems that there are better options.)_
-   {% endnotel %}
+   {% endcallout %}
 
 ---
 
@@ -202,10 +202,10 @@ _Note: We can use `objdump -h` to see those sections' info._
                      U y
     ```
 
-{% notel blue fa-circle-exclamation Note: %}
+{% callout type="info" icon="fa-circle-exclamation" title="Note:" %}
 `a.out` compiled/linked with `-static` flag would contain symbols from `glibc` as static linkage would link `glibc` by default.
 To get an `a.out` executable with a clean symbol table, one should remove the `-static` flag from the compilation command.
-{% endnotel %}
+{% endcallout %}
 
 ### What Else?
 

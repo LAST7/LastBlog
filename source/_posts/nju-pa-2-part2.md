@@ -8,10 +8,10 @@ tags:
 excerpt: Implementing emulated device such as timer, keyboard, VGA and audio
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
 After all, the most important thing is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
 ## IO Interaction Between AM and NEMU
 
@@ -36,10 +36,10 @@ After all, the most important thing is about writing things down for better memo
 
 ---
 
-{% notel blue fa-circle-info Fun_Fact %}
+{% callout type="info" icon="fa-circle-info" title="Fun_Fact" %}
 This 15th bit convention is primarily a Windows-specific implementation detail.
 Other systems have other conventions, like using `XKeyEvent` structure on X11(Linux/Unix).
-{% endnotel %}
+{% endcallout %}
 
 ## VGA
 

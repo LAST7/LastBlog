@@ -200,9 +200,9 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
     --enable-wayland-ime
     ```
 
-{% notel blue fa-clock **更新** %}
+{% callout type="info" icon="fa-clock" title="更新" %}
 在某个版本（2025-9-08）之后，Electron 应用在 Wayland 环境下默认添加 `--ozone-platform-hint=wayland`，但 Fcitx5 仍需要 `enable-wayland-ime` 以启用。
-{% endnotel %}
+{% endcallout %}
 
 ### 硬件加速（重要）
 
@@ -219,9 +219,9 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
     -   输入的内容背景色为亮黄色有些许不美观
     -   除第一个打开的窗口以外的 brave 窗口均无法使用输入法。
 
-{% notel blue fa-clock 更新 %}
+{% callout type="info" icon="fa-clock" title="更新" %}
 截止今日（2025-08-20）上述 bug 均以修复。
-{% endnotel %}
+{% endcallout %}
 
 ### OBS
 
@@ -236,9 +236,9 @@ thumbnail: https://s2.loli.net/2023/08/10/TzL1Jayn4D7tZRf.webp
 -   此外，重启 OBS 之后该 screen 源会要求重新选择屏幕，并且处于黑屏状态。当我尝试使用 Del 键将其删除时，它又奇迹般的活了过来，令人迷惑不已。
 
 
-{% notel orange fa-clock 更新 %}
+{% callout type="info" icon="fa-clock" title="更新" %}
 后重装系统后发现 obs 又无法捕捉画面了，查阅[互联网](https://bbs.archlinux.org/viewtopic.pwp?id=293108)后发现视需要 `pipewire-pulse`，原因未知。
-{% endnotel %}
+{% endcallout %}
 
 ### VLC
 

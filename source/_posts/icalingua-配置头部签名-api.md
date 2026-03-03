@@ -8,10 +8,10 @@ tags:
 excerpt: 为 icalingua++ 配置头部签名 api
 ---
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 由于 qsign 作者被抓，项目已被删除。
 本文内容仅作留档，已无任何实际作用。
-{% endnotel %}
+{% endcallout %}
 
 ## 前言
 
@@ -28,9 +28,9 @@ excerpt: 为 icalingua++ 配置头部签名 api
 docker run -d --restart=always --pull=always --name=qsign -p 8091:8080 ghcr.io/fuqiuluo/unidbg-fetch-qsign:master
 ```
 
-{% notel blue fa-circle-exclamation **注意** %}
+{% callout type="info" icon="fa-circle-exclamation" title="**注意**" %}
 使用 `-p 8091:8080` 将主机的 8091 端口映射到容器内的 8080 端口
-{% endnotel %}
+{% endcallout %}
 
 -   此后需要在 icalingua 的登录界面填写 api key 的地址：`http://127.0.0.1:8091`，选择一个相对高版本的 qq 即可进行登录。
 

@@ -8,10 +8,10 @@ tags:
 excerpt: Makefiles used in NJU-PA
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
 After all, the most important part is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
 ## Preface
 
@@ -137,9 +137,9 @@ ENGINE ?= $(call remove_quote,$(CONFIG_ENGINE))
 NAME    = $(GUEST_ISA)-nemu-$(ENGINE)
 ```
 
-{% notel blue Setting Variables %}
+{% callout type="info" icon="Setting" title="Variables" %}
 _About `?=`, see [this chapter below](https://blog.imlast.top/2024/09/29/makefile-in-pa/#Setting-Variables)_
-{% endnotel %}
+{% endcallout %}
 
 -   Definition and usage of function `remove_quote`.
 
@@ -258,13 +258,13 @@ _About `?=`, see [this chapter below](https://blog.imlast.top/2024/09/29/makefil
 
 > Another form of assignment allows for immediate expansion, but unlike simple assignment the resulting variable is recursive: **_it will be re-expanded again on every use._** In order to avoid unexpected results, after the value is immediately expanded it will automatically be quoted: all instances of `$` in the value after expansion will be converted into `$$.` This type of assignment uses the `:::=` operator.
 
-{% notel blue TODO: %}
+{% callout type="info" icon="fa-code" title="TODO:" %}
 
 This is a relatively new way of assigning variables. Actually, I don't understand the explanation above(which is from the official document of GNU make), and I didn't see any usage of such in the ics project.
 :
 As a result, I am leaving this as a _TODO_ for future.
 
-{% endnotel %}
+{% endcallout %}
 
 ### Conditional Assignment
 

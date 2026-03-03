@@ -106,16 +106,18 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 ---
 
-{% notel orange fa-clock 更新 %}
+{% callout type="info" icon="fa-solid fa-clock" title="更新" %}
 
 -   了解到在使用了 `--file-read` option 后，消息主体会从文件中读取。读取文件的方法是 `fs.readFileSync`，该方法在未设置第二项参数时返回值的类型为 `Buffer`。
 -   请问能否将其更改为传回 `string` 的形式？当前 `processPublishMessage` 方法中 `string` 和 `Buffer` 的混用实在是令我感到些许反感。
 
 -   虽然使用 `string` 作为返回值的 `fs.readFileSync` 在性能上大概降低了 75% 左右，但是我认为在 `serializeProtobufToBuffer` 等众多函数中因为不能确定 `msg` 的类型而进行反反复复的 `JSON.parse()` 和 `toString()` 操作更加消耗性能（例如上个段落中 `serializeProtobufToBuffer` 里面那样，以及诸多的格式转换函数中频繁的 `toString()`）。
 
+{% endcallout %}
+
 -   相关测试请看：
 
-{% folding blue::性能测试 %}
+{% folding class="blue" title="性能测试" open=false %}
 
 下面是一个使用 ChatGPT 生成的简易测试程序，用于测试 `fs.readFileSync` 返回 `Buffer` 类型和 `string` 类型的性能差异：
 
@@ -206,7 +208,6 @@ String read time: 1369.35 ms
 
 {% endfolding %}
 
-{% endnotel %}
 
 ---
 

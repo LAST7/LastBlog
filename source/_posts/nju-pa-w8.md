@@ -8,15 +8,15 @@ tags:
 excerpt: Notes taken for class W8 of NJU PA
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
 After all, the most important thing is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
-{% notel red fa-triangle-exclamation Warning %}
+{% callout type="danger" icon="fa-triangle-exclamation" title="Warning" %}
 Starting from this blog, the lesson is updated to ICS2024.
 Video link: [ICS2024-南京大学软件学院计算机系统基础实验](https://www.bilibili.com/video/BV1ztSiYPEr8/)
-{% endnotel %}
+{% endcallout %}
 
 ## IO
 

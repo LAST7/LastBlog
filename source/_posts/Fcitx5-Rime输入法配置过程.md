@@ -15,9 +15,9 @@ thumbnail: "https://s2.loli.net/2023/08/06/nUTmGeHNisgo7rB.webp"
 
 ---
 
-{% notel blue fa-clock **更新** %}
+{% callout type="info" icon="fa-clock" title="更新" %}
 该配置已被修改，详见[这篇博文](https://blog.imlast.top/2023/08/28/rime-ice-configuration/)。
-{% endnotel %}
+{% endcallout %}
 
 ---
 
@@ -27,12 +27,12 @@ thumbnail: "https://s2.loli.net/2023/08/06/nUTmGeHNisgo7rB.webp"
 -   前人栽树：[接近原生的鼠须管 Rime 配置](https://github.com/wongdean/rime-settings)
 -   感谢 wogdean 慷慨分享的配置文件。
 
-{% notel yellow fa-triangle-exclamation 关于字体 %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="关于字体" %}
 
 -   该配置文件自带了两个字体文件，经查询得知是花园明朝字体，为的是解决汉字的生僻字乱码问题。不过我感觉目前的字体使用并未出现过乱码，遂没有安装。
 -   结果就是 rime 的使用大体没有问题，偶尔会出现乱码候选词，问题不大。
 
-{% endnotel %}
+{% endcallout %}
 
 ## 自定义配置
 
@@ -47,10 +47,6 @@ schema_list:
     - schema: luna_pinyin # 明月全拼
     # - schema: double_pinyin # 自然码
 ```
-
-{% note info  %}
-话说回来，双拼是什么？
-{% endnote %}
 
 ### 模糊拼音
 
@@ -97,7 +93,7 @@ __include: easy_en:/patch
 
 -   前者通过修改配置文件中 `Margin` 的值解决了，后者则无计可施，去 Github 提了 [issue](https://github.com/drbbr/fcitx5-dracula-theme/issues/5)。
 
-{% notel blue fa-clock 更新 %}
+{% callout type="info" icon="fa-clock" title="更新" %}
 经该主题作者提示，我意识到输入法界面看上去不透明是因为其背景被 picom 给模糊了，在 picom.conf 中加入以下配置即可解决：
 
 ```conf
@@ -109,7 +105,7 @@ blur-background-exclude = [
 # ...
 ```
 
-{% endnotel %}
+{% endcallout %}
 
 ### 其他
 

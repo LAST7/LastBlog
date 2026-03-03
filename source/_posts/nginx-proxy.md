@@ -30,9 +30,9 @@ sudo apt install nginx
 
 -   Nginx 的配置文件位于 `/etc/nginx/nginx.conf`
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 下方配置中，有许多笔者未能完全理解，请谨慎参考。
-{% endnotel %}
+{% endcallout %}
 
 -   在 _server_ 中添加如下配置：
 

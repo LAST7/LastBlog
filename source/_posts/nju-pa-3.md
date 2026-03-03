@@ -8,10 +8,10 @@ tags:
 excerpt: exception handling, system calls, file system, and directmedia layer implementation
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
 After all, the most important thing is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
 ## Exception Handling/Interruption
 
@@ -352,6 +352,6 @@ flowchart TD
 
 ## To Be Continued...
 
-{% notel blue fa-face-sad-cry Suspend %}
+{% callout type="info" icon="fa-face-sad-cry" title="Suspend" %}
 Gotta prepare for the master entrance examination :(
-{% endnotel %}
+{% endcallout %}

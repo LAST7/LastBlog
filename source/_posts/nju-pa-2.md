@@ -8,10 +8,10 @@ tags:
 excerpt: Implementing specific details of the RISC-V instruction set
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **DID NOT** consider the experience of the other readers.
 After all, the most important thing is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
 ## Bit Operation Macros
 
@@ -67,9 +67,9 @@ After all, the most important thing is about writing things down for better memo
 -   In the macro, the expression uses a bit field within a struct to define a signed integer of length `len` bits. The bit field ensures that the value of `x` is treated as a signed integer of that specific length.
 -   The struct with the bit field automatically sign-extends the value when it is assigned to the `int64_t` member. The result is then cast back to `uint64_t` to maintain the full precision of the extended value.
 
-{% notel red fa-triangle-exclamation Note %}
+{% callout type="danger" icon="fa-triangle-exclamation" title="Note" %}
 The second parameter `len` of `SEXT` macro means **the number of bits to treat `x` as for sign extension**, instead of the target length.
-{% endnotel %}
+{% endcallout %}
 
 ---
 

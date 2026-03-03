@@ -44,9 +44,9 @@ Host murmur
     User root
 ```
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 ssh 默认使用 22 端口，如果远程服务器未开启此端口则无法连接。
-{% endnotel %}
+{% endcallout %}
 
 -   创建该文件后，即可使用 `ssh murmur` 命令访问远程服务器。
 
@@ -54,17 +54,17 @@ ssh 默认使用 22 端口，如果远程服务器未开启此端口则无法连
 
 -   趁着这次搭建 mumble 服务端的机会，学习一下 docker 的基础使用方法。
 
-{% notel blue fa-circle-exclamation **注意** %}
+{% callout type="info" icon="fa-circle-exclamation" title="**注意**" %}
 下方命令均以 root 身份执行。
-{% endnotel %}
+{% endcallout %}
 
 ### 安装 Docker
 
 -   我选用的服务器系统是 Debian 11.7 64位，默认的 apt 源里没有 docker 。
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 根据[官方文档](https://docs.docker.com/engine/install/debian/)，docker engine 需要 64 位的 Debian 11/12，且系统内核版本必须大于 3.8。
-{% endnotel %}
+{% endcallout %}
 
 #### 使用官方安装脚本
 
@@ -205,9 +205,9 @@ serverpassword=<password>
 
 -   右键根频道（Root） -> 选择编辑（Edit） -> 选择用户组别（Group） -> 选择管理员（admin） -> 在下方的成员中添加用户。
 
-{% notel blue fa-circle-exclamation **注意** %}
+{% callout type="info" icon="fa-circle-exclamation" title="**注意**" %}
 只有已注册的用户才能被设为管理员。
-{% endnotel %}
+{% endcallout %}
 
 ### 证书 & 多设备登录
 

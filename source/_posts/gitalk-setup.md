@@ -8,9 +8,9 @@ tags:
 excerpt: 在 hexo 框架，Redefine 主题中启用 Gitalk 评论组件
 ---
 
-{% notel orange fa-clock 更新 %}
+{% callout type="warning" icon="fa-clock" title="更新" %}
 由于 Gitalk 已长时间无人维护，且有许多影响使用的 Bug，遂转移至 [Twikoo](https://twikoo.js.org)
-{% endnotel %}
+{% endcallout %}
 
 ## 前言
 
@@ -22,8 +22,8 @@ excerpt: 在 hexo 框架，Redefine 主题中启用 Gitalk 评论组件
 
 -   由于 Redefine 主题内置了启用 Gitalk 所需的相关代码和组件，根据 Redefine 提供的教程便可完成安装。
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 
 1. 存放 Gitalk 评论内容的 GitHub 仓库不能为 Private
 2. Callback URL 必须严格与博客网址相符（不能有 www，且末尾需添加 “/”）
-   {% endnotel %}
+   {% endcallout %}

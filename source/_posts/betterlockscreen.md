@@ -147,9 +147,9 @@ xset s off && xset dpms 1200 1200 1800
 xautolock -time 10 -locker "$HOME"/dotfile/script/betterlockscreen/lockscreen -notify 15 -notifier "$HOME"/dotfile/script/betterlockscreen/lockwarn &
 ```
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 在 shellscript 中执行某项需要在后台持续运行的程序时，需要在其末尾加上 `&`，否则在 shellscript 中所有代码运行完成后该程序会跟着一起退出。
-{% endnotel %}
+{% endcallout %}
 
 ---
 

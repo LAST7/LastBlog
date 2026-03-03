@@ -171,7 +171,7 @@ _Stolen from `debug.h` from PA :)_
 
 {% endfolding %}
 
-{% notel blue fa-circle-info Note: %}
+{% callout type="info" icon="fa-circle-info" title="Note:" %}
 
 Variable `$VALGRIND` in the script should be defined in the Makefile when running `make valgrind`.
 
@@ -189,7 +189,7 @@ Also, the `2` in line `if $VALGRIND ./$i 2 >> tests/tests.log; then` refers to f
 
 So `2 >>` means "append stderr output to the specified file". This ensures that error messages and debugging information (which typically go to stderr) are captured in tests/tests.log.
 
-{% endnotel %}
+{% endcallout %}
 
 ## Debug Helper
 

@@ -50,11 +50,11 @@ nvidia_drm.modeset=1
 options nvidia-drm modeset=1
 ```
 
-{% notel blue fa-circle-exclamation 注意 %}
+{% callout type="info" icon="fa-circle-exclamation" title="注意" %}
 
 这里之所以将该内核参数添加到 grub 配置中，是因为本人的电脑安装了双系统，是由 grub 进行启动的。
 
-{% endnotel %}
+{% endcallout %}
 
 {% folding green::ChatGPT 对于启用 nvidia-drm 原因的解释 %}
 
@@ -71,14 +71,14 @@ options nvidia-drm modeset=1
 
 ---
 
-{% notel red fa-triangle-exclamation **注意** %}
+{% callout type="danger" icon="fa-triangle-exclamation" title="**注意**" %}
 
 根据 [Archwiki](https://wiki.archlinux.org/title/NVIDIA#mkinitcpio)，
 修改该配置后，每次系统内核/显卡驱动更新之后都需要重新执行 `sudo mkinitcpio -P`。
 
 为了防止可能的遗忘，[Archwiki](https://wiki.archlinux.org/title/NVIDIA#pacman_hook) 还提供了一个 pacman hook。
 
----
+{% endcallout %}
 
 {% folding gray::/etc/pacman.d/hooks/nvidia.hook %}
 
@@ -124,8 +124,6 @@ Here's a breakdown of what's happening:
 -   Remember that proper configuration and maintenance are essential for a stable and functional system, especially when dealing with hardware-specific components like graphics drivers.
 
 {% endfolding %}
-
-{% endnotel %}
 
 ### 环境变量
 

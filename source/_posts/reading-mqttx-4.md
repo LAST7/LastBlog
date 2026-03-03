@@ -131,10 +131,10 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
     })
     ```
 
-    {% notel orange fa-clock 更新 %}
+    {% callout type="warning" icon="fa-clock" title="更新" %}
     观察到在其他测试中都调用了该函数，但是不知为何在 `protobuf.test.ts` 中没用调用。
     猜测是 copy-paste 导致的（bushi
-    {% endnotel %}
+    {% endcallout %}
 
 3.  使用 `toHaveBeenNthCalledWith` _（不推荐，该函数的行为很奇怪）_
 

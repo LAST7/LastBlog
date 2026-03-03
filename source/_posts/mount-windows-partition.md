@@ -55,9 +55,9 @@ lsblk -f
 UUID=42BE8xxxxxxxx3FF   /run/media/last/D    ntfs-3g defaults,noexec,noatime,users 0 0
 ```
 
-{% notel orange fa-circle-exclamation 注意 %}
+{% callout type="warning" icon="fa-circle-exclamation" title="注意" %}
 这里的挂载点设置为 `/run/media/last/D` 是因为 memo 文件管理器默认将系统外其他分区挂载在此处。
-{% endnotel %}
+{% endcallout %}
 
 ---
 

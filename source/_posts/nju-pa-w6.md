@@ -11,10 +11,10 @@ excerpt: Notes taken for class W6 of NJU PA
 mathjax: true
 ---
 
-{% notel orange fa-triangle-exclamation Warning %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="Warning" %}
 If someone is reading this blog, please be aware that the writer **did not** consider the experience of the other readers.
 After all, the most important part is about writing things down for better memorization.
-{% endnotel %}
+{% endcallout %}
 
 ## Bit Operation
 

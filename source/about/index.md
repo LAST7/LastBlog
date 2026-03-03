@@ -13,7 +13,7 @@ comment: true
 
 ---
 
-{% notel blue fa-circle-user More %}
+{% callout type="info" icon="fa-circle-user" title="More" %}
 
 -   如果你想更多的了解我，可以访问：
 
@@ -22,7 +22,7 @@ WVVoU01HTklUVFpNZVRsclkyMVdhR0pUTlhCaVYzaG9Zek5SZFdSSE9YZERaejA5Q2c9PQo=
 ```
 
 _(base64 \* 3)_
-{% endnotel %}
+{% endcallout %}
 
 ## Interests
 
@@ -142,7 +142,6 @@ _(base64 \* 3)_
 
 {% folding orange::Blender %}
 
--   唉，我是多么的渴望展现出我脑海中令我心碎的画面。然而任何技能的学习都不轻松，更何况我又拿不出那么多时间。
 -   完美主义的诅咒使我寸步难行。
 
 ---
@@ -152,9 +151,9 @@ _(base64 \* 3)_
 
 ## Contact Me
 
-{% notel blue fa-solid fa-envelope Email %}
-Email : last7617(at)proton.me
-{% endnotel %}
+{% callout type="info" icon="fa-solid fa-envelope" title="Email" %}
+Email: last7617(at)proton.me
+{% endcallout %}
 
 ## This Site
 

@@ -318,12 +318,12 @@ if __name__ == "__main__":
 -   程序启动后进入一个循环中，持续接受用户输入并与文件中的曲名作匹配。
 -   如果用户输入的模式串以 `+` 结束，则在模式串最后添加一个 `.*` 来匹配不定长度的曲名。
 
-{% notel blue fa-code Batch_Mode %}
+{% callout type="info" icon="fa-code" title="Batch_Mode" %}
 
 可以看到，代码中存在一个未完成的 `batch mode`。
 我本来是打算将他用于批量匹配曲名的，但是刚开始实现不久我就发现，在 Hyprland 环境下我的 linuxqq-nt-bwrap 无法将其中的内容复制到系统的粘贴板上。但是我却能够将系统粘贴板中的东西粘贴到 qq 里，颇为神奇。。
 
-{% endnotel %}
+{% endcallout %}
 
 ## 结束
 

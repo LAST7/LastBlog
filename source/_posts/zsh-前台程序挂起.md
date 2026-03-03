@@ -68,7 +68,7 @@ In summary, this script customizes the behavior of Ctrl+Z in the zsh shell. If y
 
 {% endfolding %}
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 需要排查快捷键冲突。
 例如：`bindkey -e`
-{% endnotel %}
+{% endcallout %}

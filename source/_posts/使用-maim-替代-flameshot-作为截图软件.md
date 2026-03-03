@@ -46,15 +46,15 @@ ctrl + alt + s
     maim --select ~/Pictures/screenshot/$(date +%Y-%m-%d_%H-%M-%S_maim | tr A-Z a-z).png
 ```
 
-{% notel blue fa-circle-exclamation **注意** %}
+{% callout type="info" icon="fa-circle-exclamation" title="**注意**" %}
 需要提前创建 `~/Pictures/screenshot` 文件夹。
-{% endnotel %}
+{% endcallout %}
 
 ---
 
-{% notel orange fa-clock 更新 %}
+{% callout type="warning" icon="fa-clock" title="更新" %}
 该配置已被修改，详见[这篇博文](https://blog.imlast.top/2023/08/27/xclip-disfunction-when-image-size-too-large/)。
-{% endnotel %}
+{% endcallout %}
 
 ## Picom 相关问题
 

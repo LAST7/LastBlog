@@ -42,9 +42,9 @@ RUN micromamba install -y -n base -c conda-forge numpy scikit-learn matplotlib s
 RUN micromamba clean --all -y
 ```
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 注意：不推荐使用/创建 `base` 以外的环境。如果有需要，参照[此指示](https://micromamba-docker.readthedocs.io/en/latest/advanced_usage.html#multiple-environments)。
-{% endnotel %}
+{% endcallout %}
 
 ### 设定工作目录 && 暴露端口
 
@@ -80,9 +80,9 @@ ssh -L <PORT>:localhost:8889 <REMOTE_USER>@<REMOTE_HOST>
 
 -   `<PORT>` 决定了本地 PC 上在浏览器中输入哪个端口。
 
-{% notel orange fa-triangle-exclamation **注意** %}
+{% callout type="warning" icon="fa-triangle-exclamation" title="**注意**" %}
 该方法未经本人实践，请自行验证。
-{% endnotel %}
+{% endcallout %}
 
 ### JupyterLab，启动！
 

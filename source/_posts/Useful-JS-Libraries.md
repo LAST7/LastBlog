@@ -7,9 +7,9 @@ tags:
 excerpt: 从课程 FullStackOpen 中截取的一小段关于各种“轮子”的介绍和推荐
 ---
 
-{% notel blue fa-cirle-exclamation **引用** %}
+{% callout type="info" icon="fa-cirle-exclamation" title="**引用**" %}
 本文来源于课程 [FullStackOpen](https://fullstackopen.com/), 原文地址： [Useful libraries and interesting links](https://fullstackopen.com/en/part7/class_components_miscellaneous#useful-libraries-and-interesting-links)
-{% endnotel %}
+{% endcallout %}
 
 # Useful libraries and interesting links
 
