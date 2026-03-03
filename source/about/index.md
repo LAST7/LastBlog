@@ -31,13 +31,13 @@ _(base64 \* 3)_
 -   编程初学者，使用过/正在学习的语言：
 
     -   C/C++
-    -   Rust
     -   Java
     -   Python
     -   Lua
     -   HTML / CSS / JS/TS
     -   React (JSX/TSX)
     -   Vue ( _I hate this one_ )
+    -   Svelte ( _I like this one_ )
     -   SQL (MySQL/Mariadb, SQL Server, MongoDB)
 
 ---

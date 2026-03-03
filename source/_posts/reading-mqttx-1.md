@@ -18,13 +18,6 @@ cover: https://raw.githubusercontent.com/emqx/MQTTX/main/assets/mqttx-logo.png
 
 ---
 
-{% notel red fa-triangle-exclamation **注意** %}
-本人此前并未参与过大型开源合作项目，因此许多观点和对于代码的理解可能非常肤浅和片面。
-
-本人提出的问题仅是在阅读项目代码的时候所产生的疑问，并不意味着这些代码包含某种错误或需要被修改。
-同时，也可能由于未完整阅读全部的项目代码而提出一些奇怪的问题。
-{% endnotel %}
-
 ## 数据格式转换函数耦合程度较高
 
 -   在阅读项目 CLI 部分代码时，我注意到用于转换 payload 的函数看起来相对复杂——编解码的工作往往同一个函数中执行。换句话说，这些函数承担了不止一种职责，意味着他们违反了[单一功能原则](https://en.wikipedia.org/wiki/Single-responsibility_principle)。
