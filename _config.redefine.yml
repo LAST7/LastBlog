@@ -163,13 +163,16 @@ home_banner:
         style: reverse # default, reverse, center
         # Social links
         links:
-            github: https://github.com/LAST7 # your GitHub URL
+            - icon: github
+              url: https://github.com/LAST7 # your GitHub URL
             # instagram: # your Instagram URL
             # zhihu: # your ZhiHu URL
             # twitter: # your twitter URL
-            email: last7617@proton.me # your email
+            - icon: email
+              url: last7617@proton.me # your email
             # ...... # you can add more
-            fa-regular fa-music: https://music.163.com/#/user/home?id=329572653
+            - icon: fa-regular fa-music
+              url: https://music.163.com/#/user/home?id=329572653
         # Social links with QRcode drawers
         qrs:
             # weixin: # your Wechat QRcode image URL
