@@ -1,5 +1,5 @@
 ---
-title: WXT 1 - 跨浏览器的插件侧板控制
+title: Scribe.cx 1 - 跨浏览器的插件侧板控制
 date: 2026-01-30 17:08:26
 categories: 笔记
 tags:
