@@ -13,13 +13,13 @@ excerpt: Fun puzzles in bomblab
 
 - This is the second lab of course CMU 15-213. I have to say that, unlike datalab, this lab is fairly 'logical' and fun to play with. The idea of looking into assembly code to get a fundamental understanding of how programs actually got compiled into machine level language is absolutely effective and genius in teaching.
 
-- **Make sure you've solved the puzzles on yourself before checking my solutions!**
+- **Make sure you've solved the puzzles by yourself before checking my solutions!**
 
-- If you find any mistakes in this blog, you're most welcomed to leave a comment on it.
+- If you find any mistakes in this blog, you're most welcome to leave a comment on it.
 
 ## Records
 
-- Reverse executable file into assembly code by:
+- Disassemble the executable file into assembly code by:
     ```bash
     objdump -D bomb > bomb.s
     ```
@@ -84,9 +84,9 @@ excerpt: Fun puzzles in bomblab
     4013a1:	c3                   	ret
     ```
 
-- From the code we can see that the funcion first compare the length of the two strings and then compare each character.
+- From the code we can see that the funcion first compares the length of the two strings and then compares each character.
 
-- If we type in `hello` as a 'test' input for this phase, we can find out that it is the first call for `string_length` that calculates the length of our input string, for `%eax` is set to `5`(as the length of `hello`) after it returns. (In the help of gdb)
+- If we type in `hello` as a 'test' input for this phase, we can find out that it is the first call for `string_length` that calculates the length of our input string, for `%eax` is set to `5`(as the length of `hello`) after it returns. (With the help of gdb)
     - Then this `5` is moved into `%r12` at:
 
         ```asm
@@ -171,7 +171,7 @@ excerpt: Fun puzzles in bomblab
         40149d:	c3                   	ret
     ```
 
-    - We can see that the assembly code this function does not explicitly use anything stored in `%rdi` while manipulating `%rsi` a lot, which is pretty strange at first glance.
+    - We can see from the assembly code that this function does not explicitly use anything stored in `%rdi` while manipulating `%rsi` a lot, which is pretty strange at first glance.
     - It turns out that the value stored inside `%rdi` is implicitly passed to `sscanf` as the address to hold the user input.
     - We can trace back to `main` to see where `%rdi` is set after `read_line`:
         ```asm
@@ -192,7 +192,7 @@ excerpt: Fun puzzles in bomblab
 - In short:
     - `%rdi` passed all along to `sscanf` as input string.
     - `%rsi` holds the pointer pointing to the address of the buffer which is to store the six numbers parsed by `sscanf`.
-    - `%rdx`, `%rcx`, `%r8`, `%r9` holding the first four addresses of each of the target buffer block to hold the parsed numbers, while the rest 2 addresses are pushed on the stack.
+    - `%rdx`, `%rcx`, `%r8`, `%r9` holding the first four addresses of each of the target buffer block to hold the parsed numbers, while the rest 2 addresses are placed on the stack.
     - `sscanf` then set the values stored in those addresses to the six input numbers.
     - After `sscanf` returns, compare the return value with `0x5`. If the return value, which represents the number of the values parsed, is less or equal to 5, then explode the bomb.
     - Free the stack frame and return.
@@ -206,8 +206,8 @@ excerpt: Fun puzzles in bomblab
     401474:	48 89 04 24          	mov    %rax,(%rsp)
 ```
 
-- This is where the last two addresses of the target buffer is pushed on the stack.
-{% endcallout %}
+- This is where the last two addresses of the target buffer are placed on the stack, and passed to `sscanf`.
+  {% endcallout %}
 
 - After reading six numbers from user input, first check whether the first number is `0x1`:
 
@@ -311,14 +311,16 @@ excerpt: Fun puzzles in bomblab
 - For function `sscanf`, `%rdi` holds the address of the raw input, `%esi` holds the `format` string, thus `rdx` and `rcx` holds the two addresses where the program put the two parsed numbers to.
 
 {% callout type="info" icon="fa-solid fa-circle-info" title="Note:" %}
-- The reason why I know the wanted inputs are numbers is that I've tried them in cli.
-{% endcallout %}
 
-- So, the first input should be less or equal than `0x7`(also non-negative for `ja` reads unsigned values comparison result). As a result `1 2` should be an ideal test input.
+- The reason why I know the wanted inputs are numbers is that I've tried them in cli.
+  {% endcallout %}
+
+- So, the first input should be less or equal to `0x7`(also non-negative for `ja` reads unsigned values comparison result). As a result `1 2` should be an ideal test input.
 
 {% callout type="info" icon="fa-solid fa-circle-info" title="Note:" %}
+
 - Like phase 2, `%rdi` is passed from `main` function, pointing to the address of user input string.
-{% endcallout %}
+  {% endcallout %}
 
 - Then the 'bomb' put the second input into `%eax` and jump to somewhere in a jump table:
 
@@ -353,25 +355,23 @@ excerpt: Fun puzzles in bomblab
 - We can therefore reverse the whole jump table:
 
     ```c
-    switch (first_input):
-    case 0:
-        if (second_input == 0xcf) break;
-    case 1:
-        if (second_input == 0x137) break;
-    case 2:
-        if (second_input == 0x2c3) break;
-    case 3:
-        if (second_input == 0x100) break;
-    case 4:
-        if (second_input == 0x185) break;
-    case 5:
-        if (second_input == 0xce) break;
-    case 6:
-        if (second_input == 0x2aa) break;
-    case 7:
-        if (second_input == 0x147) break;
+    int expected;
 
-    default:
+    switch (first_input) {
+        case 0: expected = 0xcf;  break;
+        case 1: expected = 0x137; break;
+        case 2: expected = 0x2c3; break;
+        case 3: expected = 0x100; break;
+        case 4: expected = 0x185; break;
+        case 5: expected = 0xce;  break;
+        case 6: expected = 0x2aa; break;
+        case 7: expected = 0x147; break;
+
+        default:
+            explode_bomb();
+    }
+
+    if (second_input != expected)
         explode_bomb();
     ```
 
@@ -470,7 +470,26 @@ excerpt: Fun puzzles in bomblab
 
 - We definitely don't want `%rax` to be non-zero. As a result, we should pass a value to `func4` that both `jle` and `jge` fires, which means `%edi` should equal to `%ecx` at the moment of comparison.
 
-- Since we've already know that `%ecx` will be a fixed `0x7`, the value of `%edi` is now revealed.
+    {% callout type="warning" icon="fa-solid fa-circle-info" title="Note:" %}
+    - Turns out `func4` is doing something similiar to a binary search, while the return value is not the offset/index of the target value.
+
+    - So as long as the function goes into this branch:
+
+        ```asm
+        400fe4:	7e 0c                	jle    400ff2 <func4+0x24>
+        400fe6:	8d 51 ff             	lea    -0x1(%rcx),%edx
+        400fe9:	e8 e0 ff ff ff       	call   400fce <func4>
+        400fee:	01 c0                	add    %eax,%eax
+        400ff0:	eb 15                	jmp    401007 <func4+0x39>
+        ```
+
+    - And get a return value 0 inside the recurrsion, we can keep `%rax` as 0.
+
+    - Really weird a binary search function does not return an index, hmm.
+
+    {% endcallout %}
+
+- Since we've already know that `%ecx` will be a fixed `0x7` on the first call, the value of `%edi` is now revealed.
 
 - The second input is an easy zero:
 
@@ -483,4 +502,528 @@ excerpt: Fun puzzles in bomblab
     401061:	c3                   	ret
     ```
 
-## To Be Continued...
+### Phase 5
+
+- Assembly:
+
+    ```asm
+    0000000000401062 <phase_5>:
+        401062:	53                   	push   %rbx
+        401063:	48 83 ec 20          	sub    $0x20,%rsp
+        401067:	48 89 fb             	mov    %rdi,%rbx
+        40106a:	64 48 8b 04 25 28 00 	mov    %fs:0x28,%rax
+        401071:	00 00
+        401073:	48 89 44 24 18       	mov    %rax,0x18(%rsp)
+        401078:	31 c0                	xor    %eax,%eax
+        40107a:	e8 9c 02 00 00       	call   40131b <string_length>
+        40107f:	83 f8 06             	cmp    $0x6,%eax
+        401082:	74 4e                	je     4010d2 <phase_5+0x70>
+        401084:	e8 b1 03 00 00       	call   40143a <explode_bomb>
+        401089:	eb 47                	jmp    4010d2 <phase_5+0x70>
+        40108b:	0f b6 0c 03          	movzbl (%rbx,%rax,1),%ecx
+        40108f:	88 0c 24             	mov    %cl,(%rsp)
+        401092:	48 8b 14 24          	mov    (%rsp),%rdx
+        401096:	83 e2 0f             	and    $0xf,%edx
+        401099:	0f b6 92 b0 24 40 00 	movzbl 0x4024b0(%rdx),%edx
+        4010a0:	88 54 04 10          	mov    %dl,0x10(%rsp,%rax,1)
+        4010a4:	48 83 c0 01          	add    $0x1,%rax
+        4010a8:	48 83 f8 06          	cmp    $0x6,%rax
+        4010ac:	75 dd                	jne    40108b <phase_5+0x29>
+        4010ae:	c6 44 24 16 00       	movb   $0x0,0x16(%rsp)
+        4010b3:	be 5e 24 40 00       	mov    $0x40245e,%esi
+        4010b8:	48 8d 7c 24 10       	lea    0x10(%rsp),%rdi
+        4010bd:	e8 76 02 00 00       	call   401338 <strings_not_equal>
+        4010c2:	85 c0                	test   %eax,%eax
+        4010c4:	74 13                	je     4010d9 <phase_5+0x77>
+        4010c6:	e8 6f 03 00 00       	call   40143a <explode_bomb>
+        4010cb:	0f 1f 44 00 00       	nopl   0x0(%rax,%rax,1)
+        4010d0:	eb 07                	jmp    4010d9 <phase_5+0x77>
+        4010d2:	b8 00 00 00 00       	mov    $0x0,%eax
+        4010d7:	eb b2                	jmp    40108b <phase_5+0x29>
+        4010d9:	48 8b 44 24 18       	mov    0x18(%rsp),%rax
+        4010de:	64 48 33 04 25 28 00 	xor    %fs:0x28,%rax
+        4010e5:	00 00
+        4010e7:	74 05                	je     4010ee <phase_5+0x8c>
+        4010e9:	e8 42 fa ff ff       	call   400b30 <__stack_chk_fail@plt>
+        4010ee:	48 83 c4 20          	add    $0x20,%rsp
+        4010f2:	5b                   	pop    %rbx
+        4010f3:	c3                   	ret
+    ```
+
+- Length of the input string should be 6:
+
+    ```asm
+    40107a:	e8 9c 02 00 00       	call   40131b <string_length>
+    40107f:	83 f8 06             	cmp    $0x6,%eax
+    401082:	74 4e                	je     4010d2 <phase_5+0x70>
+    401084:	e8 b1 03 00 00       	call   40143a <explode_bomb>
+    ```
+
+- The core logic of this function is at here:
+
+    ```asm
+    40108b:	0f b6 0c 03          	movzbl (%rbx,%rax,1),%ecx
+    40108f:	88 0c 24             	mov    %cl,(%rsp)
+    401092:	48 8b 14 24          	mov    (%rsp),%rdx
+    401096:	83 e2 0f             	and    $0xf,%edx
+    401099:	0f b6 92 b0 24 40 00 	movzbl 0x4024b0(%rdx),%edx
+    4010a0:	88 54 04 10          	mov    %dl,0x10(%rsp,%rax,1)
+    4010a4:	48 83 c0 01          	add    $0x1,%rax
+    4010a8:	48 83 f8 06          	cmp    $0x6,%rax
+    4010ac:	75 dd                	jne    40108b <phase_5+0x29>
+    ```
+
+- What this while-loop is doing is basically pick the latter 4 bits of each character of the input string, and add the number represented by that 4 bits to `0x4024b0` to get another byte.
+
+- By the way, the target string wanted is `flyers`:
+
+    ```asm
+    4010b3:	be 5e 24 40 00       	mov    $0x40245e,%esi
+    4010b8:	48 8d 7c 24 10       	lea    0x10(%rsp),%rdi
+    4010bd:	e8 76 02 00 00       	call   401338 <strings_not_equal>
+    ```
+
+    ```gdb
+    (gdb) print (char *) 0x40245e
+    $1 = 0x40245e "flyers"
+    ```
+
+- So the way to get the target string is to seek the correct letters in the string located at `0x4024b0`, and prepare the characters with the corresponding last 4 bits.
+
+- We can print out what exactly is stored at `0x4024b0`:
+
+    ```gdb
+    (gdb) x/16c 0x4024b0
+    0x4024b0 <array.3449>:	109 'm'	97 'a'	100 'd'	117 'u'	105 'i'	101 'e'	114 'r'	115 's'
+    0x4024b8 <array.3449+8>:	110 'n'	102 'f'	111 'o'	116 't'	118 'v'	98 'b'	121 'y'	108 'l'
+    ```
+
+    ```
+    m a d u i e r s n f o t v b y l
+    0 1 2 3 4 5 6 7 8 9 a b c d e f
+    ```
+
+- String `flyers` would require such serial of index: `9 f e 5 6 7`. The input should be a string, so we might take a look at the ASCII table:
+
+    {% folding blue::ASCII %}
+
+    | Dec | Hex | Binary   | Char |
+    | --- | --- | -------- | ---- |
+    | 69  | 45  | 01000101 | E    |
+    | 70  | 46  | 01000110 | F    |
+    | 71  | 47  | 01000111 | G    |
+    | 72  | 48  | 01001000 | H    |
+    | 73  | 49  | 01001001 | I    |
+    | 74  | 4A  | 01001010 | J    |
+    | 75  | 4B  | 01001011 | K    |
+    | 76  | 4C  | 01001100 | L    |
+    | 77  | 4D  | 01001101 | M    |
+    | 78  | 4E  | 01001110 | N    |
+    | 79  | 4F  | 01001111 | O    |
+    | 80  | 50  | 01010000 | P    |
+    | 81  | 51  | 01010001 | Q    |
+    | 82  | 52  | 01010010 | R    |
+    | 83  | 53  | 01010011 | S    |
+    | 84  | 54  | 01010100 | T    |
+    | 85  | 55  | 01010101 | U    |
+    | 86  | 56  | 01010110 | V    |
+    | 87  | 57  | 01010111 | W    |
+    | 88  | 58  | 01011000 | X    |
+    | 89  | 59  | 01011001 | Y    |
+    | 90  | 5A  | 01011010 | Z    |
+    | 91  | 5B  | 01011011 | [    |
+    | 92  | 5C  | 01011100 | \    |
+    | 93  | 5D  | 01011101 | ]    |
+    | 94  | 5E  | 01011110 | ^    |
+    | 95  | 5F  | 01011111 | \_   |
+    | 96  | 60  | 01100000 | `    |
+    | 97  | 61  | 01100001 | a    |
+    | 98  | 62  | 01100010 | b    |
+    | 99  | 63  | 01100011 | c    |
+    | 100 | 64  | 01100100 | d    |
+    | 101 | 65  | 01100101 | e    |
+    | 102 | 66  | 01100110 | f    |
+    | 103 | 67  | 01100111 | g    |
+    | 104 | 68  | 01101000 | h    |
+    | 105 | 69  | 01101001 | i    |
+    | 106 | 6A  | 01101010 | j    |
+    | 107 | 6B  | 01101011 | k    |
+    | 108 | 6C  | 01101100 | l    |
+    | 109 | 6D  | 01101101 | m    |
+    | 110 | 6E  | 01101110 | n    |
+    | 111 | 6F  | 01101111 | o    |
+    | 112 | 70  | 01110000 | p    |
+    | 113 | 71  | 01110001 | q    |
+    | 114 | 72  | 01110010 | r    |
+    | 115 | 73  | 01110011 | s    |
+    | 116 | 74  | 01110100 | t    |
+    | 117 | 75  | 01110101 | u    |
+    | 118 | 76  | 01110110 | v    |
+    | 119 | 77  | 01110111 | w    |
+    | 120 | 78  | 01111000 | x    |
+    | 121 | 79  | 01111001 | y    |
+    | 122 | 7A  | 01111010 | z    |
+    | 123 | 7B  | 01111011 | {    |
+    | 124 | 7C  | 01111100 | \|   |
+    | 125 | 7D  | 01111101 | }    |
+    | 126 | 7E  | 01111110 | ~    |
+    | 127 | 7F  | 01111111 | DEL  |
+
+    {% endfolding %}
+
+- To get an input with `9 f e 5 6 7` as the four last bits of each character:
+    - `ionefg`
+    - `Y_^UVW`
+    - ...
+
+### Phase 6
+
+- Assembly:
+
+    ```asm
+    00000000004010f4 <phase_6>:
+        4010f4:	41 56                	push   %r14
+        4010f6:	41 55                	push   %r13
+        4010f8:	41 54                	push   %r12
+        4010fa:	55                   	push   %rbp
+        4010fb:	53                   	push   %rbx
+        4010fc:	48 83 ec 50          	sub    $0x50,%rsp
+        401100:	49 89 e5             	mov    %rsp,%r13
+        401103:	48 89 e6             	mov    %rsp,%rsi
+        401106:	e8 51 03 00 00       	call   40145c <read_six_numbers>
+        40110b:	49 89 e6             	mov    %rsp,%r14
+        40110e:	41 bc 00 00 00 00    	mov    $0x0,%r12d
+        401114:	4c 89 ed             	mov    %r13,%rbp
+        401117:	41 8b 45 00          	mov    0x0(%r13),%eax
+        40111b:	83 e8 01             	sub    $0x1,%eax
+        40111e:	83 f8 05             	cmp    $0x5,%eax
+        401121:	76 05                	jbe    401128 <phase_6+0x34>
+        401123:	e8 12 03 00 00       	call   40143a <explode_bomb>
+        401128:	41 83 c4 01          	add    $0x1,%r12d
+        40112c:	41 83 fc 06          	cmp    $0x6,%r12d
+        401130:	74 21                	je     401153 <phase_6+0x5f>
+        401132:	44 89 e3             	mov    %r12d,%ebx
+        401135:	48 63 c3             	movslq %ebx,%rax
+        401138:	8b 04 84             	mov    (%rsp,%rax,4),%eax
+        40113b:	39 45 00             	cmp    %eax,0x0(%rbp)
+        40113e:	75 05                	jne    401145 <phase_6+0x51>
+        401140:	e8 f5 02 00 00       	call   40143a <explode_bomb>
+        401145:	83 c3 01             	add    $0x1,%ebx
+        401148:	83 fb 05             	cmp    $0x5,%ebx
+        40114b:	7e e8                	jle    401135 <phase_6+0x41>
+        40114d:	49 83 c5 04          	add    $0x4,%r13
+        401151:	eb c1                	jmp    401114 <phase_6+0x20>
+        401153:	48 8d 74 24 18       	lea    0x18(%rsp),%rsi
+        401158:	4c 89 f0             	mov    %r14,%rax
+        40115b:	b9 07 00 00 00       	mov    $0x7,%ecx
+        401160:	89 ca                	mov    %ecx,%edx
+        401162:	2b 10                	sub    (%rax),%edx
+        401164:	89 10                	mov    %edx,(%rax)
+        401166:	48 83 c0 04          	add    $0x4,%rax
+        40116a:	48 39 f0             	cmp    %rsi,%rax
+        40116d:	75 f1                	jne    401160 <phase_6+0x6c>
+        40116f:	be 00 00 00 00       	mov    $0x0,%esi
+        401174:	eb 21                	jmp    401197 <phase_6+0xa3>
+        401176:	48 8b 52 08          	mov    0x8(%rdx),%rdx
+        40117a:	83 c0 01             	add    $0x1,%eax
+        40117d:	39 c8                	cmp    %ecx,%eax
+        40117f:	75 f5                	jne    401176 <phase_6+0x82>
+        401181:	eb 05                	jmp    401188 <phase_6+0x94>
+        401183:	ba d0 32 60 00       	mov    $0x6032d0,%edx
+        401188:	48 89 54 74 20       	mov    %rdx,0x20(%rsp,%rsi,2)
+        40118d:	48 83 c6 04          	add    $0x4,%rsi
+        401191:	48 83 fe 18          	cmp    $0x18,%rsi
+        401195:	74 14                	je     4011ab <phase_6+0xb7>
+        401197:	8b 0c 34             	mov    (%rsp,%rsi,1),%ecx
+        40119a:	83 f9 01             	cmp    $0x1,%ecx
+        40119d:	7e e4                	jle    401183 <phase_6+0x8f>
+        40119f:	b8 01 00 00 00       	mov    $0x1,%eax
+        4011a4:	ba d0 32 60 00       	mov    $0x6032d0,%edx
+        4011a9:	eb cb                	jmp    401176 <phase_6+0x82>
+        4011ab:	48 8b 5c 24 20       	mov    0x20(%rsp),%rbx
+        4011b0:	48 8d 44 24 28       	lea    0x28(%rsp),%rax
+        4011b5:	48 8d 74 24 50       	lea    0x50(%rsp),%rsi
+        4011ba:	48 89 d9             	mov    %rbx,%rcx
+        4011bd:	48 8b 10             	mov    (%rax),%rdx
+        4011c0:	48 89 51 08          	mov    %rdx,0x8(%rcx)
+        4011c4:	48 83 c0 08          	add    $0x8,%rax
+        4011c8:	48 39 f0             	cmp    %rsi,%rax
+        4011cb:	74 05                	je     4011d2 <phase_6+0xde>
+        4011cd:	48 89 d1             	mov    %rdx,%rcx
+        4011d0:	eb eb                	jmp    4011bd <phase_6+0xc9>
+        4011d2:	48 c7 42 08 00 00 00 	movq   $0x0,0x8(%rdx)
+        4011d9:	00
+        4011da:	bd 05 00 00 00       	mov    $0x5,%ebp
+        4011df:	48 8b 43 08          	mov    0x8(%rbx),%rax
+        4011e3:	8b 00                	mov    (%rax),%eax
+        4011e5:	39 03                	cmp    %eax,(%rbx)
+        4011e7:	7d 05                	jge    4011ee <phase_6+0xfa>
+        4011e9:	e8 4c 02 00 00       	call   40143a <explode_bomb>
+        4011ee:	48 8b 5b 08          	mov    0x8(%rbx),%rbx
+        4011f2:	83 ed 01             	sub    $0x1,%ebp
+        4011f5:	75 e8                	jne    4011df <phase_6+0xeb>
+        4011f7:	48 83 c4 50          	add    $0x50,%rsp
+        4011fb:	5b                   	pop    %rbx
+        4011fc:	5d                   	pop    %rbp
+        4011fd:	41 5c                	pop    %r12
+        4011ff:	41 5d                	pop    %r13
+        401201:	41 5e                	pop    %r14
+        401203:	c3                   	ret
+    ```
+
+- Holy, that is quite a large piece of code.
+
+- Well, its core logic can be cut into several parts.
+
+#### Checking Input
+
+- The input is parsed by `read_six_numbers` as the one explained before.
+
+- Then the function perform a loop in order to check whether any input is less than 6 (and also larger than 0), and to ensure that each number is unique to others:
+
+    ```asm
+    40110e:	41 bc 00 00 00 00    	mov    $0x0,%r12d
+    401114:	4c 89 ed             	mov    %r13,%rbp
+    401117:	41 8b 45 00          	mov    0x0(%r13),%eax
+    40111b:	83 e8 01             	sub    $0x1,%eax
+    40111e:	83 f8 05             	cmp    $0x5,%eax
+    401121:	76 05                	jbe    401128 <phase_6+0x34>
+    401123:	e8 12 03 00 00       	call   40143a <explode_bomb>
+    401128:	41 83 c4 01          	add    $0x1,%r12d
+    40112c:	41 83 fc 06          	cmp    $0x6,%r12d
+    401130:	74 21                	je     401153 <phase_6+0x5f>
+    401132:	44 89 e3             	mov    %r12d,%ebx
+    401135:	48 63 c3             	movslq %ebx,%rax
+    401138:	8b 04 84             	mov    (%rsp,%rax,4),%eax
+    40113b:	39 45 00             	cmp    %eax,0x0(%rbp)
+    40113e:	75 05                	jne    401145 <phase_6+0x51>
+    401140:	e8 f5 02 00 00       	call   40143a <explode_bomb>
+    401145:	83 c3 01             	add    $0x1,%ebx
+    401148:	83 fb 05             	cmp    $0x5,%ebx
+    40114b:	7e e8                	jle    401135 <phase_6+0x41>
+    40114d:	49 83 c5 04          	add    $0x4,%r13
+    401151:	eb c1                	jmp    401114 <phase_6+0x20>
+    ```
+
+    - Pseudocode:
+
+        ```c
+        // r13 points to the current input number
+        int *r13 = rsp;
+        int r12 = 0;
+
+        while (1) {
+            int *rbp = r13;
+            int rax = *r13;
+            rax -= 1;
+
+            if (rax > 0x5) explode_bomb();
+
+            r12 += 1;
+            if (r12 == 6) break;
+
+            for (int rbx = r12; rbx <= 0x5; rbx ++) {
+                rax = rbx;
+                rax = nums[rax];
+
+                if (rax == *rbp) explode_bomb();
+            }
+
+            r13 += 4;
+        }
+        ```
+
+#### Subtract Each Number From 7
+
+- Then the function subtract each of the six input number from 7:
+
+    ```asm
+    401153:	48 8d 74 24 18       	lea    0x18(%rsp),%rsi
+    401158:	4c 89 f0             	mov    %r14,%rax
+    40115b:	b9 07 00 00 00       	mov    $0x7,%ecx
+    401160:	89 ca                	mov    %ecx,%edx
+    401162:	2b 10                	sub    (%rax),%edx
+    401164:	89 10                	mov    %edx,(%rax)
+    401166:	48 83 c0 04          	add    $0x4,%rax
+    40116a:	48 39 f0             	cmp    %rsi,%rax
+    40116d:	75 f1                	jne    401160 <phase_6+0x6c>
+    ```
+
+- Pseudocode:
+
+    ```c
+    int rcx = 7;
+
+    for (int rax = 0; rax <= 5; rax++) {
+        int rdx = rcx;
+        rdx -= nums[rax];
+        nums[rax] = rdx;
+    }
+    ```
+
+#### Load Linked List
+
+- After that, the function load six nodes of a linked list onto the stack:
+
+    ```asm
+    40116f:	be 00 00 00 00       	mov    $0x0,%esi
+    401174:	eb 21                	jmp    401197 <phase_6+0xa3>
+    401176:	48 8b 52 08          	mov    0x8(%rdx),%rdx
+    40117a:	83 c0 01             	add    $0x1,%eax
+    40117d:	39 c8                	cmp    %ecx,%eax
+    40117f:	75 f5                	jne    401176 <phase_6+0x82>
+    401181:	eb 05                	jmp    401188 <phase_6+0x94>
+    401183:	ba d0 32 60 00       	mov    $0x6032d0,%edx
+    401188:	48 89 54 74 20       	mov    %rdx,0x20(%rsp,%rsi,2)
+    40118d:	48 83 c6 04          	add    $0x4,%rsi
+    401191:	48 83 fe 18          	cmp    $0x18,%rsi
+    401195:	74 14                	je     4011ab <phase_6+0xb7>
+    401197:	8b 0c 34             	mov    (%rsp,%rsi,1),%ecx
+    40119a:	83 f9 01             	cmp    $0x1,%ecx
+    40119d:	7e e4                	jle    401183 <phase_6+0x8f>
+    40119f:	b8 01 00 00 00       	mov    $0x1,%eax
+    4011a4:	ba d0 32 60 00       	mov    $0x6032d0,%edx
+    4011a9:	eb cb                	jmp    401176 <phase_6+0x82>
+    ```
+
+- We can see it from memory `0x6032d0`:
+
+    ```gdb
+    x/wx 0x6032d0
+    0x6032d0 <node1>:	0x0000014c
+    (gdb) x/wx 0x6032d0 + 0x4
+    0x6032d4 <node1+4>:	0x00000001
+    (gdb) x/wx 0x6032d0 + 0x8
+    0x6032d8 <node1+8>:	0x006032e0
+    (gdb) x/wx 0x6032e0
+    0x6032e0 <node2>:	0x000000a8
+    ```
+
+- There are six nodes in the linked list, their values are as follow:
+
+    ```plaintext
+    node1: 332
+    node2: 168
+    node3: 924
+    node4: 691
+    node5: 477
+    node6: 443
+    ```
+
+    _values are shown as decimal numbers_
+
+- They are loaded on to the upper area of the stack:
+
+    ```
+          ┌──────────────┐
+    +0x48 │ node_addr[5] │
+          ├──────────────┤
+          │ node_addr[4] │
+          ├──────────────┤
+          │ node_addr[3] │
+          ├──────────────┤
+          │ node_addr[2] │
+          ├──────────────┤
+          │ node_addr[1] │
+          ├──────────────┤
+    +0x20 │ node_addr[0] │
+          ├──────────────┤
+          │     ...      │
+          ├──────────────┤
+    +0x18 │ int arr[5]   │
+          ├──────────────┤
+          │ int arr[4]   │
+          ├──────────────┤
+          │ int arr[3]   │
+          ├──────────────┤
+          │ int arr[2]   │
+          ├──────────────┤
+          │ int arr[1]   │
+          ├──────────────┤
+    +0x00 │ int arr[0]   │  <---  %rsp
+          └──────────────┘
+    ```
+
+- The order of the nodes is the same as user input subtracted from 7. For example if the user input `6 5 4 3 2 1`, then the nodes pointed by the address on the stack is `node1 node2 node3 node4 node5 node6`, upwards.
+
+#### Reorder linked list
+
+- Then the function would reorder the linked list, while the old order is a straight from 1 to 6.
+
+    ```asm
+    4011ab:	48 8b 5c 24 20       	mov    0x20(%rsp),%rbx
+    4011b0:	48 8d 44 24 28       	lea    0x28(%rsp),%rax
+    4011b5:	48 8d 74 24 50       	lea    0x50(%rsp),%rsi
+    4011ba:	48 89 d9             	mov    %rbx,%rcx
+    4011bd:	48 8b 10             	mov    (%rax),%rdx
+    4011c0:	48 89 51 08          	mov    %rdx,0x8(%rcx)
+    4011c4:	48 83 c0 08          	add    $0x8,%rax
+    4011c8:	48 39 f0             	cmp    %rsi,%rax
+    4011cb:	74 05                	je     4011d2 <phase_6+0xde>
+    4011cd:	48 89 d1             	mov    %rdx,%rcx
+    4011d0:	eb eb                	jmp    4011bd <phase_6+0xc9>
+    4011d2:	48 c7 42 08 00 00 00 	movq   $0x0,0x8(%rdx)
+    ```
+
+- This would reorder the linked list by the order of the addresses on the stack. The nodes are now pointing upwards after the loop, from the perspective of the addresses on the stack.
+
+#### Examine The Order
+
+- The final loop would check whether the new order of the linked nodes are **descending** to their values.
+
+    ```asm
+    4011da:	bd 05 00 00 00       	mov    $0x5,%ebp
+    4011df:	48 8b 43 08          	mov    0x8(%rbx),%rax
+    4011e3:	8b 00                	mov    (%rax),%eax
+    4011e5:	39 03                	cmp    %eax,(%rbx)
+    4011e7:	7d 05                	jge    4011ee <phase_6+0xfa>
+    4011e9:	e8 4c 02 00 00       	call   40143a <explode_bomb>
+    4011ee:	48 8b 5b 08          	mov    0x8(%rbx),%rbx
+    4011f2:	83 ed 01             	sub    $0x1,%ebp
+    4011f5:	75 e8                	jne    4011df <phase_6+0xeb>
+    ```
+
+- A reminder of the linked list:
+
+    ```plaintext
+    node1: 332
+    node2: 168
+    node3: 924
+    node4: 691
+    node5: 477
+    node6: 443
+    ```
+
+- Obviously the expected order is : `3 -> 4 -> 5 -> 6 -> 1 -> 2`.
+
+#### Conclusion
+
+- From these four parts we can see that the function is basically manipulating the user input, and then examine whether the order is as expected or not.
+
+- The expected order(nodes & input):
+
+    ```plaintext
+    3 -> 4 -> 5 -> 6 -> 1 -> 2
+    ```
+
+- The order before reorder(nodes & input):
+
+    ```plaintext
+    3 -> 4 -> 5 -> 6  1 -> 2 ─┐
+    │                         │
+    └─────────────────────────┘
+    ```
+
+- The order before being subtracted from 7 (input):
+
+    ```plaintext
+    4 3 2 1 6 5
+    ```
+
+- Which is the answer.
+
+---
+
+_Phew!_
+
+## End
