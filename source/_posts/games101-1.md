@@ -389,7 +389,7 @@ mathjax: true
 
 - 可以通过一个简单的剖面图理解这种变换的规律：
 
-<img src="https://files.seeusercontent.com/2026/08/22/ySt5/persp_to_otho.png" alt="persp_to_otho.png" width="500" />
+<img src="https://files.seeusercontent.com/2026/08/22/oBj5/persp_to_ortho.png" alt="persp_to_ortho.png" width="500" />
 
 - 显然，对于平面 $z_{k}, (z_{k} \in [zFar, zNear])$ 上的点 $P(x, y, z_{k})$ 来说，有：
 
