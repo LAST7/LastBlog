@@ -1,0 +1,67 @@
+name: Last Blog Deployment
+on:
+    push:
+        branches:
+            - main
+    workflow_dispatch:
+permissions:
+    contents: read
+concurrency:
+    group: production-blog
+    cancel-in-progress: true
+jobs:
+    build-and-deploy:
+        runs-on: ubuntu-latest
+        steps:
+            - name: Checkout repo
+              uses: actions/checkout@v4
+            - name: Setup Node.js
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+            - name: Enable Corepack
+              run: |
+                  corepack enable
+                  corepack prepare yarn@4.9.2 --activate
+            - name: Enable Yarn cache
+              uses: actions/setup-node@v4
+              with:
+                  node-version: 22
+                  cache: yarn
+            - name: Install dependencies
+              run: yarn install --immutable
+            - name: Build
+              run: yarn build
+            - name: Configure SSH
+              env:
+                  DEPLOY_SSH_KEY: ${{ secrets.DEPLOY_SSH_KEY }}
+                  SSH_KNOWN_HOSTS: ${{ secrets.SSH_KNOWN_HOSTS }}
+              run: |
+                  mkdir -p ~/.ssh
+                  chmod 700 ~/.ssh
+                  printf '%s\n' "$DEPLOY_SSH_KEY" > ~/.ssh/deploy_key
+                  chmod 600 ~/.ssh/deploy_key
+                  printf '%s\n' "$SSH_KNOWN_HOSTS" > ~/.ssh/known_hosts
+                  chmod 600 ~/.ssh/known_hosts
+            - name: Upload static files
+              env:
+                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+                  DEPLOY_PORT: ${{ secrets.DEPLOY_HOST_SSH_PORT }}
+              run: |
+                  ssh -T -p $DEPLOY_PORT -i ~/.ssh/deploy_key \
+                  "$DEPLOY_USER@$DEPLOY_HOST" \
+                  "mkdir -p /data/blog/releases/${GITHUB_SHA}"
+                  rsync -az --delete \
+                  -e "ssh -p $DEPLOY_PORT -i ~/.ssh/deploy_key" \
+                  public/ \
+                  "$DEPLOY_USER@$DEPLOY_HOST:/data/blog/releases/${GITHUB_SHA}/"
+            - name: Activate new post
+              env:
+                  DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
+                  DEPLOY_USER: ${{ secrets.DEPLOY_USER }}
+                  DEPLOY_PORT: ${{ secrets.DEPLOY_HOST_SSH_PORT }}
+              run: |
+                  ssh -T -p $DEPLOY_PORT -i ~/.ssh/deploy_key \
+                  "$DEPLOY_USER@$DEPLOY_HOST" \
+                  "ln -sfn /data/blog/releases/${GITHUB_SHA} /data/blog/current.next && mv -Tf /data/blog/current.next /data/blog/current"

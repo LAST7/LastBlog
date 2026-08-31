@@ -10,10 +10,4 @@ _multiconfig.yml
 templates/
 .trash/
 
-yarn.lock
 .prettierrc.json
-
-# Exclude cs110l blog posts
-source/_posts/cs110l-l1.md
-source/_posts/cs110l-l2.md
-source/_posts/cs110l-l3.md
