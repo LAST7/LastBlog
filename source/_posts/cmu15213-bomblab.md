@@ -1,5 +1,5 @@
 ---
-title: CMU 15-213 Bomblab
+title: CMU 15-213 Bomb Lab
 date: 2026-07-21 09:17:10
 categories: 笔记
 tags:
@@ -9,7 +9,7 @@ tags:
 excerpt: Fun puzzles in bomblab
 ---
 
-## Bomblab
+# Bomb Lab
 
 - This is the second lab of course CMU 15-213. I have to say that, unlike datalab, this lab is fairly 'logical' and fun to play with. The idea of looking into assembly code to get a fundamental understanding of how programs actually got compiled into machine level language is absolutely effective and genius in teaching.
 
@@ -17,14 +17,14 @@ excerpt: Fun puzzles in bomblab
 
 - If you find any mistakes in this blog, you're most welcome to leave a comment on it.
 
-## Records
+# Records
 
 - Disassemble the executable file into assembly code by:
     ```bash
     objdump -D bomb > bomb.s
     ```
 
-### Phase 1
+## Phase 1
 
 - Obviously we gotta look into the assembly code of `phase_1`:
 
@@ -113,7 +113,7 @@ excerpt: Fun puzzles in bomblab
 
 - And we're done for phase 1.
 
-### Phase 2
+## Phase 2
 
 - As usual, assembly:
 
@@ -246,7 +246,7 @@ excerpt: Fun puzzles in bomblab
 
 - To this stage, the answer can not be more obvious.
 
-### Phase 3
+## Phase 3
 
 - Assembly:
 
@@ -375,7 +375,7 @@ excerpt: Fun puzzles in bomblab
         explode_bomb();
     ```
 
-### Phase 4
+## Phase 4
 
 - Assembly:
 
@@ -502,7 +502,7 @@ excerpt: Fun puzzles in bomblab
     401061:	c3                   	ret
     ```
 
-### Phase 5
+## Phase 5
 
 - Assembly:
 
@@ -676,7 +676,7 @@ excerpt: Fun puzzles in bomblab
     - `Y_^UVW`
     - ...
 
-### Phase 6
+## Phase 6
 
 - Assembly:
 
@@ -1026,4 +1026,4 @@ excerpt: Fun puzzles in bomblab
 
 _Phew!_
 
-## End
+# End
