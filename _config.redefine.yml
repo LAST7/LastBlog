@@ -401,11 +401,10 @@ footer:
 # INJECT >>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>>> start
 inject:
     # Whether to enable inject
-    enable: false
+    enable: true
     # Inject custom head html code
     head:
-        -
-        -
+        - <meta name="google-site-verification" content="3n6rnZW5hzXHl8Y-Bxm649pXKTW0_j2EMLM6VEisES0" />
     # Inject custom footer html code
     footer:
         -
