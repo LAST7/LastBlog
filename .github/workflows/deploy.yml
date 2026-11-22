@@ -51,11 +51,11 @@ jobs:
               run: |
                   ssh -T -p $DEPLOY_PORT -i ~/.ssh/deploy_key \
                   "$DEPLOY_USER@$DEPLOY_HOST" \
-                  "mkdir -p /data/blog/releases/${GITHUB_SHA}"
+                  "mkdir -p /var/www/blog.imlast.top/releases/${GITHUB_SHA}"
                   rsync -az --delete \
                   -e "ssh -p $DEPLOY_PORT -i ~/.ssh/deploy_key" \
                   public/ \
-                  "$DEPLOY_USER@$DEPLOY_HOST:/data/blog/releases/${GITHUB_SHA}/"
+                  "$DEPLOY_USER@$DEPLOY_HOST:/var/www/blog.imlast.top/releases/${GITHUB_SHA}/"
             - name: Activate new post
               env:
                   DEPLOY_HOST: ${{ secrets.DEPLOY_HOST }}
@@ -64,4 +64,4 @@ jobs:
               run: |
                   ssh -T -p $DEPLOY_PORT -i ~/.ssh/deploy_key \
                   "$DEPLOY_USER@$DEPLOY_HOST" \
-                  "ln -sfn /data/blog/releases/${GITHUB_SHA} /data/blog/current.next && mv -Tf /data/blog/current.next /data/blog/current"
+                  "ln -sfn /var/www/blog.imlast.top/releases/${GITHUB_SHA} /var/www/blog.imlast.top/current.next && mv -Tf /var/www/blog.imlast.top/current.next /var/www/blog.imlast.top/current"
